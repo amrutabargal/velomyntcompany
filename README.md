@@ -1,1 +1,11 @@
-# velomyntcompany
+
+  # IT Company Website UI Design dark them (Community)
+
+  This is a code bundle for IT Company Website UI Design dark them (Community). The original project is available at https://www.figma.com/design/IG0q7RiDObfcml5LfJ5ROF/IT-Company-Website-UI-Design-dark-them--Community-.
+
+  ## Running the code
+
+  Run `npm i` to install the dependencies.
+
+  Run `npm run dev` to start the development server.
+  

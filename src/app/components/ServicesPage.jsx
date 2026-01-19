@@ -1,0 +1,214 @@
+import { Code, Globe, Smartphone, Paintbrush, Database, Cloud, Shield, Zap } from "lucide-react";
+import { Card, CardContent } from "./ui/card.jsx";
+import { Button } from "./ui/button.jsx";
+
+export function ServicesPage({ onNavigate }) {
+  const mainServices = [
+    {
+      icon: Code,
+      title: "Software Development",
+      description: "Custom software solutions tailored to your unique business requirements. We build scalable, secure, and efficient applications using the latest technologies.",
+      features: [
+        "Custom Enterprise Software",
+        "SaaS Application Development",
+        "Legacy System Modernization",
+        "API Development & Integration",
+        "Cloud-Native Applications",
+      ],
+    },
+    {
+      icon: Globe,
+      title: "Website Development",
+      description: "Responsive and modern websites that drive engagement and conversions. From corporate websites to complex web applications.",
+      features: [
+        "Responsive Web Design",
+        "E-Commerce Solutions",
+        "CMS Development",
+        "Progressive Web Apps (PWA)",
+        "Website Maintenance & Support",
+      ],
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android platforms.",
+      features: [
+        "iOS App Development",
+        "Android App Development",
+        "Cross-Platform Solutions",
+        "App UI/UX Design",
+        "App Store Optimization",
+      ],
+    },
+  ];
+
+  const additionalServices = [
+    {
+      icon: Paintbrush,
+      title: "UI/UX Design",
+      description: "Beautiful, intuitive interfaces that users love",
+    },
+    {
+      icon: Database,
+      title: "Database Solutions",
+      description: "Robust database design and optimization",
+    },
+    {
+      icon: Cloud,
+      title: "Cloud Services",
+      description: "Scalable cloud infrastructure and migration",
+    },
+    {
+      icon: Shield,
+      title: "Cybersecurity",
+      description: "Comprehensive security solutions",
+    },
+    {
+      icon: Zap,
+      title: "Performance Optimization",
+      description: "Speed and efficiency improvements",
+    },
+  ];
+
+  return (
+    <div className="pt-16">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-emerald-950 via-black to-emerald-950 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Our Services</h1>
+            <p className="text-xl text-gray-600">
+              Comprehensive IT solutions designed to transform your business and drive growth
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Services Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-20">
+            {mainServices.map((service, index) => {
+              const Icon = service.icon;
+              const isEven = index % 2 === 0;
+              return (
+                <div key={index} className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? "lg:flex-row-reverse" : ""}`}>
+                  <div className={isEven ? "" : "lg:order-2"}>
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-lime-300/20 rounded-2xl flex items-center justify-center mb-6">
+                      <Icon className="text-emerald-400" size={32} />
+                    </div>
+                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{service.title}</h2>
+                    <p className="text-lg text-gray-600 mb-6">{service.description}</p>
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <div className="w-6 h-6 bg-emerald-900/40 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                            <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                          </div>
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button onClick={() => onNavigate("contact")} className="bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-black shadow-emerald-500/40">
+                      Get Started
+                    </Button>
+                  </div>
+                  <div className={isEven ? "" : "lg:order-1"}>
+                    <Card className="overflow-hidden border-2 border-gray-100 shadow-xl">
+                      <img
+                        src={
+                          index === 0
+                            ? "https://images.unsplash.com/photo-1763568258752-fe55f4ab7267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3Njc2ODE4NzB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                            : index === 1
+                            ? "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZ3xlbnwxfHx8fDE3Njc2MzA5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                            : "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzY3NjAwODc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                        }
+                        alt={service.title}
+                        className="w-full h-96 object-cover"
+                      />
+                    </Card>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Services Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Additional Services</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Comprehensive solutions to support all aspects of your digital transformation
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            {additionalServices.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <Card key={index} className="border-2 border-slate-800 hover:border-emerald-500/60 hover:shadow-lg hover:shadow-emerald-500/20 bg-slate-950 transition-all group">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-14 h-14 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <Icon className="text-black" size={28} />
+                    </div>
+                    <h3 className="font-bold text-gray-900 mb-2">{service.title}</h3>
+                    <p className="text-sm text-gray-600">{service.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Our Process</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              A proven methodology that ensures project success
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { step: "01", title: "Discovery", description: "We analyze your requirements and create a strategic plan" },
+              { step: "02", title: "Design", description: "Our designers create beautiful and intuitive interfaces" },
+              { step: "03", title: "Development", description: "We build your solution using best practices and latest tech" },
+              { step: "04", title: "Delivery", description: "We deploy, test, and provide ongoing support" },
+            ].map((phase, index) => (
+              <div key={index} className="relative">
+                {index < 3 && (
+                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-emerald-500/40 to-transparent"></div>
+                )}
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl font-bold text-black">{phase.step}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{phase.title}</h3>
+                  <p className="text-gray-600">{phase.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-emerald-700 to-emerald-500 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-5xl font-bold mb-6">Ready to Get Started?</h2>
+          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+            Let's discuss your project and create a solution that drives results
+          </p>
+          <Button onClick={() => onNavigate("contact")} size="lg" className="bg-white text-emerald-700 hover:bg-emerald-50">
+            Contact Us Today
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
