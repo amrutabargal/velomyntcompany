@@ -28,17 +28,17 @@ export function Header({ currentPage, onNavigate }) {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center cursor-pointer"
+            className="flex items-center cursor-pointer gap-4"
             onClick={() => onNavigate("home")}
           >
-            <div className="h-12 w-12 overflow-hidden rounded-md flex-shrink-0">
+            <div className="h-20 w-20 flex items-center justify-center flex-shrink-0">
               <img
                 src={companyLogo}
                 alt="Velomynt Digital Logo"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
               />
             </div>
-            <span className="ml-1 text-xl font-bold text-white">Velomynt Digital</span>
+            <span className="text-xl font-bold text-white whitespace-nowrap leading-none">Velomynt Digital</span>
           </motion.div>
 
           {/* Desktop Navigation */}

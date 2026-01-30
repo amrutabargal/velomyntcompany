@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Header } from "./components/Header.jsx";
 import { Footer } from "./components/Footer.jsx";
+import { SEO } from "./components/SEO.jsx";
+import { getSEOConfig } from "./config/seoKeywords.js";
 import { HomePage } from "./components/HomePage.jsx";
 import { AboutPage } from "./components/AboutPage.jsx";
 import { ServicesPage } from "./components/ServicesPage.jsx";
@@ -122,8 +124,17 @@ export default function App() {
     }
   };
 
+  // Get SEO config for current page
+  const seoData = getSEOConfig(currentPage);
+
   return (
     <div className="min-h-screen bg-slate-900">
+      <SEO
+        title={seoData.title}
+        description={seoData.description}
+        keywords={seoData.keywords}
+        canonical={seoData.canonical}
+      />
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
       <main>{renderPage()}</main>
       <Footer onNavigate={handleNavigate} />

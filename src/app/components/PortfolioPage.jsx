@@ -3,73 +3,90 @@ import { Card, CardContent } from "./ui/card.jsx";
 import { Badge } from "./ui/badge.jsx";
 import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
+import bankingAppImage from "../../image/portfolio/banking-app-interface-concept_23-2148616879_ANTI_SEARCH.png";
+import healthcareImage from "../../image/portfolio/emr-management_ANTI_SEARCH.png";
+import foodDeliveryImage from "../../image/portfolio/food-delivery.png";
+import gameAppImage from "../../image/portfolio/game-app.png";
+import goldenLakeImage from "../../image/portfolio/golden-lake.png";
+import fitnessImage from "../../image/portfolio/gradient-fitness-app-template_23-2151095465_ANTI_SEARCH.png";
+import ecommerceImage from "../../image/portfolio/image_ANTI_SEARCH.png";
+import maximizeNetworkImage from "../../image/portfolio/maximize-network.png";
+import shootForFutureImage from "../../image/portfolio/shoot-for-the-future.png";
+import weAreBamImage from "../../image/portfolio/we-are-bam.png";
 
 export function PortfolioPage() {
   const [filter, setFilter] = useState("all");
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      category: "web",
-      tags: ["React", "Node.js", "MongoDB"],
-      description: "Complete online shopping platform with payment integration, inventory management, and admin dashboard",
-      image: "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZ3xlbnwxfHx8fDE3Njc2MzA5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      title: "Banking Mobile App",
+      category: "mobile",
+      tags: ["React Native", "Firebase", "Secure API"],
+      description: "Secure mobile banking application with account management, transactions, and real-time notifications. Features biometric authentication and seamless user experience.",
+      image: bankingAppImage,
     },
     {
       title: "Healthcare Management System",
       category: "software",
       tags: ["Java", "Spring Boot", "PostgreSQL"],
-      description: "Enterprise healthcare solution for patient records, appointments, and billing management",
-      image: "https://images.unsplash.com/photo-1763568258752-fe55f4ab7267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3Njc2ODE4NzB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      title: "Fitness Tracking App",
-      category: "mobile",
-      tags: ["React Native", "Firebase", "Redux"],
-      description: "Cross-platform mobile app for workout tracking, meal planning, and progress monitoring",
-      image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzY3NjAwODc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      title: "Real Estate Portal",
-      category: "web",
-      tags: ["Next.js", "Tailwind", "MySQL"],
-      description: "Property listing platform with advanced search, virtual tours, and agent management",
-      image: "https://images.unsplash.com/photo-1646153114001-495dfb56506d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3b3Jrc3BhY2UlMjB0ZWNofGVufDF8fHx8MTc2NzY0OTUxNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      title: "Inventory Management System",
-      category: "software",
-      tags: ["Python", "Django", "PostgreSQL"],
-      description: "Cloud-based inventory solution with real-time tracking, reporting, and analytics",
-      image: "https://images.unsplash.com/photo-1763568258752-fe55f4ab7267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3Njc2ODE4NzB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Enterprise healthcare solution for patient records, appointments, and billing management. Streamlined workflow for medical professionals.",
+      image: healthcareImage,
     },
     {
       title: "Food Delivery App",
       category: "mobile",
       tags: ["Flutter", "Node.js", "MongoDB"],
-      description: "Complete food ordering and delivery platform with real-time tracking and payments",
-      image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzY3NjAwODc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      description: "Complete food ordering and delivery platform with real-time tracking, multiple payment options, and restaurant management system.",
+      image: foodDeliveryImage,
     },
     {
-      title: "Learning Management System",
-      category: "web",
-      tags: ["Angular", "Express", "MySQL"],
-      description: "Educational platform with courses, quizzes, progress tracking, and certificates",
-      image: "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZ3xlbnwxfHx8fDE3Njc2MzA5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      title: "Banking Mobile App",
+      title: "Game Application",
       category: "mobile",
-      tags: ["Swift", "iOS", "REST API"],
-      description: "Secure mobile banking application with account management and transactions",
-      image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzY3NjAwODc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      tags: ["Unity", "C#", "Game Engine"],
+      description: "Engaging mobile game application with immersive gameplay, social features, and in-app purchases. Optimized for performance across devices.",
+      image: gameAppImage,
     },
     {
-      title: "CRM Software",
+      title: "Golden Lake Platform",
+      category: "web",
+      tags: ["React", "Next.js", "Tailwind CSS"],
+      description: "Modern web platform with responsive design, interactive features, and seamless user experience. Built for scalability and performance.",
+      image: goldenLakeImage,
+    },
+    {
+      title: "Fitness Tracking App",
+      category: "mobile",
+      tags: ["React Native", "Firebase", "Redux"],
+      description: "Cross-platform mobile app for workout tracking, meal planning, and progress monitoring. Helps users achieve their fitness goals.",
+      image: fitnessImage,
+    },
+    {
+      title: "E-Commerce Platform",
+      category: "web",
+      tags: ["React", "Node.js", "MongoDB"],
+      description: "Complete online shopping platform with payment integration, inventory management, and admin dashboard. Secure and scalable solution.",
+      image: ecommerceImage,
+    },
+    {
+      title: "Network Management Platform",
       category: "software",
-      tags: ["C#", ".NET", "SQL Server"],
-      description: "Customer relationship management platform with sales pipeline and analytics",
-      image: "https://images.unsplash.com/photo-1646153114001-495dfb56506d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3b3Jrc3BhY2UlMjB0ZWNofGVufDF8fHx8MTc2NzY0OTUxNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      tags: ["Python", "Django", "REST API"],
+      description: "Advanced network management solution for maximizing connectivity and performance. Real-time monitoring and analytics dashboard.",
+      image: maximizeNetworkImage,
+    },
+    {
+      title: "Creative Agency Website",
+      category: "web",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+      description: "Modern creative agency website showcasing portfolio, services, and client testimonials. Bold branding with strategic design approach.",
+      image: shootForFutureImage,
+    },
+    {
+      title: "Digital Product Agency",
+      category: "web",
+      tags: ["React", "Cloud Services", "SaaS"],
+      description: "Digital product agency website featuring cloud mobile SaaS and AI solutions. Professional design with comprehensive service offerings.",
+      image: weAreBamImage,
     },
   ];
 
@@ -124,39 +141,72 @@ export function PortfolioPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
             {filteredProjects.map((project, index) => (
-                  <Card
+              <motion.div
                 key={index}
-                className="overflow-hidden hover:shadow-2xl transition-all duration-300 group cursor-pointer bg-slate-950 border border-slate-900"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="text-white flex items-center gap-2">
-                      <ExternalLink size={20} />
-                      <span>View Project</span>
+                <Card
+                  className="overflow-hidden group cursor-pointer bg-slate-950 border border-slate-800/50 hover:border-indigo-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-2"
+                >
+                  <div className="relative overflow-hidden h-56 md:h-64 lg:h-72 bg-gradient-to-br from-slate-900 to-slate-950">
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        whileHover={{ scale: 1 }}
+                        className="text-white flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600/90 backdrop-blur-sm"
+                      >
+                        <ExternalLink size={20} className="animate-pulse" />
+                        <span className="font-medium">View Project</span>
+                      </motion.div>
+                    </div>
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                     </div>
                   </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-                  <p className="text-white mb-4 text-sm">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary" className="bg-slate-800/60 text-indigo-200 border border-indigo-700">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-5 md:p-6 lg:p-7 bg-gradient-to-b from-slate-950 to-slate-900">
+                    <motion.h3
+                      className="text-lg md:text-xl font-bold text-white mb-2.5 md:mb-3 group-hover:text-indigo-400 transition-colors duration-300"
+                      whileHover={{ x: 5 }}
+                    >
+                      {project.title}
+                    </motion.h3>
+                    <p className="text-gray-300 mb-3 md:mb-4 text-xs md:text-sm leading-relaxed line-clamp-3">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 md:gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <motion.div
+                          key={tagIndex}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Badge
+                            variant="secondary"
+                            className="bg-slate-800/80 text-indigo-200 border border-indigo-700/50 hover:border-indigo-500 hover:bg-indigo-900/30 transition-all duration-300"
+                          >
+                            {tag}
+                          </Badge>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-indigo-500/30 rounded-lg transition-all duration-500 pointer-events-none"></div>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -167,7 +217,7 @@ export function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">10+</div>
+              <div className="text-5xl font-bold mb-2">10</div>
               <div className="text-indigo-100">Projects Delivered</div>
             </div>
             <div className="text-center">
