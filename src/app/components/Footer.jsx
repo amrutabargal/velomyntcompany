@@ -118,7 +118,7 @@ export function Footer({ onNavigate }) {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-sm text-gray-400">
-            © {currentYear} Velomynt Digital Private Limited. All rights reserved.
+            © {currentYear} Velomynt Digital. All rights reserved.
           </p>
         </div>
       </div>
