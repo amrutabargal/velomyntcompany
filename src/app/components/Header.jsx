@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button.jsx";
 import { motion, AnimatePresence } from "motion/react";
+import companyLogo from "../../image/lightthemlogo.png";
 
 export function Header({ currentPage, onNavigate }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,8 +13,6 @@ export function Header({ currentPage, onNavigate }) {
     { name: "Services", id: "services" },
     { name: "Technologies", id: "technologies" },
     { name: "Portfolio", id: "portfolio" },
-    { name: "Why Choose Us", id: "why-choose-us" },
-    { name: "Testimonials", id: "testimonials" },
     { name: "Contact", id: "contact" },
   ];
 
@@ -22,7 +21,7 @@ export function Header({ currentPage, onNavigate }) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-emerald-800/60 shadow-lg"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-indigo-800/60 shadow-lg"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -32,10 +31,14 @@ export function Header({ currentPage, onNavigate }) {
             className="flex items-center cursor-pointer"
             onClick={() => onNavigate("home")}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/40">
-              <span className="text-white font-bold text-xl">VD</span>
+            <div className="h-12 w-12 overflow-hidden rounded-md flex-shrink-0">
+              <img
+                src={companyLogo}
+                alt="Velomynt Digital Logo"
+                className="h-full w-full object-cover"
+              />
             </div>
-            <span className="ml-2 text-xl font-bold text-white">Velomynt Digital</span>
+            <span className="ml-1 text-xl font-bold text-white">Velomynt Digital</span>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -48,8 +51,8 @@ export function Header({ currentPage, onNavigate }) {
                 whileTap={{ scale: 0.95 }}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-all ${
                   currentPage === item.id
-                    ? "text-black bg-emerald-400 shadow-lg shadow-emerald-500/40"
-                    : "text-gray-300 hover:text-white hover:bg-emerald-900/40"
+                    ? "text-black bg-indigo-400 shadow-lg shadow-indigo-500/40"
+                    : "text-gray-300 hover:text-white hover:bg-slate-800/60"
                 }`}
               >
                 {item.name}
@@ -61,7 +64,7 @@ export function Header({ currentPage, onNavigate }) {
           <div className="hidden lg:block">
             <Button
               onClick={() => onNavigate("contact")}
-              className="bg-gradient-to-r from-emerald-500 to-lime-300 text-black hover:from-emerald-400 hover:to-lime-200 shadow-lg shadow-emerald-500/40 hover:shadow-xl hover:shadow-emerald-500/60 transition-all"
+              className="bg-gradient-to-r from-indigo-500 to-sky-400 text-black hover:from-indigo-400 hover:to-sky-300 shadow-lg shadow-indigo-500/40 hover:shadow-xl hover:shadow-indigo-500/60 transition-all"
             >
               Get Started
             </Button>
@@ -101,8 +104,8 @@ export function Header({ currentPage, onNavigate }) {
                   }}
                   className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                     currentPage === item.id
-                      ? "text-black bg-emerald-400"
-                      : "text-gray-300 hover:text-white hover:bg-emerald-900/40"
+                      ? "text-black bg-indigo-400"
+                      : "text-gray-300 hover:text-white hover:bg-slate-800/60"
                   }`}
                 >
                   {item.name}
@@ -113,7 +116,7 @@ export function Header({ currentPage, onNavigate }) {
                   onNavigate("contact");
                   setMobileMenuOpen(false);
                 }}
-                className="w-full mt-4 bg-gradient-to-r from-emerald-500 to-lime-300 text-black hover:from-emerald-400 hover:to-lime-200"
+                className="w-full mt-4 bg-gradient-to-r from-indigo-500 to-sky-400 text-black hover:from-indigo-400 hover:to-sky-300"
               >
                 Get Started
               </Button>

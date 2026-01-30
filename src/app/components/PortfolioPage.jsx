@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { Badge } from "./ui/badge.jsx";
 import { ExternalLink } from "lucide-react";
+import { motion } from "motion/react";
 
 export function PortfolioPage() {
   const [filter, setFilter] = useState("all");
@@ -84,14 +85,20 @@ export function PortfolioPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-emerald-950 via-black to-emerald-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Our Portfolio</h1>
-            <p className="text-xl text-gray-600">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Our Portfolio</h1>
+            <p className="text-xl text-white">
               Explore our successful projects and see how we've helped businesses achieve their goals
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -105,7 +112,7 @@ export function PortfolioPage() {
                 onClick={() => setFilter(category.id)}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   filter === category.id
-                  ? "bg-gradient-to-r from-emerald-600 to-emerald-400 text-black shadow-lg shadow-emerald-500/40"
+                  ? "bg-gradient-to-r from-indigo-600 to-sky-500 text-black shadow-lg shadow-indigo-500/40"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -139,11 +146,11 @@ export function PortfolioPage() {
                   </div>
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 text-sm">{project.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
+                  <p className="text-white mb-4 text-sm">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} variant="secondary" className="bg-emerald-900/40 text-emerald-200 border border-emerald-700">
+                      <Badge key={tagIndex} variant="secondary" className="bg-slate-800/60 text-indigo-200 border border-indigo-700">
                         {tag}
                       </Badge>
                     ))}
@@ -156,24 +163,24 @@ export function PortfolioPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-700 to-emerald-500 text-white">
+      <section className="py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">10+</div>
-              <div className="text-emerald-100">Projects Delivered</div>
+              <div className="text-indigo-100">Projects Delivered</div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">100%</div>
-              <div className="text-emerald-100">Client Satisfaction</div>
+              <div className="text-indigo-100">Client Satisfaction</div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">5+</div>
-              <div className="text-emerald-100">Happy Clients</div>
+              <div className="text-indigo-100">Happy Clients</div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">5+</div>
-              <div className="text-emerald-100">Industries Served</div>
+              <div className="text-indigo-100">Industries Served</div>
             </div>
           </div>
         </div>

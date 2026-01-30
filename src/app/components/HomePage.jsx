@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Code, Smartphone, Globe, ExternalLink } from "lucide-react";
+import { ArrowRight, Code, Smartphone, Globe, ExternalLink, Shield, Users, Zap, Award, TrendingUp, Clock, Headphones, Star, Quote } from "lucide-react";
 import { Button } from "./ui/button.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion, useInView } from "motion/react";
@@ -10,6 +10,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog.tsx";
+import companyLogo from "../../image/companylogo-removebg-preview.png";
+import ReactLogo from "../../image/react.svg";
+import NodeLogo from "../../image/nodejs.svg";
+import PythonLogo from "../../image/python.svg";
+import JavaLogo from "../../image/java.svg";
+import AngularLogo from "../../image/angular.svg";
+import VueLogo from "../../image/vue.svg";
+import DockerLogo from "../../image/docker.svg";
+import AWSLogo from "../../image/aws.svg";
 
 export function HomePage({ onNavigate }) {
   const [selectedService, setSelectedService] = useState(null);
@@ -42,14 +51,46 @@ export function HomePage({ onNavigate }) {
   ];
 
   const technologies = [
-    { name: "React", icon: "⚛️", description: "Modern UI library for building interactive interfaces" },
-    { name: "Node.js", icon: "🟢", description: "Server-side JavaScript runtime for scalable applications" },
-    { name: "Python", icon: "🐍", description: "Versatile programming language for backend development" },
-    { name: "Java", icon: "☕", description: "Enterprise-grade language for robust applications" },
-    { name: "Angular", icon: "🅰️", description: "Comprehensive framework for web applications" },
-    { name: "Vue.js", icon: "💚", description: "Progressive framework for building user interfaces" },
-    { name: "Docker", icon: "🐳", description: "Containerization platform for deployment" },
-    { name: "AWS", icon: "☁️", description: "Cloud infrastructure and services" },
+    {
+      name: "React",
+      icon: <img src={ReactLogo} alt="React" className="w-9 h-9" />,
+      description: "Modern UI library for building interactive interfaces",
+    },
+    {
+      name: "Node.js",
+      icon: <img src={NodeLogo} alt="Node.js" className="w-9 h-9" />,
+      description: "Server-side JavaScript runtime for scalable applications",
+    },
+    {
+      name: "Python",
+      icon: <img src={PythonLogo} alt="Python" className="w-9 h-9" />,
+      description: "Versatile programming language for backend development",
+    },
+    {
+      name: "Java",
+      icon: <img src={JavaLogo} alt="Java" className="w-9 h-9" />,
+      description: "Enterprise-grade language for robust applications",
+    },
+    {
+      name: "Angular",
+      icon: <img src={AngularLogo} alt="Angular" className="w-9 h-9" />,
+      description: "Comprehensive framework for web applications",
+    },
+    {
+      name: "Vue.js",
+      icon: <img src={VueLogo} alt="Vue.js" className="w-9 h-9" />,
+      description: "Progressive framework for building user interfaces",
+    },
+    {
+      name: "Docker",
+      icon: <img src={DockerLogo} alt="Docker" className="w-9 h-9" />,
+      description: "Containerization platform for deployment",
+    },
+    {
+      name: "AWS",
+      icon: <img src={AWSLogo} alt="AWS" className="w-9 h-9" />,
+      description: "Cloud infrastructure and services",
+    },
   ];
 
   const portfolioItems = [
@@ -148,7 +189,7 @@ export function HomePage({ onNavigate }) {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-gradient-to-br from-black via-emerald-950 to-black py-20 lg:py-32 overflow-hidden">
+      <section ref={heroRef} className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20 lg:py-32 overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-grid-pattern opacity-10"
           animate={{
@@ -162,6 +203,7 @@ export function HomePage({ onNavigate }) {
         ></motion.div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(16,185,129,0.2),transparent_55%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -173,7 +215,7 @@ export function HomePage({ onNavigate }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ scale: 1.05 }}
-                className="inline-block px-4 py-2 bg-emerald-500/15 border border-emerald-400/40 text-emerald-200 rounded-full text-sm font-medium mb-6 backdrop-blur-sm cursor-pointer"
+                className="inline-block px-4 py-2 bg-indigo-500/15 border border-indigo-400/40 text-indigo-200 rounded-full text-sm font-medium mb-6 backdrop-blur-sm cursor-pointer"
               >
                 🚀 Leading IT Solutions Provider
               </motion.div>
@@ -185,7 +227,7 @@ export function HomePage({ onNavigate }) {
               >
                 Transform Your Business with
                 <motion.span 
-                  className="bg-gradient-to-r from-emerald-400 to-lime-300 bg-clip-text text-transparent block"
+                  className="bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent block"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 0.8 }}
@@ -199,7 +241,7 @@ export function HomePage({ onNavigate }) {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                We deliver cutting-edge software solutions, web development, and mobile applications that drive your business forward. Partner with us to turn your vision into reality.
+                Velomynt Digital is a trusted IT solutions company delivering custom software development, website design, mobile app development, and AI-driven solutions for startups and growing businesses. We turn ideas into scalable digital products.
               </motion.p>
               <motion.div 
                 className="flex flex-col sm:flex-row gap-4"
@@ -211,7 +253,7 @@ export function HomePage({ onNavigate }) {
                   <Button
                     size="lg"
                     onClick={() => onNavigate("contact")}
-                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 shadow-lg shadow-emerald-500/40 hover:shadow-xl hover:shadow-emerald-500/60 transition-all w-full sm:w-auto"
+                    className="bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 shadow-lg shadow-indigo-500/40 hover:shadow-xl hover:shadow-indigo-500/60 transition-all w-full sm:w-auto"
                   >
                     Get Started <ArrowRight className="ml-2" size={20} />
                   </Button>
@@ -221,7 +263,7 @@ export function HomePage({ onNavigate }) {
                     size="lg"
                     variant="outline"
                     onClick={() => onNavigate("portfolio")}
-                    className="border-emerald-400/60 text-white hover:bg-emerald-500/10 backdrop-blur-sm w-full sm:w-auto"
+                    className="border-indigo-400/60 text-white hover:bg-indigo-500/10 backdrop-blur-sm w-full sm:w-auto"
                   >
                     View Our Work
                   </Button>
@@ -235,7 +277,7 @@ export function HomePage({ onNavigate }) {
                   whileHover={{ scale: 1.1 }}
                   className="cursor-pointer"
                 >
-                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-emerald-400 to-lime-300 bg-clip-text text-transparent">
+                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
                     {counters.projects}+
                   </div>
                   <div className="text-sm text-gray-400">Projects Completed</div>
@@ -247,7 +289,7 @@ export function HomePage({ onNavigate }) {
                   whileHover={{ scale: 1.1 }}
                   className="cursor-pointer"
                 >
-                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-emerald-400 to-lime-300 bg-clip-text text-transparent">
+                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
                     {counters.clients}+
                   </div>
                   <div className="text-sm text-gray-400">Happy Clients</div>
@@ -259,7 +301,7 @@ export function HomePage({ onNavigate }) {
                   whileHover={{ scale: 1.1 }}
                   className="cursor-pointer"
                 >
-                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-emerald-400 to-lime-300 bg-clip-text text-transparent">
+                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
                     Est. 2026
                   </div>
                   <div className="text-sm text-gray-400">Founded</div>
@@ -278,7 +320,7 @@ export function HomePage({ onNavigate }) {
                 transition={{ duration: 0.3 }}
               >
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-2xl transform rotate-3 opacity-20 blur-xl"
+                  className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-2xl transform rotate-3 opacity-20 blur-xl"
                   animate={{ 
                     rotate: [3, 6, 3],
                     scale: [1, 1.1, 1]
@@ -289,7 +331,7 @@ export function HomePage({ onNavigate }) {
                     repeatType: "reverse"
                   }}
                 ></motion.div>
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-700 to-emerald-500 rounded-2xl transform rotate-3"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-indigo-500 rounded-2xl transform rotate-3"></div>
                 <img
                   src="https://images.unsplash.com/photo-1763568258752-fe55f4ab7267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3Njc2ODE4ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                   alt="Technology"
@@ -302,7 +344,7 @@ export function HomePage({ onNavigate }) {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gradient-to-b from-black via-emerald-950/30 to-black relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -333,31 +375,68 @@ export function HomePage({ onNavigate }) {
                   whileHover={{ y: -10 }}
                 >
                   <Card
-                    className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-emerald-500/60 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300 group cursor-pointer h-full"
-                    onClick={() => setSelectedService(service)}
+                    className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 group cursor-pointer h-full"
                   >
                     <CardContent className="p-8">
                       <motion.div
                         whileHover={{ scale: 1.2, rotate: 360 }}
                         transition={{ type: "spring", stiffness: 300, duration: 0.6 }}
-                        className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/40"
+                        className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/40"
                       >
                         <Icon className="text-white" size={32} />
                       </motion.div>
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">{service.title}</h3>
+                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-300 transition-colors">{service.title}</h3>
                       <p className="text-gray-400 mb-4">{service.description}</p>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        className="flex items-center text-emerald-300 text-sm font-medium"
-                      >
-                        Learn more <ArrowRight className="ml-2" size={16} />
-                      </motion.div>
+                      <div className="flex justify-between items-center mt-4">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => setSelectedService(service)}
+                          className="text-indigo-300 text-sm font-medium flex items-center"
+                        >
+                          Learn more <ArrowRight className="ml-1" size={16} />
+                        </motion.button>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            const map = {
+                              "Software Development": "software-development",
+                              "Website Development": "website-development",
+                              "Mobile App Development": "mobile-app-development",
+                            };
+                            const target = map[service.title];
+                            if (target) onNavigate(target);
+                          }}
+                          className="text-xs font-medium text-indigo-200 border border-indigo-400/60 rounded-full px-3 py-1 hover:bg-indigo-500/10"
+                        >
+                          View More Details
+                        </motion.button>
+                      </div>
                     </CardContent>
                   </Card>
                 </motion.div>
               );
             })}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="text-center mt-12"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => onNavigate("services")}
+                className="border-indigo-500/60 text-white hover:bg-indigo-500/10 backdrop-blur-sm"
+              >
+                View All Services <ArrowRight className="ml-2" size={20} />
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -365,15 +444,17 @@ export function HomePage({ onNavigate }) {
       {/* Service Details Dialog */}
       <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
         <DialogContent className="bg-slate-900 border-slate-700 text-white max-w-2xl">
-          {selectedService && (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-xl flex items-center justify-center">
-                    <selectedService.icon className="text-white" size={32} />
+          {selectedService && (() => {
+            const Icon = selectedService.icon;
+            return (
+              <>
+                <DialogHeader>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center">
+                      <Icon className="text-white" size={32} />
+                    </div>
+                    <DialogTitle className="text-2xl font-bold">{selectedService.title}</DialogTitle>
                   </div>
-                  <DialogTitle className="text-2xl font-bold">{selectedService.title}</DialogTitle>
-                </div>
                 <DialogDescription className="text-gray-300">
                   {selectedService.description}
                 </DialogDescription>
@@ -391,7 +472,7 @@ export function HomePage({ onNavigate }) {
                         transition={{ delay: idx * 0.1 }}
                         className="flex items-center gap-2 text-gray-300"
                       >
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                        <div className="w-2 h-2 bg-sky-400 rounded-full"></div>
                         {feature}
                       </motion.div>
                     ))}
@@ -403,24 +484,32 @@ export function HomePage({ onNavigate }) {
                       setSelectedService(null);
                       onNavigate("contact");
                     }}
-                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-black"
+                    className="bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black"
                   >
                     Get Started
                   </Button>
                   <Button
                     variant="outline"
                     onClick={() => {
+                      if (!selectedService) return;
+                      const map = {
+                        "Software Development": "software-development",
+                        "Website Development": "website-development",
+                        "Mobile App Development": "mobile-app-development",
+                      };
+                      const target = map[selectedService.title];
                       setSelectedService(null);
-                      onNavigate("services");
+                      if (target) onNavigate(target);
                     }}
-                    className="border-slate-600 text-white hover:bg-slate-700"
+                    className="border-indigo-500/60 text-white hover:bg-indigo-500/10 backdrop-blur-sm"
                   >
-                    View All Services
+                    View More Details <ArrowRight className="ml-2" size={20} />
                   </Button>
                 </div>
               </div>
-            </>
-          )}
+              </>
+            );
+          })()}
         </DialogContent>
       </Dialog>
 
@@ -452,7 +541,7 @@ export function HomePage({ onNavigate }) {
                 variants={itemVariants}
                 whileHover={{ y: -15, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-slate-800/60 border border-slate-700 rounded-xl p-6 flex flex-col items-center justify-center hover:border-emerald-500/60 hover:shadow-lg hover:shadow-emerald-500/20 transition-all cursor-pointer group backdrop-blur-sm relative"
+                className="bg-slate-800/60 border border-slate-700 rounded-xl p-6 flex flex-col items-center justify-center hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/20 transition-all cursor-pointer group backdrop-blur-sm relative"
                 onClick={() => onNavigate("technologies")}
               >
                 <motion.div
@@ -462,7 +551,7 @@ export function HomePage({ onNavigate }) {
                 >
                   {tech.icon}
                 </motion.div>
-                <div className="text-sm font-medium text-gray-300 group-hover:text-emerald-300 transition-colors">{tech.name}</div>
+                <div className="text-sm font-medium text-gray-300 group-hover:text-indigo-300 transition-colors">{tech.name}</div>
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileHover={{ opacity: 1, y: 0 }}
@@ -507,7 +596,7 @@ export function HomePage({ onNavigate }) {
                 whileTap={{ scale: 0.98 }}
               >
                 <Card
-                  className="overflow-hidden border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-emerald-500/60 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300 group cursor-pointer"
+                  className="overflow-hidden border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300 group cursor-pointer"
                   onClick={() => setSelectedPortfolio(item)}
                 >
                   <div className="relative overflow-hidden">
@@ -520,7 +609,7 @@ export function HomePage({ onNavigate }) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
                     <motion.div 
-                      className="absolute top-4 right-4 bg-emerald-500 text-black px-3 py-1 rounded-full text-xs font-medium shadow-lg"
+                      className="absolute top-4 right-4 bg-indigo-500 text-black px-3 py-1 rounded-full text-xs font-medium shadow-lg"
                       whileHover={{ scale: 1.1 }}
                     >
                       {item.category}
@@ -536,7 +625,7 @@ export function HomePage({ onNavigate }) {
                     </motion.div>
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">{item.title}</h3>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">{item.title}</h3>
                     <p className="text-gray-400">{item.description}</p>
                   </CardContent>
                 </Card>
@@ -555,7 +644,7 @@ export function HomePage({ onNavigate }) {
                 size="lg"
                 variant="outline"
                 onClick={() => onNavigate("portfolio")}
-                className="border-emerald-500/60 text-white hover:bg-emerald-500/10 backdrop-blur-sm"
+                className="border-indigo-500/60 text-white hover:bg-indigo-500/10 backdrop-blur-sm"
               >
                 View All Projects <ArrowRight className="ml-2" size={20} />
               </Button>
@@ -575,7 +664,7 @@ export function HomePage({ onNavigate }) {
                   alt={selectedPortfolio.title}
                   className="w-full h-64 object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-emerald-500 text-black px-3 py-1 rounded-full text-xs font-medium shadow-lg">
+                <div className="absolute top-4 right-4 bg-indigo-500 text-black px-3 py-1 rounded-full text-xs font-medium shadow-lg">
                   {selectedPortfolio.category}
                 </div>
               </div>
@@ -597,7 +686,7 @@ export function HomePage({ onNavigate }) {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: idx * 0.1 }}
                         whileHover={{ scale: 1.1 }}
-                        className="px-4 py-2 bg-emerald-600/15 border border-emerald-500/40 rounded-full text-sm text-emerald-200"
+                        className="px-4 py-2 bg-indigo-600/15 border border-indigo-500/40 rounded-full text-sm text-indigo-200"
                       >
                         {tech}
                       </motion.span>
@@ -610,7 +699,7 @@ export function HomePage({ onNavigate }) {
                       setSelectedPortfolio(null);
                       onNavigate("contact");
                     }}
-                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-black"
+                    className="bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black"
                   >
                     Start Similar Project
                   </Button>
@@ -631,8 +720,207 @@ export function HomePage({ onNavigate }) {
         </DialogContent>
       </Dialog>
 
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Why Choose Us</h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              We don't just build software—we build partnerships and deliver solutions that drive real business results
+            </p>
+          </motion.div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {[
+              {
+                icon: Shield,
+                title: "Proven Track Record",
+                description: "10+ years of delivering successful projects across various industries with 98% client satisfaction rate",
+              },
+              {
+                icon: Users,
+                title: "Expert Team",
+                description: "50+ skilled professionals with extensive experience in cutting-edge technologies and best practices",
+              },
+              {
+                icon: Zap,
+                title: "Fast Delivery",
+                description: "Agile methodology ensures quick turnaround times without compromising on quality or functionality",
+              },
+              {
+                icon: Award,
+                title: "Quality Assurance",
+                description: "Rigorous testing and quality control processes to ensure bug-free, reliable solutions",
+              },
+              {
+                icon: TrendingUp,
+                title: "Scalable Solutions",
+                description: "We build with growth in mind, ensuring your solution scales seamlessly as your business expands",
+              },
+              {
+                icon: Clock,
+                title: "On-Time Delivery",
+                description: "We respect deadlines and ensure timely project completion with transparent progress tracking",
+              },
+              {
+                icon: Headphones,
+                title: "24/7 Support",
+                description: "Round-the-clock technical support and maintenance to keep your systems running smoothly",
+              },
+              {
+                icon: Globe,
+                title: "Global Experience",
+                description: "Successfully served clients across 30+ countries with diverse industry requirements",
+              },
+            ].map((reason, index) => {
+              const Icon = reason.icon;
+              return (
+                <motion.div key={index} variants={itemVariants}>
+                  <Card className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 group h-full">
+                    <CardContent className="p-6">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 360 }}
+                        transition={{ type: "spring", stiffness: 300, duration: 0.6 }}
+                        className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center mb-4"
+                      >
+                        <Icon className="text-white" size={28} />
+                      </motion.div>
+                      <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-indigo-300 transition-colors">{reason.title}</h3>
+                      <p className="text-indigo-100 text-sm">{reason.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Client Testimonials</h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Don't just take our word for it—hear what our satisfied clients have to say about working with us
+            </p>
+          </motion.div>
+          
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+          >
+            {[
+              { number: "100%", label: "Client Satisfaction" },
+              { number: "5+", label: "Happy Clients" },
+              { number: "10+", label: "Projects Completed" },
+              { number: "5.0/5", label: "Average Rating" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-gray-400">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Testimonials Grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "CEO, TechStart Inc.",
+                company: "TechStart Inc.",
+                image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                rating: 5,
+                text: "Velomynt Digital transformed our outdated system into a modern, efficient platform. Their team's expertise and professionalism exceeded our expectations. Highly recommended!",
+              },
+              {
+                name: "Michael Chen",
+                role: "CTO, FinanceHub",
+                company: "FinanceHub",
+                image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                rating: 5,
+                text: "Outstanding service from start to finish. They delivered our mobile app on time and within budget. The quality of work and attention to detail is remarkable.",
+              },
+              {
+                name: "Emily Rodriguez",
+                role: "Founder, HealthCare Plus",
+                company: "HealthCare Plus",
+                image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                rating: 5,
+                text: "The team at Velomynt Digital is incredible! They built our healthcare management system with precision and care. Their support has been invaluable to our growth.",
+              },
+            ].map((testimonial, index) => (
+              <motion.div key={index} variants={itemVariants} whileHover={{ y: -10 }}>
+                <Card className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 h-full">
+                  <CardContent className="p-8">
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <Quote className="w-10 h-10 text-indigo-200 mb-4" />
+                    <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
+                    <div className="flex items-center">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <div className="font-bold text-white">{testimonial.name}</div>
+                        <div className="text-sm text-indigo-100">{testimonial.role}</div>
+                        <div className="text-sm text-sky-400">{testimonial.company}</div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-700 via-emerald-600 to-emerald-700 text-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-700 text-white relative overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-grid-pattern opacity-10"
           animate={{
@@ -657,7 +945,7 @@ export function HomePage({ onNavigate }) {
             >
               Ready to Start Your Project?
             </motion.h2>
-            <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
               Let's discuss how we can help transform your business with innovative technology solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -665,7 +953,7 @@ export function HomePage({ onNavigate }) {
                 <Button
                   size="lg"
                   onClick={() => onNavigate("contact")}
-                  className="bg-white text-emerald-700 hover:bg-emerald-50 shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
+                  className="bg-white text-indigo-700 hover:bg-indigo-50 shadow-lg hover:shadow-xl transition-all w-full sm:w-auto"
                 >
                   Contact Us Now <ArrowRight className="ml-2" size={20} />
                 </Button>

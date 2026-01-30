@@ -65,7 +65,7 @@ export function AboutPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-black via-emerald-950 to-black py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-black via-slate-900 to-black py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -94,13 +94,13 @@ export function AboutPage() {
             >
               <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6">Our Story</h2>
               <p className="text-lg text-gray-300 mb-6">
-                Founded in 2026, we are a fresh and innovative IT solutions company with a clear vision: to help businesses leverage cutting-edge technology to achieve their goals. We started with a passionate team of developers and technologists ready to make an impact.
+                Founded in 2026, Velomynt Digital was created with a clear vision — to help businesses leverage cutting-edge technology to solve real-world problems and achieve sustainable growth. We started as a focused team of developers, designers, and problem-solvers who believe that technology should simplify business, not complicate it. From startups to growing enterprises, we work closely with our clients to build scalable, secure, and high-performing digital solutions.
               </p>
               <p className="text-lg text-gray-300 mb-6">
-                As a new company, we bring fresh perspectives, modern technologies, and agile approaches to every project. Our commitment to quality, innovation, and client satisfaction drives us to deliver exceptional solutions that help businesses thrive in the digital age.
+                As a modern IT services company, we combine fresh perspectives, agile methodologies, and the latest technologies to deliver solutions that are reliable, future-ready, and business-driven.
               </p>
               <p className="text-lg text-gray-300">
-                We're excited about the future and ready to grow with our clients, exploring new technologies and delivering solutions that exceed expectations.
+                Our commitment to quality, transparency, and client satisfaction drives everything we do — and that’s what helps our clients succeed in today’s digital-first world.
               </p>
             </motion.div>
             <motion.div
@@ -110,8 +110,8 @@ export function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-2xl transform -rotate-3 opacity-20 blur-xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-700 to-emerald-500 rounded-2xl transform -rotate-3"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-2xl transform -rotate-3 opacity-20 blur-xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-indigo-500 rounded-2xl transform -rotate-3"></div>
               <img
                 src="https://images.unsplash.com/photo-1739298061707-cefee19941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3Njc2Nzg4ODV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                 alt="Our Team"
@@ -147,12 +147,12 @@ export function AboutPage() {
               const Icon = value.icon;
               return (
                 <motion.div key={index} variants={itemVariants}>
-                  <Card className="border-2 border-slate-700/50 bg-slate-800/50 backdrop-blur-sm hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/20 transition-all h-full">
+                  <Card className="border-2 border-slate-700/50 bg-slate-800/50 backdrop-blur-sm hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/20 transition-all h-full">
                     <CardContent className="p-8 text-center">
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 360 }}
                         transition={{ duration: 0.5 }}
-                        className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/40"
+                        className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-indigo-500/40"
                       >
                         <Icon className="text-white" size={32} />
                       </motion.div>
@@ -196,10 +196,10 @@ export function AboutPage() {
                     alt={member.name}
                     className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                <p className="text-emerald-300 font-medium">{member.role}</p>
+                <p className="text-indigo-300 font-medium">{member.role}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -207,7 +207,7 @@ export function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-700 via-emerald-600 to-emerald-700 text-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-700 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -225,7 +225,7 @@ export function AboutPage() {
             ].map((stat, index) => (
               <motion.div key={index} variants={itemVariants} className="text-center">
                 <div className="text-5xl font-bold mb-2">{stat.number}</div>
-                <div className="text-emerald-100">{stat.label}</div>
+                <div className="text-indigo-100">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

@@ -1,6 +1,7 @@
 import { Code, Globe, Smartphone, Paintbrush, Database, Cloud, Shield, Zap } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { Button } from "./ui/button.jsx";
+import { motion } from "motion/react";
 
 export function ServicesPage({ onNavigate }) {
   const mainServices = [
@@ -46,7 +47,12 @@ export function ServicesPage({ onNavigate }) {
     {
       icon: Paintbrush,
       title: "UI/UX Design",
-      description: "Beautiful, intuitive interfaces that users love",
+      description: "User-centric design that improves engagement, usability, and brand trust.",
+    },
+    {
+      icon: Zap,
+      title: "AI Automation & Integration (Optional but Powerful)",
+      description: "Smart automation solutions to reduce manual work and increase productivity.",
     },
     {
       icon: Database,
@@ -73,14 +79,18 @@ export function ServicesPage({ onNavigate }) {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-emerald-950 via-black to-emerald-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Our Services</h1>
-            <p className="text-xl text-gray-600">
-              Comprehensive IT solutions designed to transform your business and drive growth
-            </p>
-          </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-center max-w-3xl mx-auto"
+              >
+                <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Our Services</h1>
+                <p className="text-xl text-white">We offer end-to-end IT services tailored to your business goals.</p>
+              </motion.div>
         </div>
       </section>
 
@@ -94,22 +104,22 @@ export function ServicesPage({ onNavigate }) {
               return (
                 <div key={index} className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? "lg:flex-row-reverse" : ""}`}>
                   <div className={isEven ? "" : "lg:order-2"}>
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-lime-300/20 rounded-2xl flex items-center justify-center mb-6">
-                      <Icon className="text-emerald-400" size={32} />
+                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-sky-400/20 rounded-2xl flex items-center justify-center mb-6">
+                      <Icon className="text-sky-400" size={32} />
                     </div>
                     <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{service.title}</h2>
                     <p className="text-lg text-gray-600 mb-6">{service.description}</p>
                     <ul className="space-y-3 mb-8">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start">
-                          <div className="w-6 h-6 bg-emerald-900/40 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                            <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                          <div className="w-6 h-6 bg-slate-800/60 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                            <div className="w-2 h-2 bg-sky-400 rounded-full"></div>
                           </div>
                           <span className="text-gray-700">{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <Button onClick={() => onNavigate("contact")} className="bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-black shadow-emerald-500/40">
+                    <Button onClick={() => onNavigate("contact")} className="bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black shadow-indigo-500/40">
                       Get Started
                     </Button>
                   </div>
@@ -148,13 +158,13 @@ export function ServicesPage({ onNavigate }) {
             {additionalServices.map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="border-2 border-slate-800 hover:border-emerald-500/60 hover:shadow-lg hover:shadow-emerald-500/20 bg-slate-950 transition-all group">
+                <Card key={index} className="border-2 border-slate-800 hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/20 bg-slate-950 transition-all group">
                   <CardContent className="p-6 text-center">
-                    <div className="w-14 h-14 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                       <Icon className="text-black" size={28} />
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-2">{service.title}</h3>
-                    <p className="text-sm text-gray-600">{service.description}</p>
+                    <h3 className="font-bold text-white mb-2">{service.title}</h3>
+                    <p className="text-sm text-indigo-100">{service.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -181,14 +191,14 @@ export function ServicesPage({ onNavigate }) {
             ].map((phase, index) => (
               <div key={index} className="relative">
                 {index < 3 && (
-                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-emerald-500/40 to-transparent"></div>
+                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-slate-900/40 to-transparent"></div>
                 )}
                 <div className="text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl font-bold text-black">{phase.step}</span>
+                  <div className="w-24 h-24 bg-black rounded-2xl flex items-center justify-center mx-auto mb-4 border border-slate-900">
+                    <span className="text-3xl font-bold text-white">{phase.step}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{phase.title}</h3>
-                  <p className="text-gray-600">{phase.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-2">{phase.title}</h3>
+                  <p className="text-indigo-100">{phase.description}</p>
                 </div>
               </div>
             ))}
@@ -197,13 +207,13 @@ export function ServicesPage({ onNavigate }) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-700 to-emerald-500 text-white">
+      <section className="py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
             Let's discuss your project and create a solution that drives results
           </p>
-          <Button onClick={() => onNavigate("contact")} size="lg" className="bg-white text-emerald-700 hover:bg-emerald-50">
+          <Button onClick={() => onNavigate("contact")} size="lg" className="bg-white text-indigo-700 hover:bg-indigo-50">
             Contact Us Today
           </Button>
         </div>

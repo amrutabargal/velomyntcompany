@@ -1,5 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
+import { motion } from "motion/react";
 
 export function TestimonialsPage() {
   const testimonials = [
@@ -63,14 +64,20 @@ export function TestimonialsPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-emerald-950 via-black to-emerald-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Client Testimonials</h1>
-            <p className="text-xl text-gray-600">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Client Testimonials</h1>
+            <p className="text-xl text-white">
               Don't just take our word for it—hear what our satisfied clients have to say about working with us
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -80,7 +87,7 @@ export function TestimonialsPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-500 to-lime-300 bg-clip-text text-transparent mb-2">
+                <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-500 to-sky-400 bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -102,8 +109,8 @@ export function TestimonialsPage() {
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <Quote className="w-10 h-10 text-emerald-200 mb-4" />
-                  <p className="text-gray-700 mb-6 italic">"{testimonial.text}"</p>
+                  <Quote className="w-10 h-10 text-indigo-200 mb-4" />
+                  <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
                   <div className="flex items-center">
                     <img
                       src={testimonial.image}
@@ -111,9 +118,9 @@ export function TestimonialsPage() {
                       className="w-12 h-12 rounded-full object-cover mr-4"
                     />
                     <div>
-                      <div className="font-bold text-gray-900">{testimonial.name}</div>
-                      <div className="text-sm text-gray-600">{testimonial.role}</div>
-                      <div className="text-sm text-emerald-500">{testimonial.company}</div>
+                      <div className="font-bold text-white">{testimonial.name}</div>
+                      <div className="text-sm text-indigo-100">{testimonial.role}</div>
+                      <div className="text-sm text-sky-400">{testimonial.company}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -126,10 +133,10 @@ export function TestimonialsPage() {
       {/* Featured Testimonial */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="border-2 border-emerald-500/40 shadow-2xl">
-            <CardContent className="p-12">
-              <Quote className="w-16 h-16 text-emerald-200 mb-6 mx-auto" />
-              <blockquote className="text-2xl lg:text-3xl text-gray-900 text-center mb-8 italic leading-relaxed">
+          <Card className="border-2 border-indigo-500/40 shadow-2xl">
+              <CardContent className="p-12">
+              <Quote className="w-16 h-16 text-indigo-200 mb-6 mx-auto" />
+              <blockquote className="text-2xl lg:text-3xl text-white text-center mb-8 italic leading-relaxed">
                 "Velomynt Digital has been instrumental in our digital transformation journey. Their expertise, dedication, and innovative solutions have helped us stay ahead of the competition. They're not just a vendor—they're a true partner in our success."
               </blockquote>
               <div className="text-center">
@@ -138,8 +145,8 @@ export function TestimonialsPage() {
                   alt="Featured Client"
                   className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
                 />
-                <div className="font-bold text-xl text-gray-900">Jennifer Martinez</div>
-                <div className="text-gray-600">CEO, Global Enterprises</div>
+                <div className="font-bold text-xl text-white">Jennifer Martinez</div>
+                <div className="text-indigo-100">CEO, Global Enterprises</div>
               </div>
             </CardContent>
           </Card>
@@ -174,10 +181,10 @@ export function TestimonialsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-700 to-emerald-500 text-white">
+      <section className="py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">Join Our Growing List of Happy Clients</h2>
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
             Experience the same level of excellence and dedication that our clients rave about
           </p>
         </div>

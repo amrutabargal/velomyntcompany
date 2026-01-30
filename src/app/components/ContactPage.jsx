@@ -4,6 +4,7 @@ import { Button } from "./ui/button.jsx";
 import { Input } from "./ui/input.jsx";
 import { Textarea } from "./ui/textarea.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
+import { motion } from "motion/react";
 
 export function ContactPage() {
   const [formData, setFormData] = useState({
@@ -48,14 +49,20 @@ export function ContactPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-emerald-950 via-black to-emerald-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6">Get In Touch</h1>
-            <p className="text-xl text-gray-600">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Get In Touch</h1>
+            <p className="text-xl text-white">
               Ready to start your project? Contact us today and let's discuss how we can help transform your business
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -66,14 +73,14 @@ export function ContactPage() {
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
-                <Card key={index} className="border-2 border-slate-800 hover:border-emerald-500/60 hover:shadow-xl hover:shadow-emerald-500/20 bg-slate-950 transition-all">
+                <Card key={index} className="border-2 border-slate-800 hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 bg-slate-950 transition-all">
                   <CardContent className="p-8 text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-600 to-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Icon className="text-black" size={28} />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{info.title}</h3>
-                    <a href={`mailto:${info.details}`} className="text-gray-200 mb-1 hover:text-emerald-400 transition-colors">{info.details}</a>
-                    {info.subdetails && <p className="text-gray-600 text-sm">{info.subdetails}</p>}
+                    <h3 className="text-xl font-bold text-white mb-3">{info.title}</h3>
+                    <a href={`mailto:${info.details}`} className="text-gray-200 mb-1 hover:text-indigo-400 transition-colors">{info.details}</a>
+                    {info.subdetails && <p className="text-indigo-100 text-sm">{info.subdetails}</p>}
                   </CardContent>
                 </Card>
               );
@@ -157,7 +164,7 @@ export function ContactPage() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-slate-700 rounded-md bg-slate-900 text-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-3 py-2 border border-slate-700 rounded-md bg-slate-900 text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
                     <option value="">Select a service</option>
                     <option value="software">Software Development</option>
@@ -186,7 +193,7 @@ export function ContactPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-black"
+                  className="w-full bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black"
                 >
                   Send Message <Send className="ml-2" size={20} />
                 </Button>
@@ -198,61 +205,61 @@ export function ContactPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Contact Us?</h2>
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-emerald-900/40 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                    <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2">Free Consultation</h3>
-                    <p className="text-gray-600">Get expert advice on your project at no cost. We'll help you make the right technology decisions.</p>
+                      <h3 className="font-bold text-black mb-2">Free Consultation</h3>
+                      <p className="text-black">Get expert advice on your project at no cost. We'll help you make the right technology decisions.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-emerald-900/40 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                    <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2">Quick Response</h3>
-                    <p className="text-gray-600">We respond to all inquiries within 24 hours. Your time is valuable, and we respect that.</p>
+                    <h3 className="font-bold text-black mb-2">Quick Response</h3>
+                    <p className="text-black">We respond to all inquiries within 24 hours. Your time is valuable, and we respect that.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-emerald-900/40 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                    <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2">Detailed Proposal</h3>
-                    <p className="text-gray-600">Receive a comprehensive project proposal with timeline, budget, and deliverables.</p>
+                    <h3 className="font-bold text-black mb-2">Detailed Proposal</h3>
+                    <p className="text-black">Receive a comprehensive project proposal with timeline, budget, and deliverables.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-emerald-900/40 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                    <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-2">No Obligation</h3>
-                    <p className="text-gray-600">Consulting with us comes with no strings attached. Make an informed decision for your business.</p>
+                    <h3 className="font-bold text-black mb-2">No Obligation</h3>
+                    <p className="text-black">Consulting with us comes with no strings attached. Make an informed decision for your business.</p>
                   </div>
                 </div>
               </div>
 
               {/* Office Hours */}
-              <div className="mt-12 p-6 bg-gradient-to-br from-emerald-950 to-slate-900 rounded-2xl border border-emerald-900/60">
-                <h3 className="font-bold text-gray-900 mb-4">Office Hours</h3>
-                <div className="space-y-2 text-sm text-gray-700">
+              <div className="mt-12 p-6 bg-gradient-to-br from-slate-950 to-slate-900 rounded-2xl border border-slate-800/60">
+                <h3 className="font-bold text-white mb-4">Office Hours</h3>
+                <div className="space-y-2 text-sm text-indigo-100">
                   <div className="flex justify-between">
-                    <span>Monday - Friday:</span>
-                    <span className="font-medium">9:00 AM - 6:00 PM</span>
+                    <span className="text-indigo-100">Monday - Friday:</span>
+                    <span className="font-medium text-indigo-100">9:00 AM - 6:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Saturday:</span>
-                    <span className="font-medium">10:00 AM - 4:00 PM</span>
+                    <span className="text-indigo-100">Saturday:</span>
+                    <span className="font-medium text-indigo-100">10:00 AM - 4:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Sunday:</span>
-                    <span className="font-medium">Closed</span>
+                    <span className="text-indigo-100">Sunday:</span>
+                    <span className="font-medium text-indigo-100">Closed</span>
                   </div>
                 </div>
               </div>
