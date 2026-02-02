@@ -5,60 +5,59 @@ import { motion } from "motion/react";
 export function TestimonialsPage() {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
-      company: "TechStart Inc.",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      rating: 5,
-      text: "Velomynt Digital transformed our outdated system into a modern, efficient platform. Their team's expertise and professionalism exceeded our expectations. Highly recommended!",
+      name: "Priya Deshmukh",
+      role: "Operations Manager, Brightwell Logistics",
+      company: "Brightwell Logistics",
+      initials: "PD",
+      rating: 4.2,
+      text: "We changed scope twice and it could've derailed the timeline. They stayed calm, kept us updated, and shipped a clean release.",
     },
     {
-      name: "Michael Chen",
-      role: "CTO, FinanceHub",
-      company: "FinanceHub",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      rating: 5,
-      text: "Outstanding service from start to finish. They delivered our mobile app on time and within budget. The quality of work and attention to detail is remarkable.",
+      name: "Arjun Mehta",
+      role: "Founder, FinEdge",
+      company: "FinEdge",
+      initials: "AM",
+      rating: 4.8,
+      text: "Communication was the biggest win for us. Even when bugs popped up after launch, they owned the fixes and closed the loop fast.",
     },
     {
-      name: "Emily Rodriguez",
-      role: "Founder, HealthCare Plus",
-      company: "HealthCare Plus",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      rating: 5,
-      text: "The team at Velomynt Digital is incredible! They built our healthcare management system with precision and care. Their support has been invaluable to our growth.",
+      name: "Neha Rao",
+      role: "Product Lead, CareBridge",
+      company: "CareBridge",
+      initials: "NR",
+      rating: 3.6,
+      text: "There were a few back-and-forths on UI, but the team listened and got it right. The final build is reliable and easy to use.",
     },
     {
-      name: "David Thompson",
-      role: "Director, E-Commerce Co.",
-      company: "E-Commerce Co.",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      rating: 5,
-      text: "Working with Velomynt Digital was a game-changer. Their e-commerce platform increased our sales by 150% in the first quarter. Exceptional work!",
+      name: "Vikram Iyer",
+      role: "Director, SwiftCart",
+      company: "SwiftCart",
+      initials: "VI",
+      rating: 4.9,
+      text: "We saw fewer support tickets within a month. The team kept things transparent and didn’t overpromise timelines.",
     },
     {
-      name: "Lisa Anderson",
-      role: "VP Operations, LogiTech",
-      company: "LogiTech",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      rating: 5,
-      text: "Professional, responsive, and highly skilled. Velomynt Digital delivered a complex logistics system that streamlined our entire operation. We couldn't be happier!",
+      name: "Meera Kapoor",
+      role: "VP Operations, LogiCore",
+      company: "LogiCore",
+      initials: "MK",
+      rating: 4.1,
+      text: "They handled the complex integrations better than our previous vendor. A few adjustments were needed, but they owned them.",
     },
     {
-      name: "Robert Williams",
-      role: "CEO, RealEstate Pro",
-      company: "RealEstate Pro",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      rating: 5,
-      text: "Velomynt Digital created an amazing property portal for us. The features, design, and performance are all top-notch. They truly understand business needs.",
+      name: "Rahul Singh",
+      role: "CEO, HomeBridge Realty",
+      company: "HomeBridge Realty",
+      initials: "RS",
+      rating: 4.4,
+      text: "The new portal is simple for our agents to use. Training took half the time compared to the old system.",
     },
   ];
 
   const stats = [
-    { number: "100%", label: "Client Satisfaction" },
+    { number: "99.9%", label: "Client Satisfaction" },
     { number: "5+", label: "Happy Clients" },
     { number: "10+", label: "Projects Completed" },
-    { number: "5.0/5", label: "Average Rating" },
   ];
 
   return (
@@ -84,7 +83,7 @@ export function TestimonialsPage() {
       {/* Stats Section */}
       <section className="py-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-500 to-sky-400 bg-clip-text text-transparent mb-2">
@@ -105,18 +104,26 @@ export function TestimonialsPage() {
               <Card key={index} className="border-2 border-gray-100 hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
+                    {Array.from({ length: 5 }).map((_, i) => {
+                      const filledStars = Math.floor(testimonial.rating);
+                      const hasHalfStar = testimonial.rating - filledStars >= 0.5;
+                      const isFilled = i < filledStars;
+                      const isHalf = i === filledStars && hasHalfStar;
+                      const starClass = isFilled
+                        ? "w-5 h-5 fill-yellow-400 text-yellow-400"
+                        : isHalf
+                          ? "w-5 h-5 fill-yellow-400/50 text-yellow-400"
+                          : "w-5 h-5 text-yellow-400/40";
+                      return <Star key={i} className={starClass} />;
+                    })}
+                    <span className="ml-2 text-sm text-indigo-100">{testimonial.rating.toFixed(1)}/5</span>
                   </div>
                   <Quote className="w-10 h-10 text-indigo-200 mb-4" />
                   <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
                   <div className="flex items-center">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                    />
+                    <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mr-4">
+                      {testimonial.initials}
+                    </div>
                     <div>
                       <div className="font-bold text-white">{testimonial.name}</div>
                       <div className="text-sm text-indigo-100">{testimonial.role}</div>
@@ -137,14 +144,12 @@ export function TestimonialsPage() {
               <CardContent className="p-12">
               <Quote className="w-16 h-16 text-indigo-200 mb-6 mx-auto" />
               <blockquote className="text-2xl lg:text-3xl text-white text-center mb-8 italic leading-relaxed">
-                "Velomynt Digital has been instrumental in our digital transformation journey. Their expertise, dedication, and innovative solutions have helped us stay ahead of the competition. They're not just a vendor—they're a true partner in our success."
+                "There were a couple of late nights before launch, but they stayed on the call and didn’t leave us hanging. The outcome felt practical, not overdone."
               </blockquote>
               <div className="text-center">
-                <img
-                  src="https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Featured Client"
-                  className="w-20 h-20 rounded-full object-cover mx-auto mb-4"
-                />
+                <div className="w-20 h-20 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mx-auto mb-4 text-2xl">
+                  JM
+                </div>
                 <div className="font-bold text-xl text-white">Jennifer Martinez</div>
                 <div className="text-indigo-100">CEO, Global Enterprises</div>
               </div>

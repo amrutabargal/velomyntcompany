@@ -831,13 +831,12 @@ export function HomePage({ onNavigate }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
           >
             {[
-              { number: "100%", label: "Client Satisfaction" },
+              { number: "99.9%", label: "Client Satisfaction" },
               { number: "5+", label: "Happy Clients" },
               { number: "10+", label: "Projects Completed" },
-              { number: "5.0/5", label: "Average Rating" },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -865,46 +864,54 @@ export function HomePage({ onNavigate }) {
           >
             {[
               {
-                name: "Sarah Johnson",
-                role: "CEO, TechStart Inc.",
-                company: "TechStart Inc.",
-                image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                rating: 5,
-                text: "Velomynt Digital transformed our outdated system into a modern, efficient platform. Their team's expertise and professionalism exceeded our expectations. Highly recommended!",
+                name: "Priya Deshmukh",
+                role: "Operations Manager, Brightwell Logistics",
+                company: "Brightwell Logistics",
+                initials: "PD",
+                rating: 4.2,
+                text: "We changed scope twice and it could've derailed the timeline. They stayed calm, kept us updated, and shipped a clean release.",
               },
               {
-                name: "Michael Chen",
-                role: "CTO, FinanceHub",
-                company: "FinanceHub",
-                image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                rating: 5,
-                text: "Outstanding service from start to finish. They delivered our mobile app on time and within budget. The quality of work and attention to detail is remarkable.",
+                name: "Arjun Mehta",
+                role: "Founder, FinEdge",
+                company: "FinEdge",
+                initials: "AM",
+                rating: 4.8,
+                text: "Communication was the biggest win for us. Even when bugs popped up after launch, they owned the fixes and closed the loop fast.",
               },
               {
-                name: "Emily Rodriguez",
-                role: "Founder, HealthCare Plus",
-                company: "HealthCare Plus",
-                image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-                rating: 5,
-                text: "The team at Velomynt Digital is incredible! They built our healthcare management system with precision and care. Their support has been invaluable to our growth.",
+                name: "Neha Rao",
+                role: "Product Lead, CareBridge",
+                company: "CareBridge",
+                initials: "NR",
+                rating: 3.6,
+                text: "There were a few back-and-forths on UI, but the team listened and got it right. The final build is reliable and easy to use.",
               },
             ].map((testimonial, index) => (
               <motion.div key={index} variants={itemVariants} whileHover={{ y: -10 }}>
                 <Card className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 h-full">
                   <CardContent className="p-8">
                     <div className="flex items-center mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                      ))}
+                      {Array.from({ length: 5 }).map((_, i) => {
+                        const filledStars = Math.floor(testimonial.rating);
+                        const hasHalfStar = testimonial.rating - filledStars >= 0.5;
+                        const isFilled = i < filledStars;
+                        const isHalf = i === filledStars && hasHalfStar;
+                        const starClass = isFilled
+                          ? "w-5 h-5 fill-yellow-400 text-yellow-400"
+                          : isHalf
+                            ? "w-5 h-5 fill-yellow-400/50 text-yellow-400"
+                            : "w-5 h-5 text-yellow-400/40";
+                        return <Star key={i} className={starClass} />;
+                      })}
+                      <span className="ml-2 text-sm text-indigo-100">{testimonial.rating.toFixed(1)}/5</span>
                     </div>
                     <Quote className="w-10 h-10 text-indigo-200 mb-4" />
                     <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
                     <div className="flex items-center">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full object-cover mr-4"
-                      />
+                      <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mr-4">
+                        {testimonial.initials}
+                      </div>
                       <div>
                         <div className="font-bold text-white">{testimonial.name}</div>
                         <div className="text-sm text-indigo-100">{testimonial.role}</div>

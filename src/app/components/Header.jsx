@@ -38,7 +38,7 @@ export function Header({ currentPage, onNavigate }) {
                 className="h-full w-full object-contain"
               />
             </div>
-            <span className="text-xl font-bold text-white whitespace-nowrap leading-none">Velomynt Digital</span>
+            <span className="text-xl font-bold text-white whitespace-nowrap leading-none">Velomynt</span>
           </motion.div>
 
           {/* Desktop Navigation */}

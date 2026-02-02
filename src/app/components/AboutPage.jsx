@@ -1,6 +1,7 @@
 import { Target, Users, Award, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion } from "motion/react";
+import companyLogo from "../../image/companylogo-removebg-preview.png";
 
 export function AboutPage() {
   const values = [
@@ -28,24 +29,14 @@ export function AboutPage() {
 
   const team = [
     {
-      name: "John Smith",
-      role: "CEO & Founder",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      name: "Karan Sharma",
+      role: "Founder & CEO",
+      image: companyLogo,
     },
     {
-      name: "Sarah Johnson",
-      role: "CTO",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      name: "Michael Chen",
-      role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    },
-    {
-      name: "Emily Davis",
-      role: "Design Director",
-      image: "https://images.unsplash.com/photo-1758518732175-5d608ba3abdf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMHRlYW18ZW58MXx8fHwxNzY3NjE0NDk4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      name: "Ajay Verma",
+      role: "Head of Department",
+      image: companyLogo,
     },
   ];
 
@@ -186,17 +177,17 @@ export function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-items-center max-w-4xl mx-auto"
           >
             {team.map((member, index) => (
-              <motion.div key={index} variants={itemVariants} whileHover={{ y: -10 }} className="text-center group">
-                <div className="relative mb-6 overflow-hidden rounded-2xl">
+              <motion.div key={index} variants={itemVariants} whileHover={{ y: -10 }} className="text-center group w-full max-w-[220px]">
+                <div className="relative mb-5 overflow-hidden rounded-3xl p-4 bg-white shadow-[0_20px_60px_-30px_rgba(99,102,241,0.5)] transform-gpu transition-transform duration-500 group-hover:[transform:perspective(900px)_rotateX(6deg)_rotateY(-6deg)]">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-52 object-contain drop-shadow-[0_12px_24px_rgba(30,64,175,0.35)] group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-indigo-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
                 <p className="text-indigo-300 font-medium">{member.role}</p>
