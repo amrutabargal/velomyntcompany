@@ -97,7 +97,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
               Scalable, Secure &amp; High-Performance Mobile Applications
             </h1>
             <p className="text-lg text-indigo-100 mb-4">
-              Velomynt Digital is a professional mobile app development company delivering powerful
+              Velomynt is a professional mobile app development company delivering powerful
               Android, iOS, and cross-platform applications for startups and growing businesses.
             </p>
             <p className="text-lg text-indigo-100/90 mb-4">
@@ -165,7 +165,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
                 <li>✔ Real Estate &amp; Property</li>
                 <li>✔ Education &amp; SaaS Platforms</li>
               </ul>
-              <h3 className="text-xl font-semibold text-white mt-6 mb-3">Why Velomynt Digital?</h3>
+              <h3 className="text-xl font-semibold text-white mt-6 mb-3">Why Velomynt?</h3>
               <ul className="space-y-2 text-white">
                 <li>• Experienced mobile app developers</li>
                 <li>• Agile development &amp; transparent communication</li>

@@ -241,7 +241,7 @@ export function HomePage({ onNavigate }) {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Velomynt Digital is a trusted IT solutions company delivering custom software development, website design, mobile app development, and AI-driven solutions for startups and growing businesses. We turn ideas into scalable digital products.
+                Velomynt is a trusted IT solutions company delivering custom software development, website design, mobile app development, and AI-driven solutions for startups and growing businesses. We turn ideas into scalable digital products.
               </motion.p>
               <motion.div 
                 className="flex flex-col sm:flex-row gap-4"
@@ -834,9 +834,9 @@ export function HomePage({ onNavigate }) {
             className="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
           >
             {[
-              { number: "99.9%", label: "Client Satisfaction" },
-              { number: "5+", label: "Happy Clients" },
-              { number: "10+", label: "Projects Completed" },
+              { number: "98%", label: "Client Retention" },
+              { number: "8+", label: "Trusted Partners" },
+              { number: "10+", label: "Projects Delivered" },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -864,26 +864,26 @@ export function HomePage({ onNavigate }) {
           >
             {[
               {
-                name: "Priya Deshmukh",
-                role: "Operations Manager, Brightwell Logistics",
-                company: "Brightwell Logistics",
-                initials: "PD",
+                name: "Aarav Mehta",
+                role: "Founder/CEO, BlueOrbit Technologies",
+                company: "BlueOrbit Technologies",
+                initials: "AM",
                 rating: 4.2,
                 text: "We changed scope twice and it could've derailed the timeline. They stayed calm, kept us updated, and shipped a clean release.",
               },
               {
-                name: "Arjun Mehta",
-                role: "Founder, FinEdge",
-                company: "FinEdge",
-                initials: "AM",
+                name: "Ritika Sharma",
+                role: "Founder/CEO, Nexwave Solutions",
+                company: "Nexwave Solutions",
+                initials: "RS",
                 rating: 4.8,
                 text: "Communication was the biggest win for us. Even when bugs popped up after launch, they owned the fixes and closed the loop fast.",
               },
               {
-                name: "Neha Rao",
-                role: "Product Lead, CareBridge",
-                company: "CareBridge",
-                initials: "NR",
+                name: "Kunal Verma",
+                role: "Founder/CEO, CloudMint Systems",
+                company: "CloudMint Systems",
+                initials: "KV",
                 rating: 3.6,
                 text: "There were a few back-and-forths on UI, but the team listened and got it right. The final build is reliable and easy to use.",
               },

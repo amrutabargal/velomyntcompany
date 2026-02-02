@@ -34,7 +34,7 @@ export function Header({ currentPage, onNavigate }) {
             <div className="h-20 w-20 flex items-center justify-center flex-shrink-0">
               <img
                 src={companyLogo}
-                alt="Velomynt Digital Logo"
+                alt="Velomynt Logo"
                 className="h-full w-full object-contain"
               />
             </div>

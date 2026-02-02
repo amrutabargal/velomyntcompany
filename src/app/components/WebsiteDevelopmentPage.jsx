@@ -105,7 +105,7 @@ export function WebsiteDevelopmentPage({ onNavigate }) {
               Professional, SEO-Friendly &amp; High-Performance Websites
             </h1>
             <p className="text-lg text-indigo-100 mb-4">
-              Velomynt Digital is a professional website development company helping businesses
+              Velomynt is a professional website development company helping businesses
               build fast, secure, and scalable websites that drive traffic, engagement, and conversions.
             </p>
             <p className="text-lg text-indigo-100/90 mb-4">
@@ -172,7 +172,7 @@ export function WebsiteDevelopmentPage({ onNavigate }) {
                 <li>✔ E-commerce brands looking to scale</li>
                 <li>✔ Companies needing custom web applications</li>
               </ul>
-              <h3 className="text-xl font-semibold text-white mt-6 mb-3">Why Velomynt Digital?</h3>
+              <h3 className="text-xl font-semibold text-white mt-6 mb-3">Why Velomynt?</h3>
               <ul className="space-y-2 text-white">
                 <li>• Experienced web developers & designers</li>
                 <li>• Business-focused development approach</li>

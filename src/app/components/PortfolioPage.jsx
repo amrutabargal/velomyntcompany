@@ -217,20 +217,20 @@ export function PortfolioPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">10</div>
-              <div className="text-indigo-100">Projects Delivered</div>
+              <div className="text-5xl font-bold mb-2">10+</div>
+              <div className="text-indigo-100 text-sm md:text-base">Successful Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">100%</div>
-              <div className="text-indigo-100">Client Satisfaction</div>
+              <div className="text-5xl font-bold mb-2">98%</div>
+              <div className="text-indigo-100 text-sm md:text-base">Client Retention Rate</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">5+</div>
-              <div className="text-indigo-100">Happy Clients</div>
+              <div className="text-5xl font-bold mb-2">8+</div>
+              <div className="text-indigo-100 text-sm md:text-base">Trusted Partners</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">5+</div>
-              <div className="text-indigo-100">Industries Served</div>
+              <div className="text-5xl font-bold mb-2">6+</div>
+              <div className="text-indigo-100 text-sm md:text-base">Industries We Serve</div>
             </div>
           </div>
         </div>

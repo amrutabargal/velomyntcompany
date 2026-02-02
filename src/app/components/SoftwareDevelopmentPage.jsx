@@ -107,7 +107,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
               Custom, Scalable &amp; Secure Software Solutions
             </h1>
             <p className="text-lg text-indigo-100 mb-4">
-              Velomynt Digital is a professional software development company delivering custom
+              Velomynt is a professional software development company delivering custom
               software solutions that help businesses automate operations, improve efficiency, and scale faster.
             </p>
             <p className="text-lg text-indigo-100/90 mb-4">
@@ -168,7 +168,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
                 <li>✔ Businesses modernizing legacy systems</li>
                 <li>✔ Companies automating internal operations</li>
               </ul>
-              <h3 className="text-xl font-semibold text-white mt-6 mb-3">Why Velomynt Digital?</h3>
+              <h3 className="text-xl font-semibold text-white mt-6 mb-3">Why Velomynt?</h3>
               <ul className="space-y-2 text-white">
                 <li>• Experienced software engineers</li>
                 <li>• Business-focused development approach</li>

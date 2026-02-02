@@ -128,7 +128,7 @@ export function WhyChooseUsPage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">What Sets Us Apart</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover the advantages of partnering with Velomynt Digital
+              Discover the advantages of partnering with Velomynt
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -186,7 +186,7 @@ export function WhyChooseUsPage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Additional Benefits</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              More reasons to choose Velomynt Digital as your technology partner
+              More reasons to choose Velomynt as your technology partner
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

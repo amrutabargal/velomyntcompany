@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
  * @param {string} props.canonical - Canonical URL (optional)
  */
 export function SEO({ title, description, keywords, canonical }) {
-  const siteName = "Velomynt Digital";
+  const siteName = "Velomynt";
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
 

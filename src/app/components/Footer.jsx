@@ -13,10 +13,10 @@ export function Footer({ onNavigate }) {
             <div className="flex items-center mb-4">
               <img 
                 src={companyLogo} 
-                alt="Velomynt Digital Logo" 
+                alt="Velomynt Logo" 
                 className="h-20 w-auto object-contain"
               />
-              <span className="ml-2 text-xl font-bold text-white">Velomynt Digital</span>
+              <span className="ml-2 text-xl font-bold text-white">Velomynt</span>
             </div>
             <p className="text-sm text-gray-400 mb-4">
               Leading IT services company providing innovative software solutions, web development, and mobile applications to businesses worldwide.
@@ -118,7 +118,7 @@ export function Footer({ onNavigate }) {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-sm text-gray-400">
-            © {currentYear} Velomynt Digital. All rights reserved.
+            © {currentYear} Velomynt. All rights reserved.
           </p>
         </div>
       </div>

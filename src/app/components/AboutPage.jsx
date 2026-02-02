@@ -85,7 +85,7 @@ export function AboutPage() {
             >
               <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6">Our Story</h2>
               <p className="text-lg text-gray-300 mb-6">
-                Founded in 2026, Velomynt Digital was created with a clear vision — to help businesses leverage cutting-edge technology to solve real-world problems and achieve sustainable growth. We started as a focused team of developers, designers, and problem-solvers who believe that technology should simplify business, not complicate it. From startups to growing enterprises, we work closely with our clients to build scalable, secure, and high-performing digital solutions.
+                Founded in 2026, Velomynt was created with a clear vision — to help businesses leverage cutting-edge technology to solve real-world problems and achieve sustainable growth. We started as a focused team of developers, designers, and problem-solvers who believe that technology should simplify business, not complicate it. From startups to growing enterprises, we work closely with our clients to build scalable, secure, and high-performing digital solutions.
               </p>
               <p className="text-lg text-gray-300 mb-6">
                 As a modern IT services company, we combine fresh perspectives, agile methodologies, and the latest technologies to deliver solutions that are reliable, future-ready, and business-driven.
@@ -209,8 +209,8 @@ export function AboutPage() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {[
-              { number: "10+", label: "Projects Completed" },
-              { number: "5+", label: "Happy Clients" },
+              { number: "10+", label: "Projects Delivered" },
+              { number: "8+", label: "Trusted Partners" },
               { number: "8+", label: "Team Members" },
               { number: "Est. 2026", label: "Founded" }
             ].map((stat, index) => (

@@ -1,4 +1,4 @@
-# Velomynt Digital - IT Company Website
+# Velomynt - IT Company Website
 
 A modern, responsive IT company website built with React, Vite, and Tailwind CSS. Features a dark theme with smooth animations and a professional design.
 
