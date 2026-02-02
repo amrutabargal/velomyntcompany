@@ -49,7 +49,7 @@ export function ContactPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -58,8 +58,8 @@ export function ContactPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Get In Touch</h1>
-            <p className="text-xl text-white">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">Get In Touch</h1>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">
               Ready to start your project? Contact us today and let's discuss how we can help transform your business
             </p>
           </motion.div>
@@ -67,7 +67,7 @@ export function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-1 gap-8 mb-20 max-w-md mx-auto">
             {contactInfo.map((info, index) => {
@@ -91,7 +91,7 @@ export function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -202,7 +202,7 @@ export function ContactPage() {
 
             {/* Additional Info */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Contact Us?</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Why Contact Us?</h2>
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">

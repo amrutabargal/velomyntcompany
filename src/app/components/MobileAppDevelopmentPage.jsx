@@ -83,7 +83,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -92,11 +92,11 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <p className="text-indigo-300 font-medium mb-3">Mobile App Development Services</p>
-            <h1 className="text-3xl lg:text-5xl font-bold text-white mb-4">
+            <p className="text-sm sm:text-base text-indigo-300 font-medium mb-2 sm:mb-3">Mobile App Development Services</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
               Scalable, Secure &amp; High-Performance Mobile Applications
             </h1>
-            <p className="text-lg text-indigo-100 mb-4">
+            <p className="text-sm sm:text-base md:text-lg text-indigo-100 mb-3 sm:mb-4">
               Velomynt is a professional mobile app development company delivering powerful
               Android, iOS, and cross-platform applications for startups and growing businesses.
             </p>
@@ -129,7 +129,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Why Choose */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
           <div>
             <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
@@ -178,7 +178,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Solutions */}
-      <section className="py-16 bg-slate-900">
+      <section className="py-12 sm:py-16 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">
             Our Mobile App Development Solutions
@@ -200,7 +200,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Technologies */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
             Technologies We Use for App Development
@@ -222,7 +222,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Process */}
-      <section className="py-16 bg-slate-900">
+      <section className="py-12 sm:py-16 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">
             Our Mobile App Development Process
@@ -242,7 +242,7 @@ export function MobileAppDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Let’s Build Your Mobile App</h2>
           <p className="text-lg text-indigo-100 mb-6">

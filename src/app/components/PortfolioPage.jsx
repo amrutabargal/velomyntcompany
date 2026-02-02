@@ -102,7 +102,7 @@ export function PortfolioPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -111,8 +111,8 @@ export function PortfolioPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Our Portfolio</h1>
-            <p className="text-xl text-white">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">Our Portfolio</h1>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">
               Explore our successful projects and see how we've helped businesses achieve their goals
             </p>
           </motion.div>
@@ -120,14 +120,14 @@ export function PortfolioPage() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-12 bg-white border-b border-gray-200">
+      <section className="py-8 sm:py-12 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {categories.map((category) => (
                   <button
                 key={category.id}
                 onClick={() => setFilter(category.id)}
-                className={`px-6 py-3 rounded-full font-medium transition-all ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all ${
                   filter === category.id
                   ? "bg-gradient-to-r from-indigo-600 to-sky-500 text-black shadow-lg shadow-indigo-500/40"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"

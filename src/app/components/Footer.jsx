@@ -6,17 +6,17 @@ export function Footer({ onNavigate }) {
 
   return (
     <footer className="bg-black text-gray-300 border-t border-indigo-900/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-4">
               <img 
                 src={companyLogo} 
                 alt="Velomynt Logo" 
-                className="h-20 w-auto object-contain"
+                className="h-12 sm:h-16 md:h-20 w-auto object-contain"
               />
-              <span className="ml-2 text-xl font-bold text-white">Velomynt</span>
+              <span className="ml-2 text-base sm:text-lg md:text-xl font-bold text-white">Velomynt</span>
             </div>
             <p className="text-sm text-gray-400 mb-4">
               Leading IT services company providing innovative software solutions, web development, and mobile applications to businesses worldwide.

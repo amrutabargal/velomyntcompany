@@ -192,7 +192,7 @@ export function HomePage({ onNavigate }) {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20 lg:py-32 overflow-hidden">
+      <section ref={heroRef} className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-grid-pattern opacity-10"
           animate={{
@@ -207,7 +207,7 @@ export function HomePage({ onNavigate }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(16,185,129,0.2),transparent_55%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -223,7 +223,7 @@ export function HomePage({ onNavigate }) {
                 🚀 Leading IT Solutions Provider
               </motion.div>
               <motion.h1 
-                className="text-4xl lg:text-6xl font-bold text-white mb-6"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
@@ -239,7 +239,7 @@ export function HomePage({ onNavigate }) {
                 </motion.span>
               </motion.h1>
               <motion.p 
-                className="text-lg text-gray-300 mb-8"
+                className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 px-2 sm:px-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
@@ -272,42 +272,42 @@ export function HomePage({ onNavigate }) {
                   </Button>
                 </motion.div>
               </motion.div>
-              <div ref={statsRef} className="stats-section mt-8 flex items-center gap-8">
+              <div ref={statsRef} className="stats-section mt-6 sm:mt-8 flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 md:gap-8">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={statsInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   whileHover={{ scale: 1.1 }}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-center sm:text-left"
                 >
-                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
+                  <div className="text-2xl sm:text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
                     {counters.projects}+
                   </div>
-                  <div className="text-sm text-gray-400">Projects Completed</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Projects Completed</div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={statsInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.4 }}
                   whileHover={{ scale: 1.1 }}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-center sm:text-left"
                 >
-                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
+                  <div className="text-2xl sm:text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
                     {counters.clients}+
                   </div>
-                  <div className="text-sm text-gray-400">Happy Clients</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Happy Clients</div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={statsInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   whileHover={{ scale: 1.1 }}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-center sm:text-left"
                 >
-                  <div className="text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
+                  <div className="text-2xl sm:text-3xl font-bold text-white bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">
                     Est. 2026
                   </div>
-                  <div className="text-sm text-gray-400">Founded</div>
+                  <div className="text-xs sm:text-sm text-gray-400">Founded</div>
                 </motion.div>
               </div>
             </motion.div>
@@ -355,10 +355,10 @@ export function HomePage({ onNavigate }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Our Services</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Our Services</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
               Comprehensive IT solutions designed to help your business thrive in the digital age
             </p>
           </motion.div>
@@ -367,7 +367,7 @@ export function HomePage({ onNavigate }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           >
             {services.map((service, index) => {
               const Icon = service.icon;
@@ -380,16 +380,16 @@ export function HomePage({ onNavigate }) {
                   <Card
                     className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 group cursor-pointer h-full"
                   >
-                    <CardContent className="p-8">
+                    <CardContent className="p-4 sm:p-6 md:p-8">
                       <motion.div
                         whileHover={{ scale: 1.2, rotate: 360 }}
                         transition={{ type: "spring", stiffness: 300, duration: 0.6 }}
-                        className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/40"
+                        className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg shadow-indigo-500/40"
                       >
-                        <Icon className="text-white" size={32} />
+                        <Icon className="text-white" size={24} />
                       </motion.div>
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-300 transition-colors">{service.title}</h3>
-                      <p className="text-gray-400 mb-4">{service.description}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-indigo-300 transition-colors">{service.title}</h3>
+                      <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">{service.description}</p>
                       <div className="flex justify-between items-center mt-4">
                         <motion.button
                           whileHover={{ scale: 1.05 }}
@@ -465,8 +465,8 @@ export function HomePage({ onNavigate }) {
               <div className="mt-6">
                 <p className="text-gray-300 mb-6">{selectedService.details}</p>
                 <div>
-                  <h4 className="text-lg font-semibold text-white mb-3">Key Features:</h4>
-                  <div className="grid grid-cols-2 gap-3">
+                  <h4 className="text-base sm:text-lg font-semibold text-white mb-3">Key Features:</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                     {selectedService.features.map((feature, idx) => (
                       <motion.div
                         key={idx}
@@ -517,16 +517,16 @@ export function HomePage({ onNavigate }) {
       </Dialog>
 
       {/* Technologies Section */}
-      <section className="py-20 bg-slate-800">
+      <section className="py-12 sm:py-16 md:py-20 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Technologies We Use</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Technologies We Use</h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Leveraging the latest technologies to build robust and scalable solutions
             </p>
@@ -536,7 +536,7 @@ export function HomePage({ onNavigate }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6"
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 md:gap-6"
           >
             {technologies.map((tech, index) => (
               <motion.div
@@ -550,7 +550,7 @@ export function HomePage({ onNavigate }) {
                 <motion.div
                   whileHover={{ scale: 1.4, rotate: 360 }}
                   transition={{ duration: 0.6, type: "spring" }}
-                  className="text-4xl mb-3"
+                  className="text-2xl sm:text-3xl md:text-4xl mb-3"
                 >
                   {tech.icon}
                 </motion.div>
@@ -570,17 +570,17 @@ export function HomePage({ onNavigate }) {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Featured Projects</h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Featured Projects</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
               Explore our portfolio of successful projects and see how we've helped businesses grow
             </p>
           </motion.div>
@@ -589,7 +589,7 @@ export function HomePage({ onNavigate }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           >
             {portfolioItems.map((item, index) => (
               <motion.div 
@@ -606,7 +606,7 @@ export function HomePage({ onNavigate }) {
                     <motion.img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-64 object-cover"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover"
                       whileHover={{ scale: 1.15 }}
                       transition={{ duration: 0.5 }}
                     />
@@ -627,9 +627,9 @@ export function HomePage({ onNavigate }) {
                       </div>
                     </motion.div>
                   </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">{item.title}</h3>
-                    <p className="text-gray-400">{item.description}</p>
+                  <CardContent className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">{item.title}</h3>
+                    <p className="text-xs sm:text-sm text-gray-400">{item.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -724,7 +724,7 @@ export function HomePage({ onNavigate }) {
       </Dialog>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -732,9 +732,9 @@ export function HomePage({ onNavigate }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Why Choose Us</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Why Choose Us</h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               We don't just build software—we build partnerships and deliver solutions that drive real business results
             </p>
@@ -744,7 +744,7 @@ export function HomePage({ onNavigate }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
           >
             {[
               {
@@ -820,9 +820,9 @@ export function HomePage({ onNavigate }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">Client Testimonials</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Client Testimonials</h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Don't just take our word for it—hear what our satisfied clients have to say about working with us
             </p>
@@ -834,7 +834,7 @@ export function HomePage({ onNavigate }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16"
           >
             {[
               { number: "98%", label: "Client Retention" },
@@ -849,7 +849,7 @@ export function HomePage({ onNavigate }) {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent mb-2">
                   {stat.number}
                 </div>
                 <div className="text-gray-400">{stat.label}</div>
@@ -863,7 +863,7 @@ export function HomePage({ onNavigate }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           >
             {[
               {
@@ -930,7 +930,7 @@ export function HomePage({ onNavigate }) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-700 text-white relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-700 text-white relative overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-grid-pattern opacity-10"
           animate={{
@@ -950,7 +950,7 @@ export function HomePage({ onNavigate }) {
             transition={{ duration: 0.6 }}
           >
             <motion.h2 
-              className="text-3xl lg:text-5xl font-bold mb-6"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2 sm:px-0"
               whileHover={{ scale: 1.05 }}
             >
               Ready to Start Your Project?

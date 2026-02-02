@@ -31,14 +31,14 @@ export function Header({ currentPage, onNavigate }) {
             className="flex items-center cursor-pointer gap-4"
             onClick={() => onNavigate("home")}
           >
-            <div className="h-20 w-20 flex items-center justify-center flex-shrink-0">
+            <div className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 flex items-center justify-center flex-shrink-0">
               <img
                 src={companyLogo}
                 alt="Velomynt Logo"
                 className="h-full w-full object-contain"
               />
             </div>
-            <span className="text-xl font-bold text-white whitespace-nowrap leading-none">Velomynt</span>
+            <span className="text-base sm:text-lg md:text-xl font-bold text-white whitespace-nowrap leading-none">Velomynt</span>
           </motion.div>
 
           {/* Desktop Navigation */}

@@ -79,7 +79,7 @@ export function ServicesPage({ onNavigate }) {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -88,8 +88,8 @@ export function ServicesPage({ onNavigate }) {
                 transition={{ duration: 0.6 }}
                 className="text-center max-w-3xl mx-auto"
               >
-                <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Our Services</h1>
-                <p className="text-xl text-white">We offer end-to-end IT services tailored to your business goals.</p>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">Our Services</h1>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">We offer end-to-end IT services tailored to your business goals.</p>
               </motion.div>
         </div>
       </section>
@@ -146,11 +146,11 @@ export function ServicesPage({ onNavigate }) {
       </section>
 
       {/* Additional Services Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Additional Services</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2 sm:px-0">Additional Services</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
               Comprehensive solutions to support all aspects of your digital transformation
             </p>
           </div>
@@ -174,11 +174,11 @@ export function ServicesPage({ onNavigate }) {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Our Process</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2 sm:px-0">Our Process</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
               A proven methodology that ensures project success
             </p>
           </div>
@@ -207,10 +207,10 @@ export function ServicesPage({ onNavigate }) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2 sm:px-0">Ready to Get Started?</h2>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-indigo-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-0">
             Let's discuss your project and create a solution that drives results
           </p>
           <Button onClick={() => onNavigate("contact")} size="lg" className="bg-white text-indigo-700 hover:bg-indigo-50">

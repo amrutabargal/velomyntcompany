@@ -105,7 +105,7 @@ export function WhyChooseUsPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,8 +114,8 @@ export function WhyChooseUsPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Why Choose Us</h1>
-            <p className="text-xl text-white">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">Why Choose Us</h1>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">
               We don't just build software—we build partnerships and deliver solutions that drive real business results
             </p>
           </motion.div>

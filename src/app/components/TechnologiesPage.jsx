@@ -198,7 +198,7 @@ export function TechnologiesPage() {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -207,8 +207,8 @@ export function TechnologiesPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">Technologies We Master</h1>
-            <p className="text-xl text-white">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">Technologies We Master</h1>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">
               We leverage cutting-edge technologies and proven frameworks to build robust, scalable solutions
             </p>
           </motion.div>
@@ -216,13 +216,13 @@ export function TechnologiesPage() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {categories.map((category, catIndex) => (
               <div key={catIndex}>
                 <div className="text-center mb-12">
-                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{category.name}</h2>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">{category.name}</h2>
                   <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-sky-400 mx-auto rounded-full"></div>
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -261,10 +261,10 @@ export function TechnologiesPage() {
       </section>
 
       {/* Tech Stack Highlights */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">Why We Choose These Technologies</h2>
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2 sm:px-0">Why We Choose These Technologies</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our technology choices are driven by performance, scalability, and long-term maintainability
             </p>
@@ -300,9 +300,9 @@ export function TechnologiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6">Let's Build Something Amazing</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2 sm:px-0">Let's Build Something Amazing</h2>
           <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
             Our expertise in these technologies means we can bring your vision to life
           </p>

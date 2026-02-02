@@ -93,7 +93,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-20">
+      <section className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -102,11 +102,11 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <p className="text-indigo-300 font-medium mb-3">Software Development Services</p>
-            <h1 className="text-3xl lg:text-5xl font-bold text-white mb-4">
+            <p className="text-sm sm:text-base text-indigo-300 font-medium mb-2 sm:mb-3">Software Development Services</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">
               Custom, Scalable &amp; Secure Software Solutions
             </h1>
-            <p className="text-lg text-indigo-100 mb-4">
+            <p className="text-sm sm:text-base md:text-lg text-indigo-100 mb-3 sm:mb-4">
               Velomynt is a professional software development company delivering custom
               software solutions that help businesses automate operations, improve efficiency, and scale faster.
             </p>
@@ -139,7 +139,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Why Choose */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
           <div>
             <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
@@ -181,7 +181,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Solutions */}
-      <section className="py-16 bg-slate-900">
+      <section className="py-12 sm:py-16 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">
             Our Software Development Solutions
@@ -203,7 +203,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Technologies */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
             Technologies We Use for Software Development
@@ -225,7 +225,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* Process */}
-      <section className="py-16 bg-slate-900">
+      <section className="py-12 sm:py-16 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-6">
             Our Software Development Process
@@ -245,7 +245,7 @@ export function SoftwareDevelopmentPage({ onNavigate }) {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Let’s Build Your Software Solution</h2>
           <p className="text-lg text-indigo-100 mb-6">
