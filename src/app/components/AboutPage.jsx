@@ -206,12 +206,11 @@ export function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {[
               { number: "10+", label: "Projects Delivered" },
               { number: "8+", label: "Trusted Partners" },
-              { number: "8+", label: "Team Members" },
               { number: "Est. 2026", label: "Founded" }
             ].map((stat, index) => (
               <motion.div key={index} variants={itemVariants} className="text-center">

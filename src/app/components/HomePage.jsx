@@ -3,6 +3,9 @@ import { ArrowRight, Code, Smartphone, Globe, ExternalLink, Shield, Users, Zap, 
 import { Button } from "./ui/button.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion, useInView } from "motion/react";
+import ecommerceImage from "../../image/portfolio/image_ANTI_SEARCH.png";
+import healthcareImage from "../../image/portfolio/emr-management_ANTI_SEARCH.png";
+import maximizeNetworkImage from "../../image/portfolio/maximize-network.png";
 import {
   Dialog,
   DialogContent,
@@ -97,26 +100,26 @@ export function HomePage({ onNavigate }) {
     {
       title: "E-Commerce Platform",
       category: "Web Development",
-      image: "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZ3xlbnwxfHx8fDE3Njc2MzA5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      image: ecommerceImage,
       description: "Complete e-commerce solution with payment integration",
       fullDescription: "A comprehensive e-commerce platform featuring secure payment processing, inventory management, and customer analytics. Built with modern technologies for scalability and performance.",
       technologies: ["React", "Node.js", "MongoDB", "Stripe API"]
     },
     {
-      title: "Healthcare App",
-      category: "Mobile Development",
-      image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzY3NjAwODc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      description: "Patient management system for healthcare providers",
-      fullDescription: "A HIPAA-compliant mobile application for healthcare providers to manage patient records, appointments, and medical history. Features secure data encryption and real-time synchronization.",
-      technologies: ["React Native", "Firebase", "HIPAA Compliance"]
+      title: "Healthcare Management System",
+      category: "Software Development",
+      image: healthcareImage,
+      description: "Enterprise healthcare solution for patient records and appointments",
+      fullDescription: "A HIPAA-compliant healthcare management system for providers to manage patient records, appointments, and medical history. Features secure data encryption and real-time synchronization.",
+      technologies: ["Java", "Spring Boot", "PostgreSQL", "HIPAA Compliance"]
     },
     {
-      title: "CRM Software",
+      title: "Network Management Platform",
       category: "Software Development",
-      image: "https://images.unsplash.com/photo-1646153114001-495dfb56506d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3b3Jrc3BhY2UlMjB0ZWNofGVufDF8fHx8MTc2NzY0OTUxNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      description: "Enterprise-level customer relationship management",
-      fullDescription: "An enterprise CRM solution with advanced analytics, automation, and integration capabilities. Helps businesses manage customer relationships, track sales, and improve productivity.",
-      technologies: ["Angular", "Python", "PostgreSQL", "AWS"]
+      image: maximizeNetworkImage,
+      description: "Advanced network management solution for connectivity and performance",
+      fullDescription: "An enterprise network management solution with advanced analytics, real-time monitoring, and integration capabilities. Helps businesses maximize connectivity and track performance metrics.",
+      technologies: ["Python", "Django", "REST API", "AWS"]
     },
   ];
 
