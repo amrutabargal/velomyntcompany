@@ -77,15 +77,7 @@ export function Footer({ onNavigate }) {
               </li>
               <li>
                 <button 
-                  onClick={() => {
-                    onNavigate("services");
-                    setTimeout(() => {
-                      const element = document.getElementById("additional-services");
-                      if (element) {
-                        element.scrollIntoView({ behavior: "smooth", block: "start" });
-                      }
-                    }, 100);
-                  }} 
+                  onClick={() => onNavigate("additional-services")} 
                   className="hover:text-indigo-400 transition-colors text-sm"
                 >
                   Additional Services

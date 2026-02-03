@@ -14,6 +14,7 @@ import { ContactPage } from "./components/ContactPage.jsx";
 import { SoftwareDevelopmentPage } from "./components/SoftwareDevelopmentPage.jsx";
 import { WebsiteDevelopmentPage } from "./components/WebsiteDevelopmentPage.jsx";
 import { MobileAppDevelopmentPage } from "./components/MobileAppDevelopmentPage.jsx";
+import { AdditionalServicesPage } from "./components/AdditionalServicesPage.jsx";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -23,6 +24,7 @@ export default function App() {
     home: "homepage",
     about: "about",
     services: "services",
+    "additional-services": "additional-services",
     "software-development": "software-development",
     "website-development": "website-development",
     "mobile-app-development": "mobile-app-development",
@@ -44,6 +46,8 @@ export default function App() {
         return "about";
       case "services":
         return "services";
+      case "additional-services":
+        return "additional-services";
       case "software-development":
         return "software-development";
       case "website-development":
@@ -116,6 +120,8 @@ export default function App() {
         return <AboutPage />;
       case "services":
         return <ServicesPage onNavigate={handleNavigate} />;
+      case "additional-services":
+        return <AdditionalServicesPage onNavigate={handleNavigate} />;
       case "software-development":
         return <SoftwareDevelopmentPage onNavigate={handleNavigate} />;
       case "website-development":

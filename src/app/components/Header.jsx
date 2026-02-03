@@ -11,6 +11,7 @@ export function Header({ currentPage, onNavigate }) {
     { name: "Home", id: "home" },
     { name: "About Us", id: "about" },
     { name: "Services", id: "services" },
+    { name: "Additional Services", id: "additional-services" },
     { name: "Technologies", id: "technologies" },
     { name: "Portfolio", id: "portfolio" },
     { name: "Contact Us", id: "contact" },

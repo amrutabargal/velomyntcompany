@@ -1,4 +1,4 @@
-import { Code, Globe, Smartphone, Paintbrush, Database, Cloud, Shield, Zap } from "lucide-react";
+import { Code, Globe, Smartphone } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { Button } from "./ui/button.jsx";
 import { motion } from "motion/react";
@@ -40,39 +40,6 @@ export function ServicesPage({ onNavigate }) {
         "App UI/UX Design",
         "App Store Optimization",
       ],
-    },
-  ];
-
-  const additionalServices = [
-    {
-      icon: Paintbrush,
-      title: "UI/UX Design",
-      description: "User-centric design that improves engagement, usability, and brand trust.",
-    },
-    {
-      icon: Zap,
-      title: "AI Automation & Integration (Optional but Powerful)",
-      description: "Smart automation solutions to reduce manual work and increase productivity.",
-    },
-    {
-      icon: Database,
-      title: "Database Solutions",
-      description: "Robust database design and optimization",
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Services",
-      description: "Scalable cloud infrastructure and migration",
-    },
-    {
-      icon: Shield,
-      title: "Cybersecurity",
-      description: "Comprehensive security solutions",
-    },
-    {
-      icon: Zap,
-      title: "Performance Optimization",
-      description: "Speed and efficiency improvements",
     },
   ];
 
@@ -139,34 +106,6 @@ export function ServicesPage({ onNavigate }) {
                     </Card>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Services Section */}
-      <section id="additional-services" className="py-12 sm:py-16 md:py-20 bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Additional Services</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4 sm:px-0">
-              Comprehensive solutions to support all aspects of your digital transformation
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {additionalServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <Card key={index} className="border-2 border-slate-800 hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/20 bg-slate-950 transition-all group">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-14 h-14 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                      <Icon className="text-black" size={28} />
-                    </div>
-                    <h3 className="font-bold text-white mb-2">{service.title}</h3>
-                    <p className="text-sm text-indigo-100">{service.description}</p>
-                  </CardContent>
-                </Card>
               );
             })}
           </div>
