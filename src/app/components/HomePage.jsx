@@ -14,6 +14,7 @@ import {
   DialogTitle,
 } from "./ui/dialog.tsx";
 import companyLogo from "../../image/companylogo-removebg-preview.png";
+import homeImage from "../../image/home-image.png";
 import ReactLogo from "../../image/react.svg";
 import NodeLogo from "../../image/nodejs.svg";
 import PythonLogo from "../../image/python.svg";
@@ -318,27 +319,13 @@ export function HomePage({ onNavigate }) {
               className="hidden lg:block"
             >
               <motion.div 
-                className="relative"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-2xl transform rotate-3 opacity-20 blur-xl"
-                  animate={{ 
-                    rotate: [3, 6, 3],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ 
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                ></motion.div>
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-indigo-500 rounded-2xl transform rotate-3"></div>
                 <img
-                  src="https://images.unsplash.com/photo-1763568258752-fe55f4ab7267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3Njc2ODE4ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                  src={homeImage}
                   alt="Technology"
-                  className="relative rounded-2xl shadow-2xl"
+                  className="rounded-2xl shadow-2xl w-full h-auto"
                 />
               </motion.div>
             </motion.div>
