@@ -13,7 +13,7 @@ export function Header({ currentPage, onNavigate }) {
     { name: "Services", id: "services" },
     { name: "Technologies", id: "technologies" },
     { name: "Portfolio", id: "portfolio" },
-    { name: "Contact", id: "contact" },
+    { name: "Contact Us", id: "contact" },
   ];
 
   return (

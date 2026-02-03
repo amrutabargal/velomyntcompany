@@ -120,7 +120,7 @@ export function PortfolioPage() {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 sm:py-12 bg-white border-b border-gray-200">
+      <section className="py-8 sm:py-12 bg-slate-800 border-b border-slate-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {categories.map((category) => (
@@ -130,7 +130,7 @@ export function PortfolioPage() {
                 className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all ${
                   filter === category.id
                   ? "bg-gradient-to-r from-indigo-600 to-sky-500 text-black shadow-lg shadow-indigo-500/40"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    : "bg-slate-700/50 text-gray-300 hover:bg-slate-700"
                 }`}
               >
                 {category.name}
@@ -141,7 +141,7 @@ export function PortfolioPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
             {filteredProjects.map((project, index) => (

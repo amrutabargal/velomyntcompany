@@ -95,7 +95,7 @@ export function ServicesPage({ onNavigate }) {
       </section>
 
       {/* Main Services Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {mainServices.map((service, index) => {
@@ -107,15 +107,15 @@ export function ServicesPage({ onNavigate }) {
                     <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-sky-400/20 rounded-2xl flex items-center justify-center mb-6">
                       <Icon className="text-sky-400" size={32} />
                     </div>
-                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{service.title}</h2>
-                    <p className="text-lg text-gray-600 mb-6">{service.description}</p>
+                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">{service.title}</h2>
+                    <p className="text-lg text-gray-300 mb-6">{service.description}</p>
                     <ul className="space-y-3 mb-8">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start">
                           <div className="w-6 h-6 bg-slate-800/60 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
                             <div className="w-2 h-2 bg-sky-400 rounded-full"></div>
                           </div>
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-gray-300">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -146,11 +146,11 @@ export function ServicesPage({ onNavigate }) {
       </section>
 
       {/* Additional Services Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <section id="additional-services" className="py-12 sm:py-16 md:py-20 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2 sm:px-0">Additional Services</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Additional Services</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4 sm:px-0">
               Comprehensive solutions to support all aspects of your digital transformation
             </p>
           </div>
@@ -174,11 +174,11 @@ export function ServicesPage({ onNavigate }) {
       </section>
 
       {/* Process Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2 sm:px-0">Our Process</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Our Process</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto px-4 sm:px-0">
               A proven methodology that ensures project success
             </p>
           </div>

@@ -74,7 +74,11 @@ export default function App() {
       window.history.pushState({}, "", url);
     }
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Scroll to top immediately, then smooth if needed
+    window.scrollTo({ top: 0, behavior: "instant" });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   useEffect(() => {
@@ -88,12 +92,21 @@ export default function App() {
     const onPop = () => {
       const p = pathToPage(window.location.pathname);
       setCurrentPage(p);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Scroll to top immediately, then smooth if needed
+      window.scrollTo({ top: 0, behavior: "instant" });
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 0);
     };
 
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, []);
+
+  // Scroll to top whenever page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [currentPage]);
 
   const renderPage = () => {
     switch (currentPage) {

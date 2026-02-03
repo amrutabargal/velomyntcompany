@@ -216,13 +216,13 @@ export function TechnologiesPage() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {categories.map((category, catIndex) => (
               <div key={catIndex}>
                 <div className="text-center mb-12">
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">{category.name}</h2>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">{category.name}</h2>
                   <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-sky-400 mx-auto rounded-full"></div>
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -261,11 +261,11 @@ export function TechnologiesPage() {
       </section>
 
       {/* Tech Stack Highlights */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 md:py-20 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-2 sm:px-0">Why We Choose These Technologies</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Why We Choose These Technologies</h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Our technology choices are driven by performance, scalability, and long-term maintainability
             </p>
           </div>
@@ -287,11 +287,11 @@ export function TechnologiesPage() {
                 icon: "🚀",
               },
             ].map((benefit, index) => (
-                  <Card key={index} className="border-2 border-gray-100 hover:shadow-lg transition-all">
+                  <Card key={index} className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/20 transition-all">
                 <CardContent className="p-8 text-center">
                   <div className="text-5xl mb-4">{benefit.icon}</div>
                   <h3 className="text-2xl font-bold text-white mb-4">{benefit.title}</h3>
-                  <p className="text-indigo-100">{benefit.description}</p>
+                  <p className="text-gray-300">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}

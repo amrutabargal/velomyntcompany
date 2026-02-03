@@ -22,16 +22,40 @@ export function Footer({ onNavigate }) {
               Leading IT services company providing innovative software solutions, web development, and mobile applications to businesses worldwide.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-indigo-400 transition-colors">
+              <a 
+                href="https://www.facebook.com/velomynt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-indigo-400 transition-colors"
+                aria-label="Visit our Facebook page"
+              >
                 <Facebook size={20} />
               </a>
-              <a href="#" className="hover:text-indigo-400 transition-colors">
+              <a 
+                href="https://x.com/velomynt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-indigo-400 transition-colors"
+                aria-label="Visit our Twitter/X page"
+              >
                 <Twitter size={20} />
               </a>
-              <a href="#" className="hover:text-indigo-400 transition-colors">
+              <a 
+                href="https://www.linkedin.com/velomynt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-indigo-400 transition-colors"
+                aria-label="Visit our LinkedIn page"
+              >
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="hover:text-indigo-400 transition-colors">
+              <a 
+                href="https://www.instagram.com/velomynt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-indigo-400 transition-colors"
+                aria-label="Visit our Instagram page"
+              >
                 <Instagram size={20} />
               </a>
             </div>
@@ -52,8 +76,19 @@ export function Footer({ onNavigate }) {
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate("services")} className="hover:text-indigo-400 transition-colors text-sm">
-                  Services
+                <button 
+                  onClick={() => {
+                    onNavigate("services");
+                    setTimeout(() => {
+                      const element = document.getElementById("additional-services");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }
+                    }, 100);
+                  }} 
+                  className="hover:text-indigo-400 transition-colors text-sm"
+                >
+                  Additional Services
                 </button>
               </li>
               <li>
@@ -92,14 +127,6 @@ export function Footer({ onNavigate }) {
                   Mobile App Development
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
-                >
-                  UI/UX Design
-                </button>
-              </li>
             </ul>
           </div>
 
@@ -118,7 +145,7 @@ export function Footer({ onNavigate }) {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-sm text-gray-400">
-            © {currentYear} Velomynt. All rights reserved.
+            © {currentYear} Velomynt Digital LLP. All rights reserved.
           </p>
         </div>
       </div>

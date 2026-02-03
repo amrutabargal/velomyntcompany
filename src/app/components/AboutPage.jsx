@@ -1,9 +1,13 @@
 import { Target, Users, Award, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion } from "motion/react";
+import { useEffect } from "react";
 import companyLogo from "../../image/companylogo-removebg-preview.png";
 
 export function AboutPage() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
   const values = [
     {
       icon: Target,
@@ -36,6 +40,21 @@ export function AboutPage() {
     {
       name: "Ajay Verma",
       role: "Head of Department",
+      image: companyLogo,
+    },
+    {
+      name: "Amruta Bargal",
+      role: "Full Stack Developer",
+      image: companyLogo,
+    },
+    {
+      name: "Rushikesh Patil",
+      role: "Full Stack Developer",
+      image: companyLogo,
+    },
+    {
+      name: "Lalita Rana",
+      role: "Full Stack Developer",
       image: companyLogo,
     },
   ];
@@ -159,13 +178,13 @@ export function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-slate-800">
+      <section className="py-8 sm:py-12 md:py-16 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Meet Our Team</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
@@ -177,20 +196,21 @@ export function AboutPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-items-center max-w-4xl mx-auto"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-6xl mx-auto"
           >
             {team.map((member, index) => (
-              <motion.div key={index} variants={itemVariants} whileHover={{ y: -10 }} className="text-center group w-full max-w-[220px]">
-                <div className="relative mb-5 overflow-hidden rounded-3xl p-4 bg-white shadow-[0_20px_60px_-30px_rgba(99,102,241,0.5)] transform-gpu transition-transform duration-500 group-hover:[transform:perspective(900px)_rotateX(6deg)_rotateY(-6deg)]">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-52 object-contain drop-shadow-[0_12px_24px_rgba(30,64,175,0.35)] group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-indigo-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <motion.div key={index} variants={itemVariants} whileHover={{ y: -4 }} className="text-center group">
+                <div className="relative mb-3 overflow-hidden rounded-xl p-2 sm:p-3 bg-slate-700/40 border border-slate-600/50 backdrop-blur-sm transition-all duration-300 group-hover:border-slate-500/50 group-hover:bg-slate-700/60">
+                  <div className="bg-white/10 rounded-lg p-2 sm:p-3">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-32 sm:h-36 object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 contrast-110"
+                    />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                <p className="text-indigo-300 font-medium">{member.role}</p>
+                <h3 className="text-sm sm:text-base font-semibold text-white mb-1">{member.name}</h3>
+                <p className="text-xs sm:text-sm text-gray-400">{member.role}</p>
               </motion.div>
             ))}
           </motion.div>

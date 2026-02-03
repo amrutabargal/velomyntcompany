@@ -67,13 +67,13 @@ export function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 sm:py-16 md:py-20 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-1 gap-8 mb-20 max-w-md mx-auto">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
-                <Card key={index} className="border-2 border-slate-800 hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 bg-slate-950 transition-all">
+                <Card key={index} className="border-2 border-slate-700/50 hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 bg-slate-900/80 backdrop-blur-sm transition-all">
                   <CardContent className="p-8 text-center">
                     <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Icon className="text-black" size={28} />
@@ -91,10 +91,10 @@ export function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                     Full Name *
                   </label>
                   <Input
@@ -105,12 +105,12 @@ export function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Smith"
-                    className="w-full"
+                    className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     Email Address *
                   </label>
                   <Input
@@ -121,12 +121,12 @@ export function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className="w-full"
+                    className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
                     Phone Number
                   </label>
                   <Input
@@ -136,12 +136,12 @@ export function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+1 (555) 123-4567"
-                    className="w-full"
+                    className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
                     Company Name
                   </label>
                   <Input
@@ -151,12 +151,12 @@ export function ContactPage() {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Your Company"
-                    className="w-full"
+                    className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
                     Service Interested In
                   </label>
                   <select
@@ -164,7 +164,7 @@ export function ContactPage() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 border border-slate-700 rounded-md bg-slate-900 text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-3 py-2 border border-slate-700 rounded-md bg-slate-900/50 text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
                     <option value="">Select a service</option>
                     <option value="software">Software Development</option>
@@ -175,7 +175,7 @@ export function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     Message *
                   </label>
                   <Textarea
@@ -186,7 +186,7 @@ export function ContactPage() {
                     onChange={handleChange}
                     placeholder="Tell us about your project..."
                     rows={6}
-                    className="w-full"
+                    className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
 
@@ -202,45 +202,45 @@ export function ContactPage() {
 
             {/* Additional Info */}
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Why Contact Us?</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Why Contact Us?</h2>
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                  <div className="w-8 h-8 bg-slate-700/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                     <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                      <h3 className="font-bold text-black mb-2">Free Consultation</h3>
-                      <p className="text-black">Get expert advice on your project at no cost. We'll help you make the right technology decisions.</p>
+                      <h3 className="font-bold text-white mb-2">Free Consultation</h3>
+                      <p className="text-gray-300">Get expert advice on your project at no cost. We'll help you make the right technology decisions.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                  <div className="w-8 h-8 bg-slate-700/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                     <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-black mb-2">Quick Response</h3>
-                    <p className="text-black">We respond to all inquiries within 24 hours. Your time is valuable, and we respect that.</p>
+                    <h3 className="font-bold text-white mb-2">Quick Response</h3>
+                    <p className="text-gray-300">We respond to all inquiries within 24 hours. Your time is valuable, and we respect that.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                  <div className="w-8 h-8 bg-slate-700/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                     <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-black mb-2">Detailed Proposal</h3>
-                    <p className="text-black">Receive a comprehensive project proposal with timeline, budget, and deliverables.</p>
+                    <h3 className="font-bold text-white mb-2">Detailed Proposal</h3>
+                    <p className="text-gray-300">Receive a comprehensive project proposal with timeline, budget, and deliverables.</p>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-slate-800/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                  <div className="w-8 h-8 bg-slate-700/60 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
                     <div className="w-3 h-3 bg-sky-400 rounded-full"></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-black mb-2">No Obligation</h3>
-                    <p className="text-black">Consulting with us comes with no strings attached. Make an informed decision for your business.</p>
+                    <h3 className="font-bold text-white mb-2">No Obligation</h3>
+                    <p className="text-gray-300">Consulting with us comes with no strings attached. Make an informed decision for your business.</p>
                   </div>
                 </div>
               </div>

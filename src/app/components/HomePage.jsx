@@ -907,7 +907,6 @@ export function HomePage({ onNavigate }) {
                             : "w-5 h-5 text-yellow-400/40";
                         return <Star key={i} className={starClass} />;
                       })}
-                      <span className="ml-2 text-sm text-indigo-100">{testimonial.rating.toFixed(1)}/5</span>
                     </div>
                     <Quote className="w-10 h-10 text-indigo-200 mb-4" />
                     <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
