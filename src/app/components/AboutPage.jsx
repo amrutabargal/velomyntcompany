@@ -202,11 +202,11 @@ export function AboutPage() {
               <motion.div key={index} variants={itemVariants} whileHover={{ y: -4 }} className="text-center group">
                 <div className="relative mb-3 overflow-hidden rounded-xl p-2 sm:p-3 bg-slate-700/40 border border-slate-600/50 backdrop-blur-sm transition-all duration-300 group-hover:border-slate-500/50 group-hover:bg-slate-700/60">
                   <div className="bg-white/10 rounded-lg p-2 sm:p-3">
-                    <img
-                      src={member.image}
-                      alt={member.name}
+                  <img
+                    src={member.image}
+                    alt={member.name}
                       className="w-full h-32 sm:h-36 object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 contrast-110"
-                    />
+                  />
                   </div>
                 </div>
                 <h3 className="text-sm sm:text-base font-semibold text-white mb-1">{member.name}</h3>

@@ -7,7 +7,7 @@ export function Footer({ onNavigate }) {
   return (
     <footer className="bg-black text-gray-300 border-t border-indigo-900/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-4">
@@ -122,6 +122,61 @@ export function Footer({ onNavigate }) {
                   className="text-sm hover:text-indigo-400 transition-colors"
                 >
                   Mobile App Development
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Additional Services */}
+          <div>
+            <h3 className="text-white font-semibold mb-4">Additional Services</h3>
+            <ul className="space-y-2">
+              <li>
+                <button
+                  onClick={() => onNavigate("additional-services")}
+                  className="text-sm hover:text-indigo-400 transition-colors"
+                >
+                  UI/UX Design
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("additional-services")}
+                  className="text-sm hover:text-indigo-400 transition-colors"
+                >
+                  AI Automation & Integration
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("additional-services")}
+                  className="text-sm hover:text-indigo-400 transition-colors"
+                >
+                  Database Solutions
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("additional-services")}
+                  className="text-sm hover:text-indigo-400 transition-colors"
+                >
+                  Cloud Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("additional-services")}
+                  className="text-sm hover:text-indigo-400 transition-colors"
+                >
+                  Cybersecurity
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("additional-services")}
+                  className="text-sm hover:text-indigo-400 transition-colors"
+                >
+                  Performance Optimization
                 </button>
               </li>
             </ul>
