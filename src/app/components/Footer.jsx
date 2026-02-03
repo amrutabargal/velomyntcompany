@@ -76,6 +76,11 @@ export function Footer({ onNavigate }) {
                 </button>
               </li>
               <li>
+                <button onClick={() => onNavigate("services")} className="hover:text-indigo-400 transition-colors text-sm">
+                  Services
+                </button>
+              </li>
+              <li>
                 <button 
                   onClick={() => onNavigate("additional-services")} 
                   className="hover:text-indigo-400 transition-colors text-sm"
