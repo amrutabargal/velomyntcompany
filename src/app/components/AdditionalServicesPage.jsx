@@ -27,7 +27,6 @@ export function AdditionalServicesPage({ onNavigate }) {
     {
       icon: Zap,
       title: "AI Automation & Integration",
-      subtitle: "(Optional but Powerful)",
       description: "Smart automation solutions to reduce manual work and increase productivity.",
       details: "Leverage the power of artificial intelligence to automate repetitive tasks, streamline workflows, and make data-driven decisions. Our AI solutions integrate seamlessly with your existing systems to enhance efficiency and unlock new capabilities.",
       features: [
