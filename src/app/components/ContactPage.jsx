@@ -104,7 +104,7 @@ export function ContactPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Smith"
+                    placeholder="Karan Sharma"
                     className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
@@ -120,7 +120,7 @@ export function ContactPage() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@example.com"
+                    placeholder="karan@velomynt.com"
                     className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
@@ -135,7 +135,7 @@ export function ContactPage() {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+91 98765 43210"
                     className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
