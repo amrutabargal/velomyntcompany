@@ -3,6 +3,7 @@ import { Card, CardContent } from "./ui/card.jsx";
 import { motion } from "motion/react";
 import { useEffect } from "react";
 import companyLogo from "../../image/companylogo-removebg-preview.png";
+import heroImage from "../../image/hero-image.png";
 
 export function AboutPage() {
   useEffect(() => {
@@ -123,7 +124,7 @@ export function AboutPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-sky-500 rounded-2xl transform -rotate-3 opacity-20 blur-xl"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-indigo-500 rounded-2xl transform -rotate-3"></div>
               <img
-                src="https://images.unsplash.com/photo-1739298061707-cefee19941b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3Njc2Nzg4ODV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src={heroImage}
                 alt="Our Team"
                 className="relative rounded-2xl shadow-2xl"
               />

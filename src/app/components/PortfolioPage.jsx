@@ -3,98 +3,158 @@ import { Card, CardContent } from "./ui/card.jsx";
 import { Badge } from "./ui/badge.jsx";
 import { ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
-import bankingAppImage from "../../image/portfolio/banking-app-interface-concept_23-2148616879_ANTI_SEARCH.png";
-import healthcareImage from "../../image/portfolio/emr-management_ANTI_SEARCH.png";
+import caremaxImage from "../../image/portfolio/caremax-hospital.png";
+import medicareImage from "../../image/portfolio/medicare.png";
+import medicarePlusImage from "../../image/portfolio/medicare-plus.png";
 import foodDeliveryImage from "../../image/portfolio/food-delivery.png";
-import gameAppImage from "../../image/portfolio/game-app.png";
-import goldenLakeImage from "../../image/portfolio/golden-lake.png";
-import fitnessImage from "../../image/portfolio/gradient-fitness-app-template_23-2151095465_ANTI_SEARCH.png";
-import ecommerceImage from "../../image/portfolio/image_ANTI_SEARCH.png";
-import maximizeNetworkImage from "../../image/portfolio/maximize-network.png";
-import shootForFutureImage from "../../image/portfolio/shoot-for-the-future.png";
-import weAreBamImage from "../../image/portfolio/we-are-bam.png";
+import foodHubImage from "../../image/portfolio/foodhub.png";
+import foodSwiftImage from "../../image/portfolio/foodswift.png";
+import royalPalaceImage from "../../image/portfolio/royal-palace.png";
+import eliteResortImage from "../../image/portfolio/elite-resort.png";
+import prestigeGrandImage from "../../image/portfolio/prestige-grand.png";
+import paradiseResortImage from "../../image/portfolio/paradise-resort.png";
+import indianResortImage from "../../image/portfolio/incredible-india.png";
+import eduFlowImage from "../../image/portfolio/excellence-academy.png";
+import himkanImage from "../../image/portfolio/himkan.png";
+import shophubImage from "../../image/portfolio/shophub.png";
+import styleverseImage from "../../image/portfolio/styleverse.png";
+import toursImage from "../../image/portfolio/wanderluxe.png";
 
 export function PortfolioPage() {
   const [filter, setFilter] = useState("all");
 
   const projects = [
     {
-      title: "Banking Mobile App",
-      category: "mobile",
-      tags: ["React Native", "Firebase", "Secure API"],
-      description: "Secure mobile banking application with account management, transactions, and real-time notifications. Features biometric authentication and seamless user experience.",
-      image: bankingAppImage,
+      title: "Shophube — E‑commerce",
+      category: "ecommerce",
+      tags: ["Next.js", "React", "Node.js", "Stripe", "MongoDB"],
+      description: "Modern e‑commerce storefront with product catalog, cart, and secure checkout.",
+      image: shophubImage,
+      url: "https://shophube-com.netlify.app/",
     },
     {
-      title: "Healthcare Management System",
-      category: "software",
-      tags: ["Java", "Spring Boot", "PostgreSQL"],
-      description: "Enterprise healthcare solution for patient records, appointments, and billing management. Streamlined workflow for medical professionals.",
-      image: healthcareImage,
+      title: "Styleverse — Fashion Store",
+      category: "ecommerce",
+      tags: ["Next.js", "React", "Tailwind CSS", "Stripe", "Vercel"],
+      description: "Fashion storefront with curated collections, product pages, and checkout.",
+      image: styleverseImage,
+      url: "https://styleverse-velomynt.netlify.app/",
     },
     {
-      title: "Food Delivery App",
-      category: "mobile",
-      tags: ["Flutter", "Node.js", "MongoDB"],
-      description: "Complete food ordering and delivery platform with real-time tracking, multiple payment options, and restaurant management system.",
-      image: foodDeliveryImage,
+      title: "Royal Palace — Hotel",
+      category: "hospitality",
+      tags: ["Next.js", "React", "Tailwind CSS", "Headless CMS", "Stripe"],
+      description: "Luxury hotel website showcasing rooms, amenities, and online booking.",
+      image: royalPalaceImage,
+      url: "https://royalpalace-veloyment.netlify.app/",
     },
     {
-      title: "Game Application",
-      category: "mobile",
-      tags: ["Unity", "C#", "Game Engine"],
-      description: "Engaging mobile game application with immersive gameplay, social features, and in-app purchases. Optimized for performance across devices.",
-      image: gameAppImage,
+      title: "Resort Elite — Hotel",
+      category: "hospitality",
+      tags: ["Next.js", "React", "Tailwind CSS", "Headless CMS", "Netlify"],
+      description: "Resort website highlighting experiences, packages, and booking options.",
+      image: eliteResortImage,
+      url: "https://resortelite-veloyment.netlify.app/",
     },
     {
-      title: "Golden Lake Platform",
-      category: "web",
-      tags: ["React", "Next.js", "Tailwind CSS"],
-      description: "Modern web platform with responsive design, interactive features, and seamless user experience. Built for scalability and performance.",
-      image: goldenLakeImage,
+      title: "Prestigra Den — Hotel",
+      category: "hospitality",
+      tags: ["Next.js", "React", "Tailwind CSS", "Booking API", "PostgreSQL"],
+      description: "Premium hotel site with room listings and booking workflows.",
+      image: prestigeGrandImage,
+      url: "https://prestigraden-velomynt.netlify.app/",
     },
     {
-      title: "Fitness Tracking App",
-      category: "mobile",
-      tags: ["React Native", "Firebase", "Redux"],
-      description: "Cross-platform mobile app for workout tracking, meal planning, and progress monitoring. Helps users achieve their fitness goals.",
-      image: fitnessImage,
+      title: "Paradise Resort Bali — Resort",
+      category: "hospitality",
+      tags: ["React", "Next.js", "Tailwind CSS", "Cloudinary", "Booking System"],
+      description: "Resort showcase with high‑quality galleries, amenities, and booking CTA.",
+      image: paradiseResortImage,
+      url: "https://paradiseresortbali.netlify.app/",
     },
     {
-      title: "E-Commerce Platform",
-      category: "web",
-      tags: ["React", "Node.js", "MongoDB"],
-      description: "Complete online shopping platform with payment integration, inventory management, and admin dashboard. Secure and scalable solution.",
-      image: ecommerceImage,
+      title: "Indian Resort — Resort",
+      category: "hospitality",
+      tags: ["React", "Next.js", "Tailwind CSS", "Reservations", "PostgreSQL"],
+      description: "Hospitality site featuring accommodations, services, and reservations.",
+      image: indianResortImage,
+      url: "https://indianresort-veloyment.netlify.app/",
     },
     {
-      title: "Network Management Platform",
-      category: "software",
-      tags: ["Python", "Django", "REST API"],
-      description: "Advanced network management solution for maximizing connectivity and performance. Real-time monitoring and analytics dashboard.",
-      image: maximizeNetworkImage,
+      title: "Caremax — Clinic",
+      category: "healthcare",
+      tags: ["React", "Node.js", "Express", "PostgreSQL", "Docker"],
+      description: "Clinic website for appointments, services, and patient information.",
+      image: caremaxImage,
+      url: "https://caremaxhospital.netlify.app/",
     },
     {
-      title: "Creative Agency Website",
-      category: "web",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-      description: "Modern creative agency website showcasing portfolio, services, and client testimonials. Bold branding with strategic design approach.",
-      image: shootForFutureImage,
+      title: "FoodSwift — Restaurants",
+      category: "food",
+      tags: ["React", "Node.js", "Express", "PostgreSQL", "Socket.io"],
+      description: "Restaurant ordering site with menu browsing and order placement.",
+      image: foodSwiftImage,
+      url: "https://foodswiftrestaurants.netlify.app/",
     },
     {
-      title: "Digital Product Agency",
-      category: "web",
-      tags: ["React", "Cloud Services", "SaaS"],
-      description: "Digital product agency website featuring cloud mobile SaaS and AI solutions. Professional design with comprehensive service offerings.",
-      image: weAreBamImage,
+      title: "FoodHub — Restaurants",
+      category: "food",
+      tags: ["React", "Firebase", "Cloud Functions", "Realtime DB", "Firestore"],
+      description: "Food ordering platform with restaurant listings and delivery tracking.",
+      image: foodHubImage,
+      url: "https://foodhubvelomynt.netlify.app/",
+    },
+    {
+      title: "Healthcare Portal",
+      category: "healthcare",
+      tags: ["React", "Node.js", "Express", "PostgreSQL", "HIPAA Security"],
+      description: "Comprehensive healthcare site with patient services and appointment booking.",
+      image: medicareImage,
+      url: "https://healthcare-veloyment.netlify.app/",
+    },
+    {
+      title: "Medicare Plus — Clinics",
+      category: "healthcare",
+      tags: ["React", "Node.js", "Express", "PostgreSQL", "Docker"],
+      description: "Clinic website offering services, appointments, and provider information.",
+      image: medicarePlusImage,
+      url: "https://medicareplus-veloyment.netlify.app/",
+    },
+    {
+      title: "EduFlow — E‑learning",
+      category: "education",
+      tags: ["Next.js", "React", "NextAuth", "Stripe", "PostgreSQL"],
+      description: "Education platform with course listings, enrollment, and student resources.",
+      image: eduFlowImage,
+      url: "https://eduflow-veloyment.netlify.app/",
+    },
+    {
+      title: "Velomynt — Real Estate",
+      category: "real-estate",
+      tags: ["React", "Node.js", "Express", "Mapbox", "PostgreSQL"],
+      description: "Property listings platform with search, interactive maps, and contact features.",
+      image: himkanImage,
+      url: "https://demo-velomynt.netlify.app/",
+    },
+    {
+      title: "Tours — Travel",
+      category: "travel",
+      tags: ["Next.js", "React", "Node.js", "Stripe", "Headless CMS"],
+      description: "Travel & tours site with packages, itineraries, and booking capabilities.",
+      image: toursImage,
+      url: "https://toursdemo.netlify.app/",
     },
   ];
 
   const categories = [
     { id: "all", name: "All Projects" },
-    { id: "web", name: "Web Development" },
-    { id: "mobile", name: "Mobile Apps" },
-    { id: "software", name: "Software Solutions" },
+    { id: "ecommerce", name: "E‑commerce" },
+    { id: "hospitality", name: "Hospitality" },
+    { id: "healthcare", name: "Healthcare" },
+    { id: "food", name: "Food & Restaurants" },
+    { id: "education", name: "Education" },
+    { id: "real-estate", name: "Real Estate" },
+    { id: "travel", name: "Travel & Tours" },
   ];
 
   const filteredProjects = filter === "all" ? projects : projects.filter((p) => p.category === filter);
@@ -164,14 +224,32 @@ export function PortfolioPage() {
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        whileHover={{ scale: 1 }}
-                        className="text-white flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600/90 backdrop-blur-sm"
-                      >
-                        <ExternalLink size={20} className="animate-pulse" />
-                        <span className="font-medium">View Project</span>
-                      </motion.div>
+                      {project.url ? (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full h-full flex items-center justify-center"
+                        >
+                          <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            whileHover={{ scale: 1 }}
+                            className="text-white flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600/90 backdrop-blur-sm"
+                          >
+                            <ExternalLink size={20} className="animate-pulse" />
+                            <span className="font-medium">View Project</span>
+                          </motion.div>
+                        </a>
+                      ) : (
+                        <motion.div
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          whileHover={{ scale: 1 }}
+                          className="text-white flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600/90 backdrop-blur-sm"
+                        >
+                          <ExternalLink size={20} className="animate-pulse" />
+                          <span className="font-medium">View Project</span>
+                        </motion.div>
+                      )}
                     </div>
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
@@ -203,6 +281,18 @@ export function PortfolioPage() {
                         </motion.div>
                       ))}
                     </div>
+                    {project.url && (
+                      <div className="mt-4 flex justify-end">
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-all duration-200"
+                        >
+                          View Live
+                        </a>
+                      </div>
+                    )}
                   </CardContent>
                   <div className="absolute inset-0 border-2 border-transparent group-hover:border-indigo-500/30 rounded-lg transition-all duration-500 pointer-events-none"></div>
                 </Card>

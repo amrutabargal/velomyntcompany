@@ -3,9 +3,9 @@ import { ArrowRight, Code, Smartphone, Globe, ExternalLink, Shield, Users, Zap, 
 import { Button } from "./ui/button.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion, useInView } from "motion/react";
-import ecommerceImage from "../../image/portfolio/image_ANTI_SEARCH.png";
-import healthcareImage from "../../image/portfolio/emr-management_ANTI_SEARCH.png";
-import maximizeNetworkImage from "../../image/portfolio/maximize-network.png";
+import ecommerceImage from "../../image/portfolio/shophub.png";
+import healthcareImage from "../../image/portfolio/caremax-hospital.png";
+import maximizeNetworkImage from "../../image/portfolio/himkan.png";
 import {
   Dialog,
   DialogContent,
