@@ -15,11 +15,12 @@ import { SoftwareDevelopmentPage } from "./components/SoftwareDevelopmentPage.js
 import { WebsiteDevelopmentPage } from "./components/WebsiteDevelopmentPage.jsx";
 import { MobileAppDevelopmentPage } from "./components/MobileAppDevelopmentPage.jsx";
 import { AdditionalServicesPage } from "./components/AdditionalServicesPage.jsx";
+import { ProjectViewer, PROJECT_MAP } from "./components/ProjectViewer.jsx";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
+  const [projectSlug, setProjectSlug] = useState(null);
 
-  // map between page ids and URL paths
   const pageToPath = {
     home: "homepage",
     about: "about",
@@ -35,84 +36,98 @@ export default function App() {
     contact: "contact",
   };
 
-  const pathToPage = (path) => {
-    if (!path) return "home";
-    const p = path.replace(/^\/+/, "");
+  const parseUrl = (pathname) => {
+    if (!pathname) return { page: "home", slug: null };
+    const p = pathname.replace(/^\/+/, "").replace(/\/+$/, "");
+
+    const projectMatch = p.match(/^portfolio\/(.+)$/);
+    if (projectMatch && PROJECT_MAP[projectMatch[1]]) {
+      return { page: "project-viewer", slug: projectMatch[1] };
+    }
+
     switch (p) {
       case "homepage":
       case "home":
-        return "home";
+        return { page: "home", slug: null };
       case "about":
-        return "about";
+        return { page: "about", slug: null };
       case "services":
-        return "services";
+        return { page: "services", slug: null };
       case "additional-services":
-        return "additional-services";
+        return { page: "additional-services", slug: null };
       case "software-development":
-        return "software-development";
+        return { page: "software-development", slug: null };
       case "website-development":
-        return "website-development";
+        return { page: "website-development", slug: null };
       case "mobile-app-development":
-        return "mobile-app-development";
+        return { page: "mobile-app-development", slug: null };
       case "technologies":
-        return "technologies";
+        return { page: "technologies", slug: null };
       case "portfolio":
-        return "portfolio";
+        return { page: "portfolio", slug: null };
       case "why-choose-us":
-        return "why-choose-us";
+        return { page: "why-choose-us", slug: null };
       case "testimonials":
-        return "testimonials";
+        return { page: "testimonials", slug: null };
       case "contact":
-        return "contact";
+        return { page: "contact", slug: null };
       default:
-        return "home";
+        return { page: "home", slug: null };
     }
   };
 
   const handleNavigate = (page, replace = false) => {
-    const path = pageToPath[page] || pageToPath.home;
-    const url = `/${path}`;
+    let url;
+    if (page.startsWith("portfolio/")) {
+      const slug = page.replace("portfolio/", "");
+      url = `/${page}`;
+      setProjectSlug(slug);
+      setCurrentPage("project-viewer");
+    } else {
+      url = `/${pageToPath[page] || pageToPath.home}`;
+      setProjectSlug(null);
+      setCurrentPage(page);
+    }
+
     if (replace) {
       window.history.replaceState({}, "", url);
     } else {
       window.history.pushState({}, "", url);
     }
-    setCurrentPage(page);
-    // Scroll to top immediately, then smooth if needed
+
     window.scrollTo({ top: 0, behavior: "instant" });
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 0);
   };
 
   useEffect(() => {
     document.body.style.fontFamily = "'Inter', sans-serif";
 
-    // initialize page from URL path
-    const pageFromUrl = pathToPage(window.location.pathname);
-    setCurrentPage(pageFromUrl);
+    const { page, slug } = parseUrl(window.location.pathname);
+    setCurrentPage(page);
+    setProjectSlug(slug);
 
-    // handle back/forward
     const onPop = () => {
-      const p = pathToPage(window.location.pathname);
+      const { page: p, slug: s } = parseUrl(window.location.pathname);
       setCurrentPage(p);
-      // Scroll to top immediately, then smooth if needed
+      setProjectSlug(s);
       window.scrollTo({ top: 0, behavior: "instant" });
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 0);
     };
 
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, []);
 
-  // Scroll to top whenever page changes
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    if (currentPage !== "project-viewer") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
   }, [currentPage]);
 
+  const isProjectView = currentPage === "project-viewer" && projectSlug;
+
   const renderPage = () => {
+    if (isProjectView) {
+      return <ProjectViewer slug={projectSlug} onNavigate={handleNavigate} />;
+    }
     switch (currentPage) {
       case "home":
         return <HomePage onNavigate={handleNavigate} />;
@@ -131,7 +146,7 @@ export default function App() {
       case "technologies":
         return <TechnologiesPage />;
       case "portfolio":
-        return <PortfolioPage />;
+        return <PortfolioPage onNavigate={handleNavigate} />;
       case "why-choose-us":
         return <WhyChooseUsPage />;
       case "testimonials":
@@ -143,8 +158,7 @@ export default function App() {
     }
   };
 
-  // Get SEO config for current page
-  const seoData = getSEOConfig(currentPage);
+  const seoData = getSEOConfig(isProjectView ? "portfolio" : currentPage);
 
   return (
     <div className="min-h-screen bg-slate-900">
@@ -154,9 +168,9 @@ export default function App() {
         keywords={seoData.keywords}
         canonical={seoData.canonical}
       />
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      {!isProjectView && <Header currentPage={currentPage} onNavigate={handleNavigate} />}
       <main>{renderPage()}</main>
-      <Footer onNavigate={handleNavigate} />
+      {!isProjectView && <Footer onNavigate={handleNavigate} />}
     </div>
   );
 }

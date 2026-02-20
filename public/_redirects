@@ -1,0 +1,7 @@
+# Serve static project files directly
+/All_projects/*  /All_projects/:splat  200
+/viewer.html     /viewer.html          200
+/viewer-frame.html  /viewer-frame.html 200
+
+# SPA fallback for all other routes
+/*    /index.html   200
