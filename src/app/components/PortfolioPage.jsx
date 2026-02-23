@@ -21,6 +21,7 @@ import finflowImage from "../../image/portfolio/finflow.png";
 import logiflowImage from "../../image/portfolio/logiflow.png";
 import premierEstateImage from "../../image/portfolio/premier-estate.png";
 import quickServeImage from "../../image/portfolio/quickserve.png";
+import luxurySalonImage from "../../image/portfolio/luxury-salon.png";
 
 export function PortfolioPage({ onNavigate }) {
   const [filter, setFilter] = useState("all");
@@ -170,6 +171,14 @@ export function PortfolioPage({ onNavigate }) {
       description: "On-demand services platform connecting users with local service providers.",
       image: quickServeImage,
     },
+    {
+      title: "Luxe Beauty Studio — Salon",
+      slug: "luxury-salon",
+      category: "beauty",
+      tags: ["React", "Tailwind CSS", "Vite", "Framer Motion", "Responsive"],
+      description: "Premium luxury salon website for Beverly Hills with appointment booking, services showcase, and gallery.",
+      image: luxurySalonImage,
+    },
   ];
 
   const categories = [
@@ -184,6 +193,7 @@ export function PortfolioPage({ onNavigate }) {
     { id: "finance", name: "Finance" },
     { id: "logistics", name: "Logistics" },
     { id: "services", name: "Services" },
+    { id: "beauty", name: "Beauty & Salon" },
   ];
 
   const filteredProjects = filter === "all" ? projects : projects.filter((p) => p.category === filter);
@@ -318,7 +328,7 @@ export function PortfolioPage({ onNavigate }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">18+</div>
+              <div className="text-5xl font-bold mb-2">19+</div>
               <div className="text-indigo-100 text-sm md:text-base">Successful Projects</div>
             </div>
             <div className="text-center">

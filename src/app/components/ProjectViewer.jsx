@@ -20,6 +20,7 @@ const PROJECT_MAP = {
   "logiflow": "/All_projects/Logiflow/index.html",
   "premier-estate": "/All_projects/PremierEstate/index.html",
   "quickserve": "/All_projects/quickServe/index.html",
+  "luxury-salon": "/All_projects/LuxurySalonWebsite/index.html",
 };
 
 export function ProjectViewer({ slug, onNavigate }) {
