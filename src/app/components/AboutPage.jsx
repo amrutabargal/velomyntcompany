@@ -1,13 +1,22 @@
 import { Target, Users, Award, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
-import { motion } from "motion/react";
-import { useEffect } from "react";
-import companyLogo from "../../image/companylogo-removebg-preview.png";
+import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
+import companyLogo from "../../image/velomyntlogo.png";
 import heroImage from "../../image/hero-image.png";
 
 export function AboutPage() {
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const onChange = () => setIsMobileViewport(media.matches);
+    onChange();
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
   }, []);
   const values = [
     {
@@ -58,7 +67,14 @@ export function AboutPage() {
       role: "Full Stack Developer",
       image: companyLogo,
     },
+    {
+      name: "Aditya Mahale",
+      role: "Frontend Developer",
+      image: companyLogo,
+    },
   ];
+  const scrollingTeam = [...team, ...team];
+  const shouldAutoScrollTeam = !prefersReducedMotion && !isMobileViewport && team.length > 1;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -192,28 +208,34 @@ export function AboutPage() {
               Talented professionals dedicated to your success
             </p>
           </motion.div>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 max-w-6xl mx-auto"
-          >
-            {team.map((member, index) => (
-              <motion.div key={index} variants={itemVariants} whileHover={{ y: -4 }} className="text-center group">
-                <div className="relative mb-3 overflow-hidden rounded-xl p-2 sm:p-3 bg-slate-700/40 border border-slate-600/50 backdrop-blur-sm transition-all duration-300 group-hover:border-slate-500/50 group-hover:bg-slate-700/60">
-                  <div className="bg-white/10 rounded-lg p-2 sm:p-3">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                      className="w-full h-32 sm:h-36 object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 contrast-110"
-                  />
-                  </div>
-                </div>
-                <h3 className="text-sm sm:text-base font-semibold text-white mb-1">{member.name}</h3>
-                <p className="text-xs sm:text-sm text-gray-400">{member.role}</p>
+          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
+              <motion.div
+                className={shouldAutoScrollTeam ? "flex w-max gap-4 sm:gap-6" : "flex flex-wrap justify-center gap-4 sm:gap-6"}
+                animate={shouldAutoScrollTeam ? { x: ["0%", "-50%"] } : undefined}
+                transition={shouldAutoScrollTeam ? { duration: 28, ease: "linear", repeat: Infinity } : undefined}
+              >
+                {scrollingTeam.map((member, index) => (
+                  <motion.div
+                    key={`${member.name}-${index}`}
+                    whileHover={{ y: -4 }}
+                    className="text-center group min-w-[150px] sm:min-w-[170px] flex-shrink-0"
+                  >
+                    <div className="relative mb-3 overflow-hidden rounded-xl p-2 sm:p-3 bg-white border border-slate-200 transition-all duration-300 group-hover:border-slate-300">
+                      <div className="bg-slate-100 rounded-lg p-2 sm:p-3">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                          className="w-full h-32 sm:h-36 object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 contrast-110"
+                      />
+                      </div>
+                    </div>
+                    <h3 className="text-sm sm:text-base font-semibold text-white mb-1">{member.name}</h3>
+                    <p className="text-xs sm:text-sm text-gray-400">{member.role}</p>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
+            </div>
           </motion.div>
         </div>
       </section>

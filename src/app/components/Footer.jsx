@@ -1,24 +1,25 @@
 import { Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import companyLogo from "../../image/lightthemlogo.png";
+import companyLogo from "../../image/velomyntlogo.png";
 
 export function Footer({ onNavigate }) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-gray-300 border-t border-indigo-900/60">
+    <footer className="bg-white text-slate-700 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center mb-4">
-              <img 
-                src={companyLogo} 
-                alt="Velomynt Logo" 
-                className="h-12 sm:h-16 md:h-20 w-auto object-contain"
-              />
-              <span className="ml-2 text-base sm:text-lg md:text-xl font-bold text-white">Velomynt</span>
+            <div className="flex items-center gap-0 mb-4">
+              <div>
+                <img 
+                  src={companyLogo} 
+                  alt="Velomynt Logo" 
+                  className="h-12 sm:h-14 md:h-20 w-auto object-contain"
+                />
+              </div>
             </div>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-sm text-slate-600 mb-4">
               Leading IT services company providing innovative software solutions, web development, and mobile applications to businesses worldwide.
             </p>
             <div className="flex space-x-4">
@@ -26,7 +27,7 @@ export function Footer({ onNavigate }) {
                 href="https://www.facebook.com/velomynt" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-indigo-500 transition-colors"
                 aria-label="Visit our Facebook page"
               >
                 <Facebook size={20} />
@@ -35,7 +36,7 @@ export function Footer({ onNavigate }) {
                 href="https://x.com/velomynt" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-indigo-500 transition-colors"
                 aria-label="Visit our Twitter/X page"
               >
                 <Twitter size={20} />
@@ -44,7 +45,7 @@ export function Footer({ onNavigate }) {
                 href="https://www.linkedin.com/velomynt" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-indigo-500 transition-colors"
                 aria-label="Visit our LinkedIn page"
               >
                 <Linkedin size={20} />
@@ -53,7 +54,7 @@ export function Footer({ onNavigate }) {
                 href="https://www.instagram.com/velomynt" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-indigo-400 transition-colors"
+                className="hover:text-indigo-500 transition-colors"
                 aria-label="Visit our Instagram page"
               >
                 <Instagram size={20} />
@@ -63,33 +64,33 @@ export function Footer({ onNavigate }) {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-slate-900 font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => onNavigate("home")} className="hover:text-indigo-400 transition-colors text-sm">
+                <button onClick={() => onNavigate("home")} className="hover:text-indigo-500 transition-colors text-sm">
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate("about")} className="hover:text-indigo-400 transition-colors text-sm">
+                <button onClick={() => onNavigate("about")} className="hover:text-indigo-500 transition-colors text-sm">
                   About Us
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate("services")} className="hover:text-indigo-400 transition-colors text-sm">
+                <button onClick={() => onNavigate("services")} className="hover:text-indigo-500 transition-colors text-sm">
                   Services
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate("additional-services")} 
-                  className="hover:text-indigo-400 transition-colors text-sm"
+                  className="hover:text-indigo-500 transition-colors text-sm"
                 >
                   Additional Services
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate("portfolio")} className="hover:text-indigo-400 transition-colors text-sm">
+                <button onClick={() => onNavigate("portfolio")} className="hover:text-indigo-500 transition-colors text-sm">
                   Portfolio
                 </button>
               </li>
@@ -98,12 +99,12 @@ export function Footer({ onNavigate }) {
 
           {/* Services */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Services</h3>
+            <h3 className="text-slate-900 font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => onNavigate("software-development")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   Software Development
                 </button>
@@ -111,7 +112,7 @@ export function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate("website-development")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   Website Development
                 </button>
@@ -119,7 +120,7 @@ export function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate("mobile-app-development")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   Mobile App Development
                 </button>
@@ -129,12 +130,12 @@ export function Footer({ onNavigate }) {
 
           {/* Additional Services */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Additional Services</h3>
+            <h3 className="text-slate-900 font-semibold mb-4">Additional Services</h3>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => onNavigate("additional-services")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   UI/UX Design
                 </button>
@@ -142,7 +143,7 @@ export function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate("additional-services")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   AI Automation & Integration
                 </button>
@@ -150,7 +151,7 @@ export function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate("additional-services")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   Database Solutions
                 </button>
@@ -158,7 +159,7 @@ export function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate("additional-services")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   Cloud Services
                 </button>
@@ -166,7 +167,7 @@ export function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate("additional-services")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   Cybersecurity
                 </button>
@@ -174,7 +175,7 @@ export function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate("additional-services")}
-                  className="text-sm hover:text-indigo-400 transition-colors"
+                  className="text-sm hover:text-indigo-500 transition-colors"
                 >
                   Performance Optimization
                 </button>
@@ -184,20 +185,20 @@ export function Footer({ onNavigate }) {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-slate-900 font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail size={18} className="mr-2 mt-0.5 flex-shrink-0" />
-                <a href="mailto:info@velomynt.com" className="text-sm hover:text-indigo-400 transition-colors">info@velomynt.com</a>
+                <a href="mailto:info@velomynt.com" className="text-sm hover:text-indigo-500 transition-colors">info@velomynt.com</a>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-sm text-gray-400">
-            © {currentYear} Velomynt Digital LLP. All rights reserved.
+        <div className="border-t border-slate-200 mt-8 pt-8 text-center">
+          <p className="text-sm text-slate-500">
+            © {currentYear} Velomynt LLP. All rights reserved.
           </p>
         </div>
       </div>

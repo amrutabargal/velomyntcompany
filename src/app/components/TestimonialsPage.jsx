@@ -1,8 +1,13 @@
+import { useEffect, useMemo, useState } from "react";
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { fetchDynamicTestimonials } from "../lib/googleReviewsClient.js";
 
 export function TestimonialsPage() {
+  const writeReviewUrl = import.meta.env.VITE_GOOGLE_REVIEW_URL || "";
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const testimonials = [
     {
       name: "Aarav Mehta",
@@ -60,6 +65,64 @@ export function TestimonialsPage() {
     { number: "10+", label: "Projects Delivered" },
   ];
 
+  const [dynamicReviews, setDynamicReviews] = useState([]);
+  const [dynamicMeta, setDynamicMeta] = useState({ rating: null, userRatingsTotal: null });
+  const [usingLiveData, setUsingLiveData] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    const controller = new AbortController();
+
+    const loadReviews = async () => {
+      try {
+        const payload = await fetchDynamicTestimonials({
+          limit: 6,
+          signal: controller.signal,
+        });
+        if (!mounted) return;
+        setDynamicReviews(payload.testimonials);
+        setDynamicMeta({
+          rating: payload.rating,
+          userRatingsTotal: payload.userRatingsTotal,
+        });
+        setUsingLiveData(true);
+      } catch (_) {
+        if (!mounted) return;
+        setUsingLiveData(false);
+      }
+    };
+
+    loadReviews();
+    const interval = window.setInterval(loadReviews, 2 * 60 * 1000);
+    return () => {
+      mounted = false;
+      controller.abort();
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const onChange = () => setIsMobileViewport(media.matches);
+    onChange();
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  const displayTestimonials = useMemo(
+    () => (dynamicReviews.length > 0 ? dynamicReviews : testimonials),
+    [dynamicReviews, testimonials],
+  );
+  const allowContinuousAnimation = !prefersReducedMotion && !isMobileViewport;
+  const shouldAutoScrollTestimonials = useMemo(
+    () => displayTestimonials.length > 1 && allowContinuousAnimation,
+    [displayTestimonials, allowContinuousAnimation],
+  );
+  const testimonialsToRender = useMemo(
+    () => (shouldAutoScrollTestimonials ? [...displayTestimonials, ...displayTestimonials] : displayTestimonials),
+    [displayTestimonials],
+  );
+
   return (
     <div className="pt-16">
       {/* Hero Section */}
@@ -76,6 +139,16 @@ export function TestimonialsPage() {
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">
               Don't just take our word for it—hear what our satisfied clients have to say about working with us
             </p>
+            {writeReviewUrl && (
+              <a
+                href={writeReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex mt-6 px-5 py-2.5 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors"
+              >
+                Add Your Review on Google
+              </a>
+            )}
           </motion.div>
         </div>
       </section>
@@ -83,6 +156,13 @@ export function TestimonialsPage() {
       {/* Stats Section */}
       <section className="py-16 bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {usingLiveData && (
+            <div className="mb-6 text-center text-sm text-gray-600">
+              Live Google reviews enabled
+              {Number.isFinite(dynamicMeta.rating) && ` • ${dynamicMeta.rating.toFixed(1)} rating`}
+              {Number.isFinite(dynamicMeta.userRatingsTotal) && ` • ${dynamicMeta.userRatingsTotal}+ reviewers`}
+            </div>
+          )}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
@@ -99,39 +179,54 @@ export function TestimonialsPage() {
       {/* Testimonials Grid */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-2 border-gray-100 hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-4">
-                    {Array.from({ length: 5 }).map((_, i) => {
-                      const filledStars = Math.floor(testimonial.rating);
-                      const hasHalfStar = testimonial.rating - filledStars >= 0.5;
-                      const isFilled = i < filledStars;
-                      const isHalf = i === filledStars && hasHalfStar;
-                      const starClass = isFilled
-                        ? "w-5 h-5 fill-yellow-400 text-yellow-400"
-                        : isHalf
-                          ? "w-5 h-5 fill-yellow-400/50 text-yellow-400"
-                          : "w-5 h-5 text-yellow-400/40";
-                      return <Star key={i} className={starClass} />;
-                    })}
-                  </div>
-                  <Quote className="w-10 h-10 text-indigo-200 mb-4" />
-                  <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mr-4">
-                      {testimonial.initials}
+          <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
+            <motion.div
+              className={shouldAutoScrollTestimonials ? "flex w-max gap-8" : "flex flex-wrap justify-center gap-8"}
+              animate={shouldAutoScrollTestimonials ? { x: ["0%", "-50%"] } : undefined}
+              transition={shouldAutoScrollTestimonials ? { duration: 36, ease: "linear", repeat: Infinity } : undefined}
+            >
+              {testimonialsToRender.map((testimonial, index) => (
+                <Card key={`${testimonial.name}-${index}`} className="border-2 border-gray-100 hover:shadow-xl transition-all duration-300 w-[300px] sm:w-[340px] lg:w-[380px] flex-shrink-0">
+                  <CardContent className="p-8">
+                    <div className="flex items-center mb-4">
+                      {Array.from({ length: 5 }).map((_, i) => {
+                        const filledStars = Math.floor(testimonial.rating);
+                        const hasHalfStar = testimonial.rating - filledStars >= 0.5;
+                        const isFilled = i < filledStars;
+                        const isHalf = i === filledStars && hasHalfStar;
+                        const starClass = isFilled
+                          ? "w-5 h-5 fill-yellow-400 text-yellow-400"
+                          : isHalf
+                            ? "w-5 h-5 fill-yellow-400/50 text-yellow-400"
+                            : "w-5 h-5 text-yellow-400/40";
+                        return <Star key={i} className={starClass} />;
+                      })}
                     </div>
-                    <div>
-                      <div className="font-bold text-white">{testimonial.name}</div>
-                      <div className="text-sm text-indigo-100">{testimonial.role}</div>
-                      <div className="text-sm text-sky-400">{testimonial.company}</div>
+                    <Quote className="w-10 h-10 text-indigo-200 mb-4" />
+                    <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
+                    <div className="flex items-center">
+                      {testimonial.avatarUrl ? (
+                        <img
+                          src={testimonial.avatarUrl}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full object-cover border border-indigo-400/40 mr-4"
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mr-4">
+                          {testimonial.initials}
+                        </div>
+                      )}
+                      <div>
+                        <div className="font-bold text-white">{testimonial.name}</div>
+                        <div className="text-sm text-indigo-100">{testimonial.role}</div>
+                        <div className="text-sm text-sky-400">{testimonial.company}</div>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>

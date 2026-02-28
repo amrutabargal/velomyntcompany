@@ -2,6 +2,8 @@ import { Code, Globe, Smartphone } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { Button } from "./ui/button.jsx";
 import { motion } from "motion/react";
+import softwareDevelopmentImage from "../../image/software.png";
+import webDevelopmentImage from "../../image/WebDevelopment.jpg";
 
 export function ServicesPage({ onNavigate }) {
   const mainServices = [
@@ -95,13 +97,15 @@ export function ServicesPage({ onNavigate }) {
                       <img
                         src={
                           index === 0
-                            ? "https://images.unsplash.com/photo-1763568258752-fe55f4ab7267?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3Njc2ODE4NzB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                            ? softwareDevelopmentImage
                             : index === 1
-                            ? "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZ3xlbnwxfHx8fDE3Njc2MzA5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                            ? webDevelopmentImage
                             : "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzY3NjAwODc1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
                         }
                         alt={service.title}
-                        className="w-full h-96 object-cover"
+                        className={index === 0 ? "w-full h-[26rem] object-cover object-center" : "w-full h-[26rem] object-cover"}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </Card>
                   </div>

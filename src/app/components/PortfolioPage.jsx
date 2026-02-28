@@ -219,7 +219,7 @@ export function PortfolioPage({ onNavigate }) {
       </section>
 
       {/* Filter Section */}
-      <section className="py-8 sm:py-12 bg-slate-800 border-b border-slate-700/50">
+      <section className="render-defer py-8 sm:py-12 bg-slate-800 border-b border-slate-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {categories.map((category) => (
@@ -240,9 +240,9 @@ export function PortfolioPage({ onNavigate }) {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-16 md:py-24 bg-slate-900">
+      <section className="render-defer py-16 md:py-24 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={index}
@@ -250,15 +250,18 @@ export function PortfolioPage({ onNavigate }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="w-full max-w-[310px]"
               >
                 <Card
                   className="overflow-hidden group cursor-pointer bg-slate-950 border border-slate-800/50 hover:border-indigo-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-2"
                 >
-                  <div className="relative overflow-hidden h-56 md:h-64 lg:h-72 bg-gradient-to-br from-slate-900 to-slate-950">
+                  <div className="relative overflow-hidden h-48 sm:h-52 bg-gradient-to-br from-slate-900 to-slate-950">
                     <motion.img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     />
@@ -324,23 +327,23 @@ export function PortfolioPage({ onNavigate }) {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
+      <section className="render-defer py-20 bg-gradient-to-br from-indigo-700 to-indigo-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">19+</div>
+              <div className="text-3xl sm:text-5xl font-bold mb-2">20+</div>
               <div className="text-indigo-100 text-sm md:text-base">Successful Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">98%</div>
+              <div className="text-3xl sm:text-5xl font-bold mb-2">98%</div>
               <div className="text-indigo-100 text-sm md:text-base">Client Retention Rate</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">8+</div>
+              <div className="text-3xl sm:text-5xl font-bold mb-2">8+</div>
               <div className="text-indigo-100 text-sm md:text-base">Trusted Partners</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold mb-2">10+</div>
+              <div className="text-3xl sm:text-5xl font-bold mb-2">10+</div>
               <div className="text-indigo-100 text-sm md:text-base">Industries We Serve</div>
             </div>
           </div>

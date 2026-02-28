@@ -1,27 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
-
-const PROJECT_MAP = {
-  "shophube": "/All_projects/shophube/dist/index.html",
-  "styleverse": "/All_projects/Styleverse/index.html",
-  "royal-palace": "/All_projects/Royal_palace/index.html",
-  "prestigra-den": "/All_projects/prestigegrand/index.html",
-  "paradise-resort": "/All_projects/paradiseresort/index.html",
-  "indian-resort": "/All_projects/Indianresort/index.html",
-  "caremax": "/All_projects/caremahospital/dist/index.html",
-  "foodswift": "/All_projects/fooddelivery/index.html",
-  "foodhub": "/All_projects/foodhub/index.html",
-  "healthcare-portal": "/All_projects/Medicare/index.html",
-  "medicare-plus": "/All_projects/MedicareHealthcare_Clinic/index.html",
-  "eduflow": "/All_projects/Equcation/index.html",
-  "velomynt-realestate": "/All_projects/Demo1/index.html",
-  "tours": "/All_projects/tours/index.html",
-  "finflow": "/All_projects/Finflow/index.html",
-  "logiflow": "/All_projects/Logiflow/index.html",
-  "premier-estate": "/All_projects/PremierEstate/index.html",
-  "quickserve": "/All_projects/quickServe/index.html",
-  "luxury-salon": "/All_projects/LuxurySalonWebsite/index.html",
-};
+import { PROJECT_MAP } from "../config/projectMap.js";
 
 export function ProjectViewer({ slug, onNavigate }) {
   const iframeRef = useRef(null);
@@ -34,6 +13,8 @@ export function ProjectViewer({ slug, onNavigate }) {
 
     const iframe = iframeRef.current;
     if (!iframe) return;
+    let cancelled = false;
+    setLoading(true);
 
     const basePath = projectPath.substring(0, projectPath.lastIndexOf("/") + 1);
 
@@ -48,15 +29,53 @@ export function ProjectViewer({ slug, onNavigate }) {
       fetch(projectPath)
         .then((r) => r.text())
         .then((html) => {
+          if (cancelled) return;
           const baseTag = `<base href="${window.location.origin}${basePath}">`;
-          html = html.replace(/<head([^>]*)>/i, "<head$1>" + baseTag);
+          const resetScript = `
+            <script>
+              (function () {
+                try {
+                  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+                  history.replaceState(null, "", "/");
+                  if (location.hash) location.hash = "";
+                  window.scrollTo(0, 0);
+                  document.documentElement.scrollTop = 0;
+                  document.body.scrollTop = 0;
+                  window.addEventListener("load", function () {
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                  }, { once: true });
+                  setTimeout(function () {
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                  }, 60);
+                } catch (_) {}
+              })();
+            </script>
+          `;
+          html = html.replace(/<head([^>]*)>/i, "<head$1>" + baseTag + resetScript);
 
           const doc = iframe.contentDocument;
           doc.open();
           doc.write(html);
           doc.close();
+          try {
+            iframe.contentWindow.scrollTo(0, 0);
+            iframe.contentDocument.documentElement.scrollTop = 0;
+            iframe.contentDocument.body.scrollTop = 0;
+          } catch (_) { /* same-origin safe */ }
           setLoading(false);
+        })
+        .catch(() => {
+          if (!cancelled) setLoading(false);
         });
+    };
+
+    return () => {
+      cancelled = true;
+      iframe.onload = null;
     };
   }, [projectPath]);
 
@@ -108,4 +127,3 @@ export function ProjectViewer({ slug, onNavigate }) {
   );
 }
 
-export { PROJECT_MAP };

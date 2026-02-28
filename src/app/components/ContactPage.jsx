@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Send } from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
 import { Button } from "./ui/button.jsx";
 import { Input } from "./ui/input.jsx";
 import { Textarea } from "./ui/textarea.jsx";
@@ -15,19 +15,47 @@ export function ContactPage() {
     service: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitFeedback, setSubmitFeedback] = useState({ type: "", message: "" });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      service: "",
-      message: "",
-    });
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitFeedback({ type: "", message: "" });
+
+    try {
+      const response = await fetch("/api/contact-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        body: JSON.stringify(formData),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload?.ok === false) {
+        throw new Error(payload?.error || "Failed to submit your message");
+      }
+
+      setSubmitFeedback({
+        type: "success",
+        message: "Thank you! Your message has been sent successfully.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      setSubmitFeedback({
+        type: "error",
+        message: error instanceof Error ? error.message : "Failed to submit your message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -43,6 +71,14 @@ export function ContactPage() {
       title: "Email Us",
       details: "info@velomynt.com",
       subdetails: "",
+      href: "mailto:info@velomynt.com",
+    },
+    {
+      icon: Phone,
+      title: "Call Us",
+      details: "+91 7717441711",
+      subdetails: "",
+      href: "tel:+917717441711",
     },
   ];
 
@@ -69,7 +105,7 @@ export function ContactPage() {
       {/* Contact Info Cards */}
       <section className="py-12 sm:py-16 md:py-20 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-1 gap-8 mb-20 max-w-md mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 mb-20 max-w-3xl mx-auto">
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
@@ -79,7 +115,7 @@ export function ContactPage() {
                       <Icon className="text-black" size={28} />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-3">{info.title}</h3>
-                    <a href={`mailto:${info.details}`} className="text-gray-200 mb-1 hover:text-indigo-400 transition-colors">{info.details}</a>
+                    <a href={info.href} className="text-gray-200 mb-1 hover:text-indigo-400 transition-colors">{info.details}</a>
                     {info.subdetails && <p className="text-indigo-100 text-sm">{info.subdetails}</p>}
                   </CardContent>
                 </Card>
@@ -135,7 +171,7 @@ export function ContactPage() {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 7717441711"
                     className="w-full bg-slate-900/50 border-slate-700 text-white placeholder:text-gray-500"
                   />
                 </div>
@@ -193,10 +229,21 @@ export function ContactPage() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Message <Send className="ml-2" size={20} />
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <Send className="ml-2" size={20} />
                 </Button>
+                {submitFeedback.message && (
+                  <p
+                    className={`text-sm ${
+                      submitFeedback.type === "success" ? "text-emerald-300" : "text-rose-300"
+                    }`}
+                  >
+                    {submitFeedback.message}
+                  </p>
+                )}
               </form>
             </div>
 

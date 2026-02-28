@@ -2,6 +2,8 @@
 /All_projects/*  /All_projects/:splat  200
 /viewer.html     /viewer.html          200
 /viewer-frame.html  /viewer-frame.html 200
+/api/google-reviews  /.netlify/functions/google-reviews  200
+/api/contact-lead   /.netlify/functions/contact-lead     200
 
 # SPA fallback for all other routes
 /*    /index.html   200

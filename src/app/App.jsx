@@ -1,21 +1,39 @@
-import { useState, useEffect } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { Header } from "./components/Header.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { SEO } from "./components/SEO.jsx";
 import { getSEOConfig } from "./config/seoKeywords.js";
-import { HomePage } from "./components/HomePage.jsx";
-import { AboutPage } from "./components/AboutPage.jsx";
-import { ServicesPage } from "./components/ServicesPage.jsx";
-import { TechnologiesPage } from "./components/TechnologiesPage.jsx";
-import { PortfolioPage } from "./components/PortfolioPage.jsx";
-import { WhyChooseUsPage } from "./components/WhyChooseUsPage.jsx";
-import { TestimonialsPage } from "./components/TestimonialsPage.jsx";
-import { ContactPage } from "./components/ContactPage.jsx";
-import { SoftwareDevelopmentPage } from "./components/SoftwareDevelopmentPage.jsx";
-import { WebsiteDevelopmentPage } from "./components/WebsiteDevelopmentPage.jsx";
-import { MobileAppDevelopmentPage } from "./components/MobileAppDevelopmentPage.jsx";
-import { AdditionalServicesPage } from "./components/AdditionalServicesPage.jsx";
-import { ProjectViewer, PROJECT_MAP } from "./components/ProjectViewer.jsx";
+import { PROJECT_MAP } from "./config/projectMap.js";
+
+const HomePage = lazy(() => import("./components/HomePage.jsx").then((m) => ({ default: m.HomePage })));
+const AboutPage = lazy(() => import("./components/AboutPage.jsx").then((m) => ({ default: m.AboutPage })));
+const ServicesPage = lazy(() => import("./components/ServicesPage.jsx").then((m) => ({ default: m.ServicesPage })));
+const TechnologiesPage = lazy(() =>
+  import("./components/TechnologiesPage.jsx").then((m) => ({ default: m.TechnologiesPage })),
+);
+const PortfolioPage = lazy(() => import("./components/PortfolioPage.jsx").then((m) => ({ default: m.PortfolioPage })));
+const WhyChooseUsPage = lazy(() =>
+  import("./components/WhyChooseUsPage.jsx").then((m) => ({ default: m.WhyChooseUsPage })),
+);
+const TestimonialsPage = lazy(() =>
+  import("./components/TestimonialsPage.jsx").then((m) => ({ default: m.TestimonialsPage })),
+);
+const ContactPage = lazy(() => import("./components/ContactPage.jsx").then((m) => ({ default: m.ContactPage })));
+const SoftwareDevelopmentPage = lazy(() =>
+  import("./components/SoftwareDevelopmentPage.jsx").then((m) => ({ default: m.SoftwareDevelopmentPage })),
+);
+const WebsiteDevelopmentPage = lazy(() =>
+  import("./components/WebsiteDevelopmentPage.jsx").then((m) => ({ default: m.WebsiteDevelopmentPage })),
+);
+const MobileAppDevelopmentPage = lazy(() =>
+  import("./components/MobileAppDevelopmentPage.jsx").then((m) => ({ default: m.MobileAppDevelopmentPage })),
+);
+const AdditionalServicesPage = lazy(() =>
+  import("./components/AdditionalServicesPage.jsx").then((m) => ({ default: m.AdditionalServicesPage })),
+);
+const ProjectViewer = lazy(() =>
+  import("./components/ProjectViewer.jsx").then((m) => ({ default: m.ProjectViewer })),
+);
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -159,9 +177,14 @@ export default function App() {
   };
 
   const seoData = getSEOConfig(isProjectView ? "portfolio" : currentPage);
+  const pageFallback = (
+    <div className="min-h-[40vh] flex items-center justify-center text-indigo-300 text-sm">
+      Loading...
+    </div>
+  );
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-slate-900 overflow-x-hidden">
       <SEO
         title={seoData.title}
         description={seoData.description}
@@ -169,7 +192,9 @@ export default function App() {
         canonical={seoData.canonical}
       />
       {!isProjectView && <Header currentPage={currentPage} onNavigate={handleNavigate} />}
-      <main>{renderPage()}</main>
+      <main className="overflow-x-hidden">
+        <Suspense fallback={pageFallback}>{renderPage()}</Suspense>
+      </main>
       {!isProjectView && <Footer onNavigate={handleNavigate} />}
     </div>
   );

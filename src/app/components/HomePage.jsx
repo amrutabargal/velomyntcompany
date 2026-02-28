@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Code, Smartphone, Globe, ExternalLink, Shield, Users, Zap, Award, TrendingUp, Clock, Headphones, Star, Quote } from "lucide-react";
 import { Button } from "./ui/button.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import ecommerceImage from "../../image/portfolio/shophub.png";
 import healthcareImage from "../../image/portfolio/caremax-hospital.png";
 import maximizeNetworkImage from "../../image/portfolio/himkan.png";
@@ -13,8 +13,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog.tsx";
-import companyLogo from "../../image/companylogo-removebg-preview.png";
-import homeImage from "../../image/home-image.png";
+import companyLogo from "../../image/velomyntlogo.png";
+import homeImage from "../../image/Homepage.webp";
 import ReactLogo from "../../image/react.svg";
 import NodeLogo from "../../image/nodejs.svg";
 import PythonLogo from "../../image/python.svg";
@@ -23,11 +23,16 @@ import AngularLogo from "../../image/angular.svg";
 import VueLogo from "../../image/vue.svg";
 import DockerLogo from "../../image/docker.svg";
 import AWSLogo from "../../image/aws.svg";
+import { fetchDynamicTestimonials } from "../lib/googleReviewsClient.js";
 
 export function HomePage({ onNavigate }) {
+  const writeReviewUrl = import.meta.env.VITE_GOOGLE_REVIEW_URL || "";
   const [selectedService, setSelectedService] = useState(null);
   const [selectedPortfolio, setSelectedPortfolio] = useState(null);
   const [counters, setCounters] = useState({ projects: 0, clients: 0 });
+  const [liveTestimonials, setLiveTestimonials] = useState([]);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef(null);
 
   const services = [
@@ -166,6 +171,40 @@ export function HomePage({ onNavigate }) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const onChange = () => setIsMobileViewport(media.matches);
+    onChange();
+    media.addEventListener("change", onChange);
+    return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    const controller = new AbortController();
+
+    const loadReviews = async () => {
+      try {
+        const payload = await fetchDynamicTestimonials({
+          limit: 3,
+          signal: controller.signal,
+        });
+        if (!mounted) return;
+        setLiveTestimonials(payload.testimonials);
+      } catch (_) {
+        // Keep existing static testimonials when API is unavailable.
+      }
+    };
+
+    loadReviews();
+    const interval = window.setInterval(loadReviews, 2 * 60 * 1000);
+    return () => {
+      mounted = false;
+      controller.abort();
+      window.clearInterval(interval);
+    };
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -189,23 +228,47 @@ export function HomePage({ onNavigate }) {
 
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, threshold: 0.5 });
+  const fallbackTestimonials = [
+    {
+      name: "Aarav Mehta",
+      role: "Founder/CEO, BlueOrbit Technologies",
+      company: "BlueOrbit Technologies",
+      initials: "AM",
+      rating: 4.2,
+      text: "We changed scope twice and it could've derailed the timeline. They stayed calm, kept us updated, and shipped a clean release.",
+    },
+    {
+      name: "Ritika Sharma",
+      role: "Founder/CEO, Nexwave Solutions",
+      company: "Nexwave Solutions",
+      initials: "RS",
+      rating: 4.8,
+      text: "Communication was the biggest win for us. Even when bugs popped up after launch, they owned the fixes and closed the loop fast.",
+    },
+    {
+      name: "Kunal Verma",
+      role: "Founder/CEO, CloudMint Systems",
+      company: "CloudMint Systems",
+      initials: "KV",
+      rating: 3.6,
+      text: "There were a few back-and-forths on UI, but the team listened and got it right. The final build is reliable and easy to use.",
+    },
+  ];
+  const displayTestimonials = liveTestimonials.length > 0 ? liveTestimonials : fallbackTestimonials;
+  const allowContinuousAnimation = !prefersReducedMotion && !isMobileViewport;
+  const shouldAutoScrollTestimonials = displayTestimonials.length > 1 && allowContinuousAnimation;
+  const testimonialsToRender = shouldAutoScrollTestimonials
+    ? [...displayTestimonials, ...displayTestimonials]
+    : displayTestimonials;
 
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden">
+      <section ref={heroRef} className="relative bg-slate-950 py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden">
         <motion.div 
-          className="absolute inset-0 bg-grid-pattern opacity-10"
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
+          className="absolute inset-0 bg-grid-pattern opacity-5"
         ></motion.div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(16,185,129,0.2),transparent_55%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,_rgba(99,102,241,0.12),transparent_60%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
@@ -219,7 +282,7 @@ export function HomePage({ onNavigate }) {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 whileHover={{ scale: 1.05 }}
-                className="inline-block px-4 py-2 bg-indigo-500/15 border border-indigo-400/40 text-indigo-200 rounded-full text-sm font-medium mb-6 backdrop-blur-sm cursor-pointer"
+                className="inline-block px-4 py-2 bg-slate-900/80 border border-slate-700 text-slate-200 rounded-full text-sm font-medium mb-6 backdrop-blur-sm cursor-pointer"
               >
                 🚀 Leading IT Solutions Provider
               </motion.div>
@@ -231,7 +294,7 @@ export function HomePage({ onNavigate }) {
               >
                 Transform Your Business with
                 <motion.span 
-                  className="bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent block"
+                  className="text-indigo-300 block"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 0.8 }}
@@ -257,7 +320,7 @@ export function HomePage({ onNavigate }) {
                   <Button
                     size="lg"
                     onClick={() => onNavigate("contact")}
-                    className="bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 shadow-lg shadow-indigo-500/40 hover:shadow-xl hover:shadow-indigo-500/60 transition-all w-full sm:w-auto"
+                    className="bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition-colors w-full sm:w-auto"
                   >
                     Get Started <ArrowRight className="ml-2" size={20} />
                   </Button>
@@ -267,7 +330,7 @@ export function HomePage({ onNavigate }) {
                     size="lg"
                     variant="outline"
                     onClick={() => onNavigate("portfolio")}
-                    className="border-indigo-400/60 text-white hover:bg-indigo-500/10 backdrop-blur-sm w-full sm:w-auto"
+                    className="border-slate-600 text-white hover:bg-slate-800/80 backdrop-blur-sm w-full sm:w-auto"
                   >
                     View Our Work
                   </Button>
@@ -325,7 +388,9 @@ export function HomePage({ onNavigate }) {
                 <img
                   src={homeImage}
                   alt="Technology"
-                  className="rounded-2xl shadow-2xl w-full h-auto"
+                  className="rounded-2xl shadow-2xl w-full xl:w-[120%] max-w-none h-auto"
+                  fetchPriority="high"
+                  decoding="async"
                 />
               </motion.div>
             </motion.div>
@@ -334,7 +399,7 @@ export function HomePage({ onNavigate }) {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
+      <section className="render-defer py-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -504,7 +569,7 @@ export function HomePage({ onNavigate }) {
       </Dialog>
 
       {/* Technologies Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-slate-800">
+      <section className="render-defer py-12 sm:py-16 md:py-20 bg-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -557,7 +622,7 @@ export function HomePage({ onNavigate }) {
       </section>
 
       {/* Portfolio Preview Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-800 to-slate-900">
+      <section className="render-defer py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -593,7 +658,9 @@ export function HomePage({ onNavigate }) {
                     <motion.img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-48 sm:h-56 md:h-64 object-cover"
+                      className="w-full aspect-square object-cover"
+                      loading="lazy"
+                      decoding="async"
                       whileHover={{ scale: 1.15 }}
                       transition={{ duration: 0.5 }}
                     />
@@ -653,6 +720,8 @@ export function HomePage({ onNavigate }) {
                   src={selectedPortfolio.image}
                   alt={selectedPortfolio.title}
                   className="w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute top-4 right-4 bg-indigo-500 text-black px-3 py-1 rounded-full text-xs font-medium shadow-lg">
                   {selectedPortfolio.category}
@@ -711,7 +780,7 @@ export function HomePage({ onNavigate }) {
       </Dialog>
 
       {/* Why Choose Us Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden">
+      <section className="render-defer py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -799,7 +868,7 @@ export function HomePage({ onNavigate }) {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
+      <section className="render-defer py-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -813,6 +882,16 @@ export function HomePage({ onNavigate }) {
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Don't just take our word for it—hear what our satisfied clients have to say about working with us
             </p>
+            {writeReviewUrl && (
+              <a
+                href={writeReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex mt-6 px-5 py-2.5 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors"
+              >
+                Add Your Review on Google
+              </a>
+            )}
           </motion.div>
           
           {/* Stats */}
@@ -845,78 +924,66 @@ export function HomePage({ onNavigate }) {
           </motion.div>
 
           {/* Testimonials Grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
-          >
-            {[
-              {
-                name: "Aarav Mehta",
-                role: "Founder/CEO, BlueOrbit Technologies",
-                company: "BlueOrbit Technologies",
-                initials: "AM",
-                rating: 4.2,
-                text: "We changed scope twice and it could've derailed the timeline. They stayed calm, kept us updated, and shipped a clean release.",
-              },
-              {
-                name: "Ritika Sharma",
-                role: "Founder/CEO, Nexwave Solutions",
-                company: "Nexwave Solutions",
-                initials: "RS",
-                rating: 4.8,
-                text: "Communication was the biggest win for us. Even when bugs popped up after launch, they owned the fixes and closed the loop fast.",
-              },
-              {
-                name: "Kunal Verma",
-                role: "Founder/CEO, CloudMint Systems",
-                company: "CloudMint Systems",
-                initials: "KV",
-                rating: 3.6,
-                text: "There were a few back-and-forths on UI, but the team listened and got it right. The final build is reliable and easy to use.",
-              },
-            ].map((testimonial, index) => (
-              <motion.div key={index} variants={itemVariants} whileHover={{ y: -10 }}>
-                <Card className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 h-full">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-4">
-                      {Array.from({ length: 5 }).map((_, i) => {
-                        const filledStars = Math.floor(testimonial.rating);
-                        const hasHalfStar = testimonial.rating - filledStars >= 0.5;
-                        const isFilled = i < filledStars;
-                        const isHalf = i === filledStars && hasHalfStar;
-                        const starClass = isFilled
-                          ? "w-5 h-5 fill-yellow-400 text-yellow-400"
-                          : isHalf
-                            ? "w-5 h-5 fill-yellow-400/50 text-yellow-400"
-                            : "w-5 h-5 text-yellow-400/40";
-                        return <Star key={i} className={starClass} />;
-                      })}
-                    </div>
-                    <Quote className="w-10 h-10 text-indigo-200 mb-4" />
-                    <p className="text-indigo-100 mb-6 italic">"{testimonial.text}"</p>
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mr-4">
-                        {testimonial.initials}
-                      </div>
-                      <div>
-                        <div className="font-bold text-white">{testimonial.name}</div>
-                        <div className="text-sm text-indigo-100">{testimonial.role}</div>
-                        <div className="text-sm text-sky-400">{testimonial.company}</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
+              <motion.div
+                className={shouldAutoScrollTestimonials ? "flex w-max gap-4 sm:gap-6 md:gap-8" : "flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8"}
+                animate={shouldAutoScrollTestimonials ? { x: ["0%", "-50%"] } : undefined}
+                transition={shouldAutoScrollTestimonials ? { duration: 32, ease: "linear", repeat: Infinity } : undefined}
+              >
+                {testimonialsToRender.map((testimonial, index) => (
+                  <motion.div key={`${testimonial.name}-${index}`} whileHover={{ y: -10 }} className="w-[300px] sm:w-[340px] lg:w-[380px] flex-shrink-0">
+                    <Card className="border-2 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm hover:border-indigo-500/60 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300 h-full aspect-square">
+                      <CardContent className="p-6 h-full flex flex-col">
+                        <div className="flex items-center mb-4">
+                          {Array.from({ length: 5 }).map((_, i) => {
+                            const filledStars = Math.floor(testimonial.rating);
+                            const hasHalfStar = testimonial.rating - filledStars >= 0.5;
+                            const isFilled = i < filledStars;
+                            const isHalf = i === filledStars && hasHalfStar;
+                            const starClass = isFilled
+                              ? "w-5 h-5 fill-yellow-400 text-yellow-400"
+                              : isHalf
+                                ? "w-5 h-5 fill-yellow-400/50 text-yellow-400"
+                                : "w-5 h-5 text-yellow-400/40";
+                            return <Star key={i} className={starClass} />;
+                          })}
+                        </div>
+                        <Quote className="w-10 h-10 text-indigo-200 mb-4" />
+                        <p className="text-indigo-100 mb-4 italic text-sm leading-relaxed max-h-28 overflow-hidden">"{testimonial.text}"</p>
+                        <div className="flex items-center mt-auto">
+                          {testimonial.avatarUrl ? (
+                            <img
+                              src={testimonial.avatarUrl}
+                              alt={testimonial.name}
+                              className="w-12 h-12 rounded-full object-cover border border-indigo-400/40 mr-4"
+                              referrerPolicy="no-referrer"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          ) : (
+                            <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mr-4">
+                              {testimonial.initials}
+                            </div>
+                          )}
+                          <div>
+                            <div className="font-bold text-white">{testimonial.name}</div>
+                            <div className="text-sm text-indigo-100">{testimonial.role}</div>
+                            <div className="text-sm text-sky-400">{testimonial.company}</div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-700 text-white relative overflow-hidden">
+      <section className="render-defer py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-700 text-white relative overflow-hidden">
         <motion.div 
           className="absolute inset-0 bg-grid-pattern opacity-10"
           animate={{
