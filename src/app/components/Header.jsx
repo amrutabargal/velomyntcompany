@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button.jsx";
 import { motion, AnimatePresence } from "motion/react";
-import companyLogo from "../../image/velomyntlogo.png";
+import companyLogo from "../../image/velomyntlogo.webp";
 
 export function Header({ currentPage, onNavigate }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,6 +38,7 @@ export function Header({ currentPage, onNavigate }) {
                 src={companyLogo}
                 alt="Velomynt Logo"
                 className="h-full w-full object-contain"
+                loading="lazy"
               />
             </div>
           </motion.div>

@@ -3,9 +3,9 @@ import { ArrowRight, Code, Smartphone, Globe, ExternalLink, Shield, Users, Zap, 
 import { Button } from "./ui/button.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion, useInView, useReducedMotion } from "motion/react";
-import ecommerceImage from "../../image/portfolio/shophub.png";
-import healthcareImage from "../../image/portfolio/caremax-hospital.png";
-import maximizeNetworkImage from "../../image/portfolio/himkan.png";
+import ecommerceImage from "../../image/portfolio/shophub.webp";
+import healthcareImage from "../../image/portfolio/caremax-hospital.webp";
+import maximizeNetworkImage from "../../image/portfolio/himkan.webp";
 import {
   Dialog,
   DialogContent,
@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog.tsx";
-import companyLogo from "../../image/velomyntlogo.png";
+import companyLogo from "../../image/velomyntlogo.webp";
 import homeImage from "../../image/Homepage.webp";
 import ReactLogo from "../../image/react.svg";
 import NodeLogo from "../../image/nodejs.svg";
@@ -25,8 +25,9 @@ import DockerLogo from "../../image/docker.svg";
 import AWSLogo from "../../image/aws.svg";
 import { fetchDynamicTestimonials } from "../lib/googleReviewsClient.js";
 
+const GOOGLE_REVIEW_URL = "https://g.page/r/CS8MzQI-zdcJEBI/review";
+
 export function HomePage({ onNavigate }) {
-  const writeReviewUrl = import.meta.env.VITE_GOOGLE_REVIEW_URL || "";
   const [selectedService, setSelectedService] = useState(null);
   const [selectedPortfolio, setSelectedPortfolio] = useState(null);
   const [counters, setCounters] = useState({ projects: 0, clients: 0 });
@@ -62,42 +63,42 @@ export function HomePage({ onNavigate }) {
   const technologies = [
     {
       name: "React",
-      icon: <img src={ReactLogo} alt="React" className="w-9 h-9" />,
+      icon: <img src={ReactLogo} alt="React" className="w-9 h-9" loading="lazy" />,
       description: "Modern UI library for building interactive interfaces",
     },
     {
       name: "Node.js",
-      icon: <img src={NodeLogo} alt="Node.js" className="w-9 h-9" />,
+      icon: <img src={NodeLogo} alt="Node.js" className="w-9 h-9" loading="lazy" />,
       description: "Server-side JavaScript runtime for scalable applications",
     },
     {
       name: "Python",
-      icon: <img src={PythonLogo} alt="Python" className="w-9 h-9" />,
+      icon: <img src={PythonLogo} alt="Python" className="w-9 h-9" loading="lazy" />,
       description: "Versatile programming language for backend development",
     },
     {
       name: "Java",
-      icon: <img src={JavaLogo} alt="Java" className="w-9 h-9" />,
+      icon: <img src={JavaLogo} alt="Java" className="w-9 h-9" loading="lazy" />,
       description: "Enterprise-grade language for robust applications",
     },
     {
       name: "Angular",
-      icon: <img src={AngularLogo} alt="Angular" className="w-9 h-9" />,
+      icon: <img src={AngularLogo} alt="Angular" className="w-9 h-9" loading="lazy" />,
       description: "Comprehensive framework for web applications",
     },
     {
       name: "Vue.js",
-      icon: <img src={VueLogo} alt="Vue.js" className="w-9 h-9" />,
+      icon: <img src={VueLogo} alt="Vue.js" className="w-9 h-9" loading="lazy" />,
       description: "Progressive framework for building user interfaces",
     },
     {
       name: "Docker",
-      icon: <img src={DockerLogo} alt="Docker" className="w-9 h-9" />,
+      icon: <img src={DockerLogo} alt="Docker" className="w-9 h-9" loading="lazy" />,
       description: "Containerization platform for deployment",
     },
     {
       name: "AWS",
-      icon: <img src={AWSLogo} alt="AWS" className="w-9 h-9" />,
+      icon: <img src={AWSLogo} alt="AWS" className="w-9 h-9" loading="lazy" />,
       description: "Cloud infrastructure and services",
     },
   ];
@@ -181,6 +182,7 @@ export function HomePage({ onNavigate }) {
 
   useEffect(() => {
     let mounted = true;
+    let intervalId = null;
     const controller = new AbortController();
 
     const loadReviews = async () => {
@@ -190,18 +192,20 @@ export function HomePage({ onNavigate }) {
           signal: controller.signal,
         });
         if (!mounted) return;
-        setLiveTestimonials(payload.testimonials);
+        setLiveTestimonials(payload.testimonials ?? []);
+        if (payload.testimonials?.length > 0 && !intervalId) {
+          intervalId = window.setInterval(loadReviews, 2 * 60 * 1000);
+        }
       } catch (_) {
-        // Keep existing static testimonials when API is unavailable.
+        if (mounted) setLiveTestimonials([]);
       }
     };
 
     loadReviews();
-    const interval = window.setInterval(loadReviews, 2 * 60 * 1000);
     return () => {
       mounted = false;
       controller.abort();
-      window.clearInterval(interval);
+      if (intervalId) window.clearInterval(intervalId);
     };
   }, []);
 
@@ -394,6 +398,7 @@ export function HomePage({ onNavigate }) {
                   className="rounded-2xl shadow-2xl w-full xl:w-[120%] max-w-none h-auto"
                   fetchPriority="high"
                   decoding="async"
+                  loading="lazy"
                 />
               </motion.div>
             </motion.div>
@@ -885,16 +890,14 @@ export function HomePage({ onNavigate }) {
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Don't just take our word for it—hear what our satisfied clients have to say about working with us
             </p>
-            {writeReviewUrl && (
-              <a
-                href={writeReviewUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex mt-6 px-5 py-2.5 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors"
-              >
-                Add Your Review on Google
-              </a>
-            )}
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex mt-6 px-5 py-2.5 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors"
+            >
+              Add Your Review on Google
+            </a>
           </motion.div>
 
           {/* Stats */}

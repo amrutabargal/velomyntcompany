@@ -2,8 +2,8 @@ import { Target, Users, Award, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion } from "motion/react";
 import { useEffect } from "react";
-import companyLogo from "../../image/velomyntlogo.png";
-import heroImage from "../../image/hero-image.png";
+import heroImage from "../../image/hero-image.webp";
+import teamAvatar from "../../image/team-avatar.png";
 
 export function AboutPage() {
   useEffect(() => {
@@ -36,32 +36,32 @@ export function AboutPage() {
     {
       name: "Karan Sharma",
       role: "Founder & CEO",
-      image: companyLogo,
+      image: teamAvatar,
     },
     {
       name: "Ajay Verma",
       role: "Head of Department",
-      image: companyLogo,
+      image: teamAvatar,
     },
     {
       name: "Amruta Bargal",
       role: "Full Stack Developer",
-      image: companyLogo,
+      image: teamAvatar,
     },
     {
       name: "Rushikesh Patil",
       role: "Full Stack Developer",
-      image: companyLogo,
+      image: teamAvatar,
     },
     {
       name: "Lalita Rana",
       role: "Full Stack Developer",
-      image: companyLogo,
+      image: teamAvatar,
     },
     {
       name: "Aditya Mahale",
       role: "Frontend Developer",
-      image: companyLogo,
+      image: teamAvatar,
     },
   ];
 
@@ -132,6 +132,7 @@ export function AboutPage() {
                 src={heroImage}
                 alt="Our Team"
                 className="relative rounded-2xl shadow-2xl"
+                loading="lazy"
               />
             </motion.div>
           </div>
@@ -217,6 +218,7 @@ export function AboutPage() {
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full max-h-10 sm:max-h-12 object-contain transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
                     />
                   </div>
                 </div>

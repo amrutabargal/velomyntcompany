@@ -2,8 +2,8 @@ import { Code, Globe, Smartphone } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
 import { Button } from "./ui/button.jsx";
 import { motion } from "motion/react";
-import softwareDevelopmentImage from "../../image/software.png";
-import webDevelopmentImage from "../../image/WebDevelopment.jpg";
+import softwareDevelopmentImage from "../../image/software.webp";
+import webDevelopmentImage from "../../image/WebDevelopment.webp";
 
 export function ServicesPage({ onNavigate }) {
   const mainServices = [

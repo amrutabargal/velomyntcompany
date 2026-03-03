@@ -6,6 +6,8 @@ import { Textarea } from "./ui/textarea.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion } from "motion/react";
 
+const GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbyZzipc78p-7-lVtpZ5on-O1a7Fcro3eRv152Le4NSTuQB4ta8LHXfRxqjWCq32v_Mh/exec";
+
 export function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -25,16 +27,21 @@ export function ContactPage() {
     setSubmitFeedback({ type: "", message: "" });
 
     try {
-      const response = await fetch("/api/contact-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json; charset=utf-8" },
-        body: JSON.stringify(formData),
-      });
+      const formBody = new URLSearchParams({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        service: formData.service,
+        message: formData.message,
+      }).toString();
 
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok || payload?.ok === false) {
-        throw new Error(payload?.error || "Failed to submit your message");
-      }
+      await fetch(GOOGLE_SHEETS_WEBHOOK, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formBody,
+      });
 
       setSubmitFeedback({
         type: "success",

@@ -1,5 +1,5 @@
-@import 'tailwindcss' source(none);
-@source '../**/*.{js,ts,jsx,tsx}';
+@import "tailwindcss";
+@source "../**/*.{js,ts,jsx,tsx}";
 
 @import 'tw-animate-css';
 
@@ -9,6 +9,13 @@
   background-image: linear-gradient(to right, rgba(79, 70, 229, 0.12) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(79, 70, 229, 0.12) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Mobile: prevent horizontal overflow from full-bleed sections */
+@supports (overflow: clip) {
+  .overflow-x-hidden {
+    overflow-x: clip;
+  }
 }
 
 /* Performance: defer painting offscreen heavy sections */

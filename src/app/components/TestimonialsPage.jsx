@@ -4,8 +4,9 @@ import { Card, CardContent } from "./ui/card.jsx";
 import { motion, useReducedMotion } from "motion/react";
 import { fetchDynamicTestimonials } from "../lib/googleReviewsClient.js";
 
+const GOOGLE_REVIEW_URL = "https://g.page/r/CS8MzQI-zdcJEBI/review";
+
 export function TestimonialsPage() {
-  const writeReviewUrl = import.meta.env.VITE_GOOGLE_REVIEW_URL || "";
   const prefersReducedMotion = useReducedMotion();
   const [isMobileViewport, setIsMobileViewport] = useState(false);
 
@@ -21,6 +22,7 @@ export function TestimonialsPage() {
 
   useEffect(() => {
     let mounted = true;
+    let intervalId = null;
     const controller = new AbortController();
 
     const loadReviews = async () => {
@@ -30,12 +32,15 @@ export function TestimonialsPage() {
           signal: controller.signal,
         });
         if (!mounted) return;
-        setDynamicReviews(payload.testimonials);
+        setDynamicReviews(payload.testimonials ?? []);
         setDynamicMeta({
           rating: payload.rating,
           userRatingsTotal: payload.userRatingsTotal,
         });
-        setUsingLiveData(true);
+        setUsingLiveData(Boolean(payload.testimonials?.length));
+        if (payload.testimonials?.length > 0 && !intervalId) {
+          intervalId = window.setInterval(loadReviews, 2 * 60 * 1000);
+        }
       } catch (_) {
         if (!mounted) return;
         setUsingLiveData(false);
@@ -43,11 +48,10 @@ export function TestimonialsPage() {
     };
 
     loadReviews();
-    const interval = window.setInterval(loadReviews, 2 * 60 * 1000);
     return () => {
       mounted = false;
       controller.abort();
-      window.clearInterval(interval);
+      if (intervalId) window.clearInterval(intervalId);
     };
   }, []);
 
@@ -94,16 +98,14 @@ export function TestimonialsPage() {
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">
               Don't just take our word for it—hear what our satisfied clients have to say about working with us
             </p>
-            {writeReviewUrl && (
-              <a
-                href={writeReviewUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex mt-6 px-5 py-2.5 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors"
-              >
-                Add Your Review on Google
-              </a>
-            )}
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex mt-6 px-5 py-2.5 rounded-md bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors"
+            >
+              Add Your Review on Google
+            </a>
           </motion.div>
         </div>
       </section>
@@ -137,16 +139,14 @@ export function TestimonialsPage() {
           {displayTestimonials.length === 0 ? (
             <div className="text-center py-16 px-4">
               <p className="text-lg text-gray-600 mb-4">No reviews yet. Be the first to share your experience!</p>
-              {writeReviewUrl && (
-                <a
-                  href={writeReviewUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex px-6 py-3 rounded-md bg-indigo-600 text-white font-medium hover:bg-indigo-500 transition-colors"
-                >
-                  Add Your Review on Google
-                </a>
-              )}
+              <a
+                href={GOOGLE_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex px-6 py-3 rounded-md bg-indigo-600 text-white font-medium hover:bg-indigo-500 transition-colors"
+              >
+                Add Your Review on Google
+              </a>
             </div>
           ) : (
           <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
@@ -181,6 +181,7 @@ export function TestimonialsPage() {
                           alt={testimonial.name}
                           className="w-12 h-12 rounded-full object-cover border border-indigo-400/40 mr-4"
                           referrerPolicy="no-referrer"
+                          loading="lazy"
                         />
                       ) : (
                         <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mr-4">

@@ -1,4 +1,4 @@
-const API_ENDPOINTS = ["/api/google-reviews", "/.netlify/functions/google-reviews"];
+const API_PATHS = ["/api/google-reviews", "/.netlify/functions/google-reviews"];
 
 function initialsFromName(name = "Google User") {
   const words = name.trim().split(/\s+/).filter(Boolean);
@@ -22,21 +22,37 @@ function mapGoogleReviewToTestimonial(review) {
   };
 }
 
+const EMPTY_RESULT = {
+  source: null,
+  rating: null,
+  userRatingsTotal: null,
+  fetchedAt: null,
+  testimonials: [],
+  skipped: false,
+};
+
 export async function fetchDynamicTestimonials({ limit = 6, signal } = {}) {
+  const baseUrl = import.meta.env.VITE_API_URL;
+  if (baseUrl === undefined || baseUrl === null || (typeof baseUrl === "string" && baseUrl.trim() === "")) {
+    return { ...EMPTY_RESULT, skipped: true };
+  }
+
+  const base = String(baseUrl).trim().replace(/\/$/, "");
   const errors = [];
 
-  for (const endpoint of API_ENDPOINTS) {
+  for (const path of API_PATHS) {
+    const fullPath = path.startsWith("/") ? path : `/${path}`;
+    const url = `${base}${fullPath}?limit=${encodeURIComponent(limit)}`;
     try {
-      const url = `${endpoint}?limit=${encodeURIComponent(limit)}`;
       const response = await fetch(url, { method: "GET", signal });
       if (!response.ok) {
-        errors.push(`${endpoint}: ${response.status}`);
+        errors.push(`${path}: ${response.status}`);
         continue;
       }
 
       const payload = await response.json();
       if (!Array.isArray(payload?.reviews) || payload.reviews.length === 0) {
-        errors.push(`${endpoint}: no reviews`);
+        errors.push(`${path}: no reviews`);
         continue;
       }
 
@@ -45,7 +61,7 @@ export async function fetchDynamicTestimonials({ limit = 6, signal } = {}) {
         .filter((item) => item.text.trim().length > 0);
 
       if (testimonials.length === 0) {
-        errors.push(`${endpoint}: empty mapped reviews`);
+        errors.push(`${path}: empty mapped reviews`);
         continue;
       }
 
@@ -57,9 +73,10 @@ export async function fetchDynamicTestimonials({ limit = 6, signal } = {}) {
         testimonials,
       };
     } catch (error) {
-      errors.push(`${endpoint}: ${error instanceof Error ? error.message : "unknown error"}`);
+      const msg = error?.name === "AbortError" ? "aborted" : (error instanceof Error ? error.message : "unknown error");
+      errors.push(`${path}: ${msg}`);
     }
   }
 
-  throw new Error(`No dynamic review endpoint available. ${errors.join(" | ")}`);
+  return { ...EMPTY_RESULT };
 }

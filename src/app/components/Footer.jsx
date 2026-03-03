@@ -1,5 +1,5 @@
 import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import companyLogo from "../../image/velomyntlogo.png";
+import companyLogo from "../../image/velomyntlogo.webp";
 
 export function Footer({ onNavigate }) {
   const currentYear = new Date().getFullYear();
@@ -16,6 +16,7 @@ export function Footer({ onNavigate }) {
                   src={companyLogo} 
                   alt="Velomynt Logo" 
                   className="h-12 sm:h-14 md:h-20 w-auto object-contain"
+                  loading="lazy"
                 />
               </div>
             </div>
