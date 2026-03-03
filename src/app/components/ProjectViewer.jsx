@@ -1,6 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import { PROJECT_MAP } from "../config/projectMap.js";
+import { PROJECT_MAP, PROJECT_DISPLAY_NAMES } from "../config/projectMap.js";
+
+/** Project-specific CSS fixes for layout/overlap issues when viewed in iframe */
+function getProjectOverlayFixes(slug) {
+  if (slug === "shophube") {
+    return `
+      /* Fix newsletter card overlapping footer */
+      #root, #root > div { padding-bottom: 3rem !important; }
+      main, [role="main"] { padding-bottom: 3rem !important; min-height: auto !important; }
+      footer { margin-top: 4rem !important; position: relative !important; z-index: 1 !important; }
+      /* Ensure content sections have proper spacing before footer */
+      body { padding-bottom: 1rem; }
+    `;
+  }
+  return "";
+}
 
 export function ProjectViewer({ slug, onNavigate }) {
   const iframeRef = useRef(null);
@@ -31,6 +46,7 @@ export function ProjectViewer({ slug, onNavigate }) {
         .then((html) => {
           if (cancelled) return;
           const baseTag = `<base href="${window.location.origin}${basePath}">`;
+          const projectFixes = getProjectOverlayFixes(slug);
           const resetScript = `
             <script>
               (function () {
@@ -55,7 +71,7 @@ export function ProjectViewer({ slug, onNavigate }) {
               })();
             </script>
           `;
-          html = html.replace(/<head([^>]*)>/i, "<head$1>" + baseTag + resetScript);
+          html = html.replace(/<head([^>]*)>/i, "<head$1>" + baseTag + (projectFixes ? `<style>${projectFixes}</style>` : "") + resetScript);
 
           const doc = iframe.contentDocument;
           doc.open();
@@ -95,7 +111,7 @@ export function ProjectViewer({ slug, onNavigate }) {
   }
 
   return (
-    <div className="pt-16 flex flex-col" style={{ height: "100vh" }}>
+    <div className="flex flex-col" style={{ height: "100vh" }}>
       <div className="bg-slate-950 border-b border-slate-800 px-4 py-2 flex items-center gap-4 shrink-0">
         <button
           onClick={() => onNavigate("portfolio")}
@@ -105,12 +121,12 @@ export function ProjectViewer({ slug, onNavigate }) {
           Back to Portfolio
         </button>
         <span className="text-gray-400 text-sm truncate">
-          {slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")}
+          {PROJECT_DISPLAY_NAMES[slug] ?? slug.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")}
         </span>
       </div>
 
       {loading && (
-        <div className="absolute inset-0 pt-16 flex items-center justify-center bg-slate-900 z-10">
+        <div className="absolute inset-0 flex items-center justify-center bg-slate-900 z-10">
           <div className="flex items-center gap-3 text-indigo-400">
             <div className="w-8 h-8 border-3 border-slate-700 border-t-indigo-500 rounded-full animate-spin" />
             <span>Loading project...</span>

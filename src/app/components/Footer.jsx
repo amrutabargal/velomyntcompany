@@ -1,4 +1,4 @@
-import { Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import companyLogo from "../../image/velomyntlogo.png";
 
 export function Footer({ onNavigate }) {
@@ -189,7 +189,11 @@ export function Footer({ onNavigate }) {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail size={18} className="mr-2 mt-0.5 flex-shrink-0" />
-                <a href="mailto:info@velomynt.com" className="text-sm hover:text-indigo-500 transition-colors">info@velomynt.com</a>
+                <a href="mailto:info@velomynt.com" className="text-sm hover:text-indigo-500 transition-colors break-all">info@velomynt.com</a>
+              </li>
+              <li className="flex items-start">
+                <Phone size={18} className="mr-2 mt-0.5 flex-shrink-0" />
+                <a href="tel:+917717441711" className="text-sm hover:text-indigo-500 transition-colors whitespace-nowrap">+91 771 744 1711</a>
               </li>
             </ul>
           </div>

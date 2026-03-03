@@ -1,22 +1,13 @@
 import { Target, Users, Award, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "./ui/card.jsx";
-import { motion, useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import { useEffect } from "react";
 import companyLogo from "../../image/velomyntlogo.png";
 import heroImage from "../../image/hero-image.png";
 
 export function AboutPage() {
-  const prefersReducedMotion = useReducedMotion();
-  const [isMobileViewport, setIsMobileViewport] = useState(false);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)");
-    const onChange = () => setIsMobileViewport(media.matches);
-    onChange();
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
   }, []);
   const values = [
     {
@@ -73,8 +64,6 @@ export function AboutPage() {
       image: companyLogo,
     },
   ];
-  const scrollingTeam = [...team, ...team];
-  const shouldAutoScrollTeam = !prefersReducedMotion && !isMobileViewport && team.length > 1;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -195,47 +184,46 @@ export function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-8 sm:py-12 md:py-16 bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 sm:py-10 md:py-12 bg-slate-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12"
+            className="text-center mb-6 sm:mb-8"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 px-2 sm:px-0">Meet Our Team</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 px-2 sm:px-0">Meet Our Team</h2>
+            <p className="text-sm sm:text-base text-gray-400 max-w-xl mx-auto px-4 sm:px-0">
               Talented professionals dedicated to your success
             </p>
           </motion.div>
-          <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-30px" }}
+            className="grid grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 justify-items-center"
+          >
+            {team.map((member, index) => (
               <motion.div
-                className={shouldAutoScrollTeam ? "flex w-max gap-4 sm:gap-6" : "flex flex-wrap justify-center gap-4 sm:gap-6"}
-                animate={shouldAutoScrollTeam ? { x: ["0%", "-50%"] } : undefined}
-                transition={shouldAutoScrollTeam ? { duration: 28, ease: "linear", repeat: Infinity } : undefined}
+                key={member.name}
+                variants={itemVariants}
+                whileHover={{ y: -3, scale: 1.02 }}
+                className="text-center group w-full max-w-[90px] sm:max-w-[95px]"
               >
-                {scrollingTeam.map((member, index) => (
-                  <motion.div
-                    key={`${member.name}-${index}`}
-                    whileHover={{ y: -4 }}
-                    className="text-center group min-w-[150px] sm:min-w-[170px] flex-shrink-0"
-                  >
-                    <div className="relative mb-3 overflow-hidden rounded-xl p-2 sm:p-3 bg-white border border-slate-200 transition-all duration-300 group-hover:border-slate-300">
-                      <div className="bg-slate-100 rounded-lg p-2 sm:p-3">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                          className="w-full h-32 sm:h-36 object-contain transition-transform duration-300 group-hover:scale-105 brightness-110 contrast-110"
-                      />
-                      </div>
-                    </div>
-                    <h3 className="text-sm sm:text-base font-semibold text-white mb-1">{member.name}</h3>
-                    <p className="text-xs sm:text-sm text-gray-400">{member.role}</p>
-                  </motion.div>
-                ))}
+                <div className="relative mb-1.5 overflow-hidden rounded-lg p-1 bg-white border border-slate-200/80 shadow-md shadow-slate-900/10 transition-all duration-300 group-hover:border-indigo-400/50 group-hover:shadow-indigo-500/15">
+                  <div className="rounded-md overflow-hidden border border-slate-100 bg-gradient-to-br from-slate-50 to-white p-1.5 sm:p-2 aspect-square flex items-center justify-center">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full max-h-10 sm:max-h-12 object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+                <h3 className="text-[11px] sm:text-xs font-medium text-white mb-0.5 truncate">{member.name}</h3>
+                <p className="text-[9px] sm:text-[10px] text-gray-400 truncate leading-tight">{member.role}</p>
               </motion.div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </section>

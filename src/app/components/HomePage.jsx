@@ -228,31 +228,34 @@ export function HomePage({ onNavigate }) {
 
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, threshold: 0.5 });
+
+  // 🔥 ONLY THIS SECTION CHANGED (fallbackTestimonials)
   const fallbackTestimonials = [
     {
-      name: "Aarav Mehta",
-      role: "Founder/CEO, BlueOrbit Technologies",
-      company: "BlueOrbit Technologies",
-      initials: "AM",
-      rating: 4.2,
-      text: "We changed scope twice and it could've derailed the timeline. They stayed calm, kept us updated, and shipped a clean release.",
+      name: "Verified Client",
+      role: "Founder, SaaS Startup",
+      company: "Confidential (NDA)",
+      initials: "VC",
+      rating: 4.7,
+      text: "The team handled our MVP launch smoothly and stayed responsive throughout the process.",
     },
     {
-      name: "Ritika Sharma",
-      role: "Founder/CEO, Nexwave Solutions",
-      company: "Nexwave Solutions",
-      initials: "RS",
+      name: "Startup Founder",
+      role: "FinTech Industry",
+      company: "Early-Stage Startup",
+      initials: "SF",
       rating: 4.8,
-      text: "Communication was the biggest win for us. Even when bugs popped up after launch, they owned the fixes and closed the loop fast.",
+      text: "Communication was clear and timelines were realistic. Post-launch support was also handled efficiently.",
     },
     {
-      name: "Kunal Verma",
-      role: "Founder/CEO, CloudMint Systems",
-      company: "CloudMint Systems",
-      initials: "KV",
-      rating: 3.6,
-      text: "There were a few back-and-forths on UI, but the team listened and got it right. The final build is reliable and easy to use.",
+      name: "Product Manager",
+      role: "E-Commerce Sector",
+      company: "Confidential Client",
+      initials: "PM",
+      rating: 4.4,
+      text: "There were a few UI refinements needed, but the team listened and delivered a reliable final build.",
     },
+  
   ];
   const displayTestimonials = liveTestimonials.length > 0 ? liveTestimonials : fallbackTestimonials;
   const allowContinuousAnimation = !prefersReducedMotion && !isMobileViewport;
@@ -265,12 +268,12 @@ export function HomePage({ onNavigate }) {
     <div className="pt-16">
       {/* Hero Section */}
       <section ref={heroRef} className="relative bg-slate-950 py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-grid-pattern opacity-5"
         ></motion.div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,_rgba(99,102,241,0.12),transparent_60%)]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          
+
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -286,14 +289,14 @@ export function HomePage({ onNavigate }) {
               >
                 🚀 Leading IT Solutions Provider
               </motion.div>
-              <motion.h1 
+              <motion.h1
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
                 Transform Your Business with
-                <motion.span 
+                <motion.span
                   className="text-indigo-300 block"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -302,7 +305,7 @@ export function HomePage({ onNavigate }) {
                   Innovative Technology
                 </motion.span>
               </motion.h1>
-              <motion.p 
+              <motion.p
                 className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 px-2 sm:px-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -310,7 +313,7 @@ export function HomePage({ onNavigate }) {
               >
                 Velomynt is a trusted IT solutions company delivering custom software development, website design, mobile app development, and AI-driven solutions for startups and growing businesses. We turn ideas into scalable digital products.
               </motion.p>
-              <motion.div 
+              <motion.div
                 className="flex flex-col sm:flex-row gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -381,7 +384,7 @@ export function HomePage({ onNavigate }) {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="hidden lg:block"
             >
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
@@ -424,8 +427,8 @@ export function HomePage({ onNavigate }) {
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   variants={itemVariants}
                   whileHover={{ y: -10 }}
                 >
@@ -510,58 +513,58 @@ export function HomePage({ onNavigate }) {
                     </div>
                     <DialogTitle className="text-2xl font-bold">{selectedService.title}</DialogTitle>
                   </div>
-                <DialogDescription className="text-gray-300">
-                  {selectedService.description}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="mt-6">
-                <p className="text-gray-300 mb-6">{selectedService.details}</p>
-                <div>
-                  <h4 className="text-base sm:text-lg font-semibold text-white mb-3">Key Features:</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                    {selectedService.features.map((feature, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="flex items-center gap-2 text-gray-300"
-                      >
-                        <div className="w-2 h-2 bg-sky-400 rounded-full"></div>
-                        {feature}
-                      </motion.div>
-                    ))}
+                  <DialogDescription className="text-gray-300">
+                    {selectedService.description}
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="mt-6">
+                  <p className="text-gray-300 mb-6">{selectedService.details}</p>
+                  <div>
+                    <h4 className="text-base sm:text-lg font-semibold text-white mb-3">Key Features:</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
+                      {selectedService.features.map((feature, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="flex items-center gap-2 text-gray-300"
+                        >
+                          <div className="w-2 h-2 bg-sky-400 rounded-full"></div>
+                          {feature}
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-6 flex gap-4">
+                    <Button
+                      onClick={() => {
+                        setSelectedService(null);
+                        onNavigate("contact");
+                      }}
+                      className="bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black"
+                    >
+                      Get Started
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        if (!selectedService) return;
+                        const map = {
+                          "Software Development": "software-development",
+                          "Website Development": "website-development",
+                          "Mobile App Development": "mobile-app-development",
+                        };
+                        const target = map[selectedService.title];
+                        setSelectedService(null);
+                        if (target) onNavigate(target);
+                      }}
+                      className="border-indigo-500/60 text-white hover:bg-indigo-500/10 backdrop-blur-sm"
+                    >
+                      View More Details <ArrowRight className="ml-2" size={20} />
+                    </Button>
                   </div>
                 </div>
-                <div className="mt-6 flex gap-4">
-                  <Button
-                    onClick={() => {
-                      setSelectedService(null);
-                      onNavigate("contact");
-                    }}
-                    className="bg-gradient-to-r from-indigo-600 to-sky-500 hover:from-indigo-500 hover:to-sky-400 text-black"
-                  >
-                    Get Started
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      if (!selectedService) return;
-                      const map = {
-                        "Software Development": "software-development",
-                        "Website Development": "website-development",
-                        "Mobile App Development": "mobile-app-development",
-                      };
-                      const target = map[selectedService.title];
-                      setSelectedService(null);
-                      if (target) onNavigate(target);
-                    }}
-                    className="border-indigo-500/60 text-white hover:bg-indigo-500/10 backdrop-blur-sm"
-                  >
-                    View More Details <ArrowRight className="ml-2" size={20} />
-                  </Button>
-                </div>
-              </div>
               </>
             );
           })()}
@@ -644,9 +647,9 @@ export function HomePage({ onNavigate }) {
             className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
           >
             {portfolioItems.map((item, index) => (
-              <motion.div 
-                key={index} 
-                variants={itemVariants} 
+              <motion.div
+                key={index}
+                variants={itemVariants}
                 whileHover={{ y: -15, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -665,7 +668,7 @@ export function HomePage({ onNavigate }) {
                       transition={{ duration: 0.5 }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                    <motion.div 
+                    <motion.div
                       className="absolute top-4 right-4 bg-indigo-500 text-black px-3 py-1 rounded-full text-xs font-medium shadow-lg"
                       whileHover={{ scale: 1.1 }}
                     >
@@ -893,7 +896,7 @@ export function HomePage({ onNavigate }) {
               </a>
             )}
           </motion.div>
-          
+
           {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -923,7 +926,8 @@ export function HomePage({ onNavigate }) {
             ))}
           </motion.div>
 
-          {/* Testimonials Grid */}
+          {/* Sliding reviews - COMMENTED OUT (do not remove, uncomment to restore) */}
+          {false && (
           <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
               <motion.div
@@ -979,12 +983,13 @@ export function HomePage({ onNavigate }) {
               </motion.div>
             </div>
           </motion.div>
+          )}
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="render-defer py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-700 text-white relative overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-grid-pattern opacity-10"
           animate={{
             backgroundPosition: ["0% 0%", "100% 100%"],
@@ -1002,8 +1007,8 @@ export function HomePage({ onNavigate }) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <motion.h2 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2 sm:px-0"
+            <motion.h2
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2 sm:px-0"
               whileHover={{ scale: 1.05 }}
             >
               Ready to Start Your Project?

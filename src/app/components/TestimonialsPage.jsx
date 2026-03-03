@@ -8,56 +8,6 @@ export function TestimonialsPage() {
   const writeReviewUrl = import.meta.env.VITE_GOOGLE_REVIEW_URL || "";
   const prefersReducedMotion = useReducedMotion();
   const [isMobileViewport, setIsMobileViewport] = useState(false);
-  const testimonials = [
-    {
-      name: "Aarav Mehta",
-      role: "Founder/CEO, BlueOrbit Technologies",
-      company: "BlueOrbit Technologies",
-      initials: "AM",
-      rating: 4.2,
-      text: "We changed scope twice and it could've derailed the timeline. They stayed calm, kept us updated, and shipped a clean release.",
-    },
-    {
-      name: "Ritika Sharma",
-      role: "Founder/CEO, Nexwave Solutions",
-      company: "Nexwave Solutions",
-      initials: "RS",
-      rating: 4.8,
-      text: "Communication was the biggest win for us. Even when bugs popped up after launch, they owned the fixes and closed the loop fast.",
-    },
-    {
-      name: "Kunal Verma",
-      role: "Founder/CEO, CloudMint Systems",
-      company: "CloudMint Systems",
-      initials: "KV",
-      rating: 3.6,
-      text: "There were a few back-and-forths on UI, but the team listened and got it right. The final build is reliable and easy to use.",
-    },
-    {
-      name: "Vikram Iyer",
-      role: "Director, SwiftCart",
-      company: "SwiftCart",
-      initials: "VI",
-      rating: 4.9,
-      text: "We saw fewer support tickets within a month. The team kept things transparent and didn’t overpromise timelines.",
-    },
-    {
-      name: "Meera Kapoor",
-      role: "VP Operations, LogiCore",
-      company: "LogiCore",
-      initials: "MK",
-      rating: 4.1,
-      text: "They handled the complex integrations better than our previous vendor. A few adjustments were needed, but they owned them.",
-    },
-    {
-      name: "Rahul Singh",
-      role: "CEO, HomeBridge Realty",
-      company: "HomeBridge Realty",
-      initials: "RS",
-      rating: 4.4,
-      text: "The new portal is simple for our agents to use. Training took half the time compared to the old system.",
-    },
-  ];
 
   const stats = [
     { number: "98%", label: "Client Retention" },
@@ -109,17 +59,20 @@ export function TestimonialsPage() {
     return () => media.removeEventListener("change", onChange);
   }, []);
 
-  const displayTestimonials = useMemo(
-    () => (dynamicReviews.length > 0 ? dynamicReviews : testimonials),
-    [dynamicReviews, testimonials],
-  );
+  const displayTestimonials = useMemo(() => dynamicReviews, [dynamicReviews]);
+
   const allowContinuousAnimation = !prefersReducedMotion && !isMobileViewport;
+
   const shouldAutoScrollTestimonials = useMemo(
     () => displayTestimonials.length > 1 && allowContinuousAnimation,
     [displayTestimonials, allowContinuousAnimation],
   );
+
   const testimonialsToRender = useMemo(
-    () => (shouldAutoScrollTestimonials ? [...displayTestimonials, ...displayTestimonials] : displayTestimonials),
+    () =>
+      shouldAutoScrollTestimonials
+        ? [...displayTestimonials, ...displayTestimonials]
+        : displayTestimonials,
     [displayTestimonials],
   );
 
@@ -135,7 +88,9 @@ export function TestimonialsPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">Client Testimonials</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 px-2 sm:px-0">
+              Client Testimonials
+            </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white px-4 sm:px-0">
               Don't just take our word for it—hear what our satisfied clients have to say about working with us
             </p>
@@ -176,9 +131,24 @@ export function TestimonialsPage() {
         </div>
       </section>
 
-      {/* Testimonials Grid */}
+      {/* Testimonials Grid - Google reviews only */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {displayTestimonials.length === 0 ? (
+            <div className="text-center py-16 px-4">
+              <p className="text-lg text-gray-600 mb-4">No reviews yet. Be the first to share your experience!</p>
+              {writeReviewUrl && (
+                <a
+                  href={writeReviewUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex px-6 py-3 rounded-md bg-indigo-600 text-white font-medium hover:bg-indigo-500 transition-colors"
+                >
+                  Add Your Review on Google
+                </a>
+              )}
+            </div>
+          ) : (
           <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
             <motion.div
               className={shouldAutoScrollTestimonials ? "flex w-max gap-8" : "flex flex-wrap justify-center gap-8"}
@@ -228,27 +198,7 @@ export function TestimonialsPage() {
               ))}
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Featured Testimonial */}
-      <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="border-2 border-indigo-500/40 shadow-2xl">
-              <CardContent className="p-12">
-              <Quote className="w-16 h-16 text-indigo-200 mb-6 mx-auto" />
-              <blockquote className="text-2xl lg:text-3xl text-white text-center mb-8 italic leading-relaxed">
-                "There were a couple of late nights before launch, but they stayed on the call and didn’t leave us hanging. The outcome felt practical, not overdone."
-              </blockquote>
-              <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-indigo-100 flex items-center justify-center font-semibold mx-auto mb-4 text-2xl">
-                  JM
-                </div>
-                <div className="font-bold text-xl text-white">Jennifer Martinez</div>
-                <div className="text-indigo-100">CEO, Global Enterprises</div>
-              </div>
-            </CardContent>
-          </Card>
+          )}
         </div>
       </section>
 

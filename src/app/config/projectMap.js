@@ -1,3 +1,26 @@
+/** Display names for ProjectViewer nav bar - must match project branding */
+export const PROJECT_DISPLAY_NAMES = {
+  "shophube": "ShopHub",
+  "styleverse": "Styleverse",
+  "royal-palace": "Royal Palace",
+  "prestigra-den": "Prestigra Den",
+  "paradise-resort": "Paradise Resort Bali",
+  "indian-resort": "Indian Resort",
+  "caremax": "Caremax",
+  "foodswift": "FoodSwift",
+  "foodhub": "FoodHub",
+  "healthcare-portal": "Healthcare Portal",
+  "medicare-plus": "Medicare Plus",
+  "eduflow": "EduFlow",
+  "velomynt-realestate": "Velomynt",
+  "tours": "Tours",
+  "finflow": "FinFlow",
+  "logiflow": "LogiFlow",
+  "premier-estate": "PremierEstate",
+  "quickserve": "QuickServe",
+  "luxury-salon": "Luxe Beauty Studio",
+};
+
 export const PROJECT_MAP = {
   "shophube": "/All_projects/shophube/dist/index.html",
   "styleverse": "/All_projects/Styleverse/index.html",

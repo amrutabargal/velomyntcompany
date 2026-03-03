@@ -128,6 +128,10 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   /**
@@ -137,6 +141,8 @@
 
   html {
     font-size: var(--font-size);
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
   }
 
   h1 {

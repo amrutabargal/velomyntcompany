@@ -26,13 +26,14 @@ export function Header({ currentPage, onNavigate }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center cursor-pointer"
             onClick={() => onNavigate("home")}
           >
-            <div className="h-14 w-14 sm:h-16 sm:w-16 md:h-24 md:w-24 flex items-center justify-center flex-shrink-0">
+            <div className="h-10 w-10 sm:h-28 sm:w-28 md:h-36 md:w-36 lg:h-44 lg:w-44 xl:h-48 xl:w-48 flex items-center justify-center flex-shrink-0">
               <img
                 src={companyLogo}
                 alt="Velomynt Logo"
@@ -42,17 +43,17 @@ export function Header({ currentPage, onNavigate }) {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-md text-sm font-medium border transition-all duration-200 ${
                   currentPage === item.id
-                    ? "text-white bg-slate-900 border border-slate-900"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    ? "text-white bg-slate-900 border-slate-900"
+                    : "text-slate-600 border-transparent hover:text-blue-600 hover:border-blue-500"
                 }`}
               >
                 {item.name}
@@ -78,6 +79,7 @@ export function Header({ currentPage, onNavigate }) {
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
+
         </div>
       </div>
 
@@ -127,4 +129,3 @@ export function Header({ currentPage, onNavigate }) {
     </motion.header>
   );
 }
-

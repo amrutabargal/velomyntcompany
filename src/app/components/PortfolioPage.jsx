@@ -28,7 +28,7 @@ export function PortfolioPage({ onNavigate }) {
 
   const projects = [
     {
-      title: "Shophube — E‑commerce",
+      title: "ShopHub — E‑commerce",
       slug: "shophube",
       category: "ecommerce",
       tags: ["Next.js", "React", "Node.js", "Stripe", "MongoDB"],
@@ -250,7 +250,7 @@ export function PortfolioPage({ onNavigate }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full max-w-[310px]"
+                className="w-full max-w-[310px] min-w-0"
               >
                 <Card
                   className="overflow-hidden group cursor-pointer bg-slate-950 border border-slate-800/50 hover:border-indigo-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 hover:-translate-y-2"
@@ -265,9 +265,11 @@ export function PortfolioPage({ onNavigate }) {
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
                     />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center cursor-pointer"
-                      onClick={() => onNavigate(`portfolio/${project.slug}`)}
+                    <a
+                      href={`/portfolio/${project.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center cursor-pointer no-underline"
                     >
                       <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
@@ -277,7 +279,7 @@ export function PortfolioPage({ onNavigate }) {
                         <Eye size={20} className="animate-pulse" />
                         <span className="font-medium">View Project</span>
                       </motion.div>
-                    </div>
+                    </a>
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
                     </div>
@@ -309,13 +311,15 @@ export function PortfolioPage({ onNavigate }) {
                       ))}
                     </div>
                     <div className="mt-4 flex justify-end">
-                      <button
-                        onClick={() => onNavigate(`portfolio/${project.slug}`)}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-all duration-200 text-sm cursor-pointer"
+                      <a
+                        href={`/portfolio/${project.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-500 transition-all duration-200 text-sm cursor-pointer no-underline"
                       >
                         <Eye size={16} />
                         View Project
-                      </button>
+                      </a>
                     </div>
                   </CardContent>
                   <div className="absolute inset-0 border-2 border-transparent group-hover:border-indigo-500/30 rounded-lg transition-all duration-500 pointer-events-none"></div>
