@@ -6,7 +6,7 @@ import { Textarea } from "./ui/textarea.jsx";
 import { Card, CardContent } from "./ui/card.jsx";
 import { motion } from "motion/react";
 
-const GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbyZzipc78p-7-lVtpZ5on-O1a7Fcro3eRv152Le4NSTuQB4ta8LHXfRxqjWCq32v_Mh/exec";
+const GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbxJ8__YIodf8CgIVpyRitz6zprSalPe97BwEmfAgXEZ4bTALYXzHTlT0-ErFKlb5QX1/exec";
 
 export function ContactPage() {
   const [formData, setFormData] = useState({

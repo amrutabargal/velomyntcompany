@@ -1,4 +1,4 @@
-import{r as c,j as e}from"./vendor-BNC8S10W.js";import{P as x,a as b}from"./index-B5H3WEPL.js";import{m as p}from"./vendor-icons-KaofFbX1.js";import"./vendor-motion-DJVpcUl9.js";function g(o){return o==="shophube"?`
+import{r as c,j as e}from"./vendor-BNC8S10W.js";import{P as x,a as b}from"./index-DOAH0IH4.js";import{m as p}from"./vendor-icons-KaofFbX1.js";import"./vendor-motion-DJVpcUl9.js";function g(o){return o==="shophube"?`
       /* Fix newsletter card overlapping footer */
       #root, #root > div { padding-bottom: 3rem !important; }
       main, [role="main"] { padding-bottom: 3rem !important; min-height: auto !important; }
