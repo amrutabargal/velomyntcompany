@@ -28,7 +28,7 @@ export function TestimonialsPage() {
     const loadReviews = async () => {
       try {
         const payload = await fetchDynamicTestimonials({
-          limit: 6,
+          limit: 20,
           signal: controller.signal,
         });
         if (!mounted) return;
@@ -39,7 +39,7 @@ export function TestimonialsPage() {
         });
         setUsingLiveData(Boolean(payload.testimonials?.length));
         if (payload.testimonials?.length > 0 && !intervalId) {
-          intervalId = window.setInterval(loadReviews, 2 * 60 * 1000);
+          intervalId = window.setInterval(loadReviews, 24 * 60 * 60 * 1000);
         }
       } catch (_) {
         if (!mounted) return;

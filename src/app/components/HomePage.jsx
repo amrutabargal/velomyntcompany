@@ -188,13 +188,13 @@ export function HomePage({ onNavigate }) {
     const loadReviews = async () => {
       try {
         const payload = await fetchDynamicTestimonials({
-          limit: 3,
+          limit: 20,
           signal: controller.signal,
         });
         if (!mounted) return;
         setLiveTestimonials(payload.testimonials ?? []);
         if (payload.testimonials?.length > 0 && !intervalId) {
-          intervalId = window.setInterval(loadReviews, 2 * 60 * 1000);
+          intervalId = window.setInterval(loadReviews, 24 * 60 * 60 * 1000);
         }
       } catch (_) {
         if (mounted) setLiveTestimonials([]);
@@ -233,35 +233,7 @@ export function HomePage({ onNavigate }) {
   const statsRef = useRef(null);
   const statsInView = useInView(statsRef, { once: true, threshold: 0.5 });
 
-  // 🔥 ONLY THIS SECTION CHANGED (fallbackTestimonials)
-  const fallbackTestimonials = [
-    {
-      name: "Verified Client",
-      role: "Founder, SaaS Startup",
-      company: "Confidential (NDA)",
-      initials: "VC",
-      rating: 4.7,
-      text: "The team handled our MVP launch smoothly and stayed responsive throughout the process.",
-    },
-    {
-      name: "Startup Founder",
-      role: "FinTech Industry",
-      company: "Early-Stage Startup",
-      initials: "SF",
-      rating: 4.8,
-      text: "Communication was clear and timelines were realistic. Post-launch support was also handled efficiently.",
-    },
-    {
-      name: "Product Manager",
-      role: "E-Commerce Sector",
-      company: "Confidential Client",
-      initials: "PM",
-      rating: 4.4,
-      text: "There were a few UI refinements needed, but the team listened and delivered a reliable final build.",
-    },
-  
-  ];
-  const displayTestimonials = liveTestimonials.length > 0 ? liveTestimonials : fallbackTestimonials;
+  const displayTestimonials = liveTestimonials;
   const allowContinuousAnimation = !prefersReducedMotion && !isMobileViewport;
   const shouldAutoScrollTestimonials = displayTestimonials.length > 1 && allowContinuousAnimation;
   const testimonialsToRender = shouldAutoScrollTestimonials
@@ -929,8 +901,8 @@ export function HomePage({ onNavigate }) {
             ))}
           </motion.div>
 
-          {/* Sliding reviews - COMMENTED OUT (do not remove, uncomment to restore) */}
-          {false && (
+          {/* Google reviews from SerpAPI - real data only */}
+          {displayTestimonials.length > 0 ? (
           <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
               <motion.div
@@ -986,6 +958,18 @@ export function HomePage({ onNavigate }) {
               </motion.div>
             </div>
           </motion.div>
+          ) : (
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center py-12">
+              <p className="text-gray-400 mb-4">No reviews yet. Be the first to share your experience!</p>
+              <a
+                href={GOOGLE_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex px-6 py-3 rounded-md bg-indigo-600 text-white font-medium hover:bg-indigo-500 transition-colors"
+              >
+                Add Your Review on Google
+              </a>
+            </motion.div>
           )}
         </div>
       </section>

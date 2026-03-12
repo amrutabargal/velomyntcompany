@@ -17,13 +17,15 @@ const googleReviewsDevApi = {
         res.setHeader('Cache-Control', 'public, max-age=60');
         res.end(JSON.stringify(data));
       } catch (error) {
-        res.statusCode = 500;
+        console.error('[google-reviews] SerpAPI error:', error instanceof Error ? error.message : error);
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json; charset=utf-8');
         res.end(
           JSON.stringify({
-            source: 'google-places',
-            error: 'Failed to fetch Google reviews',
-            details: error instanceof Error ? error.message : 'Unknown error',
+            source: 'google-maps',
+            rating: null,
+            user_ratings_total: null,
+            fetched_at: new Date().toISOString(),
             reviews: [],
           }),
         );

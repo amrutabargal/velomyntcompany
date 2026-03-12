@@ -17,10 +17,11 @@ export async function handler(event) {
     const data = await getGooglePlaceReviews({ limit });
     return response(200, data);
   } catch (error) {
-    return response(500, {
-      source: "google-places",
-      error: "Failed to fetch Google reviews",
-      details: error instanceof Error ? error.message : "Unknown error",
+    return response(200, {
+      source: "google-maps",
+      rating: null,
+      user_ratings_total: null,
+      fetched_at: new Date().toISOString(),
       reviews: [],
     });
   }
